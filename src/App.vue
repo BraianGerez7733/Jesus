@@ -13,7 +13,7 @@
       Un espacio claro y accesible para leer, estudiar y meditar en las Escrituras,
       centrado en Jesucristo.
     </p>
-    <div class="flex gap-4">
+    <div class="flex gap-4"> 
       <button class="px-6 py-3 rounded-xl bg-slate-800 text-white hover:bg-slate-700 transition">
         Comenzar lectura
       </button>
