@@ -17,9 +17,9 @@
       <button class="px-6 py-3 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 transition">
         Explorar evangelios
       </button>
-      <button class="px-6 py-3 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 transition">
+     <button class="px-6 py-3 rounded-xl bg-slate-800 text-white hover:bg-slate-700 transition">
   Diferencias con otras religiones
-      </button>
+</button>
     </div>
   </main>
 </template>
