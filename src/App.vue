@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <main class="min-h-screen flex flex-col items-center justify-center px-6 text-center">
+  <main class="min-h-screen flex flex-col items-center px-6 text-center pt-16">
         <h2 class="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
   Jesús
 </h2>
