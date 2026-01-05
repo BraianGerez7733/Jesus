@@ -18,7 +18,7 @@
         Explorar evangelios
       </button>
       <button class="px-6 py-3 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 transition">
-      Diferencias con otras religiones
+  Diferencias con otras religiones
       </button>
     </div>
   </main>
