@@ -2,13 +2,15 @@
 </script>
 
 <template>
-  <main class="min-h-screen flex flex-col items-center px-6 text-center pt-16">
-        <h2 class="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
+<main class="min-h-screen flex flex-col items-center px-6 text-center pt-8">
+
+  <h2 class="text-5xl md:text-6xl font-bold text-slate-900 mb-1">
   Jesús
 </h2>
-<h1 class="text-4xl md:text-5xl font-semibold text-slate-800 mb-4">
-      La Biblia · RVR 1960
-    </h1>
+
+<h1 class="text-4xl md:text-5xl font-semibold text-slate-800 mb-6">
+  La Biblia · RVR 1960
+</h1>
 
     <p class="text-lg text-slate-600 max-w-2xl mb-8">
       Un espacio claro y accesible para leer, estudiar y meditar en las Escrituras,
