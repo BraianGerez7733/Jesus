@@ -30,3 +30,6 @@
     </div>
   </main>
 </template>
+<template>
+  <router-view />
+</template>
