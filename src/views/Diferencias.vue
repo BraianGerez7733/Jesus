@@ -14,6 +14,7 @@
       <button class="p-4 border rounded-xl hover:bg-slate-100">Catolicismo</button>
       <button class="p-4 border rounded-xl hover:bg-slate-100">Mormonismo</button>
       <button class="p-4 border rounded-xl hover:bg-slate-100">Islam</button>
+      <button class="p-4 border rounded-xl hover:bg-slate-100">Budismo</button>
     </div>
   </main>
 </template>
