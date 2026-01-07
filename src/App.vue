@@ -4,7 +4,7 @@
 <template>
 <main class="min-h-screen flex flex-col items-center justify-center px-6 text-center">
 
-  <h1 class="text-5xl md:text-6xl font-bold text-red-600 mb-1">
+  <h1 class="text-5xl md:text-6xl font-bold text-blue-600 mb-1">
   Jesús
 </h1>
 
