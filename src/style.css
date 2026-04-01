@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body, #app {
+  min-height: 100%;
+  margin: 0;
+}
+
 body {
-  @apply bg-gradient-to-b from-blue-700 to-blue-300 min-h-screen;
+  min-height: 100vh;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)),
+    url('/src/assets/fondo-nubes.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
