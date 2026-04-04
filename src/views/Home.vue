@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <main class="min-h-screen flex flex-col items-center justify-center px-6 text-center">
+  <main class="min-h-screen flex flex-col items-center justify-center px-6 text-center bg-gradient-to-br from-blue-50 via-slate-50 to-purple-50">
 
     <h1 class="text-5xl md:text-6xl font-bold text-slate-600 mb-1">
       Jesús
