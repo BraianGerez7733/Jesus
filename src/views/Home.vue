@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <main class="min-h-screen flex flex-col items-center justify-center px-6 text-center bg-gradient-to-br from-blue-900 via-slate-800 to-purple-900">
+  <main class="min-h-screen flex flex-col items-center justify-center px-6 text-center bg-gradient-to-b from-sky-300 via-sky-100 to-blue-200">
 
     <h1 class="text-5xl md:text-6xl font-bold text-yellow-300 mb-1">
       Jesús es el Rey
