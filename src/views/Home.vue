@@ -10,20 +10,19 @@ import cloudsBg from '@/assets/images/clouds.jpg'
     role="main"
   >
     <!-- Overlay para mejor contraste -->
-    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
     
     <!-- Contenido con z-index -->
-    <div class="relative z-10">
+    <div class="relative z-10 max-w-4xl">
 
     <h1 class="text-5xl md:text-6xl font-bold text-yellow-300 mb-1">
-      Jesús es el Rey
-    </h1>
+        Jesús es el Señor
 
     <h2 class="text-4xl md:text-5xl font-semibold text-white mb-6">
       La Biblia · RVR 1960
     </h2>
 
-    <p class="text-lg text-gray-100 max-w-2xl mb-8">
+<p class="text-lg text-gray-100 max-w-2xl mx-auto mb-8">
       Un espacio claro y accesible para leer, estudiar y meditar en las Escrituras,
       centrado en Jesucristo.
     </p>
