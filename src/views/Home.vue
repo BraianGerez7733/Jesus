@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <main class="min-h-screen flex flex-col items-center justify-center px-6 text-center bg-gradient-to-b from-sky-300 via-sky-100 to-blue-200">
+  <main class="min-h-screen flex flex-col items-center justify-center px-6 text-center bg-cover bg-center" style="background-image: url('/src/assets/images/clouds.jpg')">
 
     <h1 class="text-5xl md:text-6xl font-bold text-yellow-300 mb-1">
       Jesús es el Rey
