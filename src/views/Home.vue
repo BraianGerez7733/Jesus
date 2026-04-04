@@ -3,17 +3,17 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <main class="min-h-screen flex flex-col items-center justify-center px-6 text-center bg-gradient-to-br from-blue-50 via-slate-50 to-purple-50">
+  <main class="min-h-screen flex flex-col items-center justify-center px-6 text-center bg-gradient-to-br from-blue-900 via-slate-800 to-purple-900">
 
-    <h1 class="text-5xl md:text-6xl font-bold text-slate-600 mb-1">
-      Jesús
+    <h1 class="text-5xl md:text-6xl font-bold text-yellow-300 mb-1">
+      Jesús es el Rey
     </h1>
 
-    <h2 class="text-4xl md:text-5xl font-semibold text-slate-800 mb-6">
+    <h2 class="text-4xl md:text-5xl font-semibold text-white mb-6">
       La Biblia · RVR 1960
     </h2>
 
-    <p class="text-lg text-slate-600 max-w-2xl mb-8">
+    <p class="text-lg text-gray-200 max-w-2xl mb-8">
       Un espacio claro y accesible para leer, estudiar y meditar en las Escrituras,
       centrado en Jesucristo.
     </p>
