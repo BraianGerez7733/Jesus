@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import ScrollVisualSection from '../components/ScrollVisualSection.vue'
 import SiteShell from '../components/SiteShell.vue'
 
 const religiones = [
@@ -95,6 +96,35 @@ const diferencias = [
     islam: 'Obediencia a Dios y entrada al paraiso.',
     budismo: 'Liberacion del sufrimiento y despertar.',
     catolicismo: 'Salvacion, santificacion y comunion con Dios.',
+  },
+]
+
+// Cambia aqui textos, superficies y posiciones del bloque visual reutilizable.
+// Si prefieres imagenes reales, agrega `image` a cada item.
+const visualItems = [
+  {
+    kicker: 'Desde la izquierda',
+    title: 'Panorama general',
+    text: 'Un panel que introduce la amplitud del tema con presencia visual limpia y controlada.',
+    enterFrom: 'left',
+    positionClass: '-translate-x-[118%] -translate-y-[62%] lg:-translate-x-[128%] lg:-translate-y-[58%]',
+    surfaceClass: 'bg-[linear-gradient(145deg,_rgba(125,211,252,0.34),_rgba(15,23,42,0.94))]',
+  },
+  {
+    kicker: 'Desde la derecha',
+    title: 'Diferencias clave',
+    text: 'El segundo bloque ayuda a equilibrar la composición sin competir con el contenido principal.',
+    enterFrom: 'right',
+    positionClass: 'translate-x-[18%] -translate-y-[62%] lg:translate-x-[28%] lg:-translate-y-[58%]',
+    surfaceClass: 'bg-[linear-gradient(145deg,_rgba(250,204,21,0.24),_rgba(15,23,42,0.95))]',
+  },
+  {
+    kicker: 'Desde abajo',
+    title: 'Lectura orientativa',
+    text: 'La pieza inferior conecta el conjunto y genera una salida visual prolija en la sección.',
+    enterFrom: 'bottom',
+    positionClass: '-translate-x-1/2 translate-y-[2%] lg:-translate-x-1/2 lg:translate-y-[8%]',
+    surfaceClass: 'bg-[linear-gradient(160deg,_rgba(148,163,184,0.24),_rgba(15,23,42,0.96),_rgba(34,211,238,0.16))]',
   },
 ]
 </script>
@@ -200,8 +230,8 @@ const diferencias = [
             <article
               v-for="religion in religiones"
               :key="religion.nombre"
-              class="page-card rounded-[1.75rem] bg-white/10 transition hover:-translate-y-1 hover:bg-white/15"
-            >
+            class="page-card hover-lift-soft rounded-[1.75rem] bg-white/10 transition hover:bg-white/15"
+          >
               <div class="flex items-start justify-between gap-4">
                 <div>
                   <p class="text-sm font-semibold uppercase tracking-[0.2em] text-amber-200">
@@ -292,6 +322,13 @@ const diferencias = [
           </div>
         </div>
       </section>
+
+      <ScrollVisualSection
+        eyebrow="Montaje visual"
+        title="Una sección amplia que entra con scroll y queda centrada"
+        description="Los tres bloques se desplazan con suavidad hasta una composición estable, sin romper el ritmo limpio ni la legibilidad del resto de la página."
+        :items="visualItems"
+      />
     </template>
   </SiteShell>
 </template>

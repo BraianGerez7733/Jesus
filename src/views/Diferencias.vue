@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import ScrollVisualSection from '../components/ScrollVisualSection.vue'
 import SiteShell from '../components/SiteShell.vue'
 
 const criterios = [
@@ -40,6 +41,35 @@ const religiones = [
     detalle: 'Aquí cambia la base completa: no solo una practica, sino la visión del ser humano y de la salvacion.',
   },
 ]
+
+// Cambia aqui textos, superficies y posiciones de la seccion visual.
+// Si luego quieres usar imagenes reales, agrega `image` a cada objeto.
+const visualItems = [
+  {
+    kicker: 'Desde la izquierda',
+    title: 'Autoridad bíblica',
+    text: 'Una pieza lateral que introduce el eje de comparación con presencia sobria.',
+    enterFrom: 'left',
+    positionClass: '-translate-x-[118%] -translate-y-[62%] lg:-translate-x-[128%] lg:-translate-y-[58%]',
+    surfaceClass: 'bg-[linear-gradient(145deg,_rgba(34,211,238,0.36),_rgba(15,23,42,0.94))]',
+  },
+  {
+    kicker: 'Desde la derecha',
+    title: 'Persona de Cristo',
+    text: 'El segundo bloque equilibra la escena y deja claro el centro doctrinal del conjunto.',
+    enterFrom: 'right',
+    positionClass: 'translate-x-[18%] -translate-y-[62%] lg:translate-x-[28%] lg:-translate-y-[58%]',
+    surfaceClass: 'bg-[linear-gradient(145deg,_rgba(250,204,21,0.28),_rgba(15,23,42,0.95))]',
+  },
+  {
+    kicker: 'Desde abajo',
+    title: 'Salvación por gracia',
+    text: 'El bloque inferior ancla la composición y completa una lectura visual ordenada.',
+    enterFrom: 'bottom',
+    positionClass: '-translate-x-1/2 translate-y-[2%] lg:-translate-x-1/2 lg:translate-y-[8%]',
+    surfaceClass: 'bg-[linear-gradient(155deg,_rgba(56,189,248,0.24),_rgba(15,23,42,0.95),_rgba(14,165,233,0.18))]',
+  },
+]
 </script>
 
 <template>
@@ -73,7 +103,7 @@ const religiones = [
         <article
           v-for="criterio in criterios"
           :key="criterio"
-          class="page-card p-5 backdrop-blur-md"
+          class="page-card hover-lift-soft p-5 backdrop-blur-md"
         >
           <p class="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-200">
             Criterio
@@ -131,7 +161,7 @@ const religiones = [
           <article
             v-for="religion in religiones"
             :key="religion.nombre"
-            class="page-card group rounded-[1.75rem] transition hover:-translate-y-1 hover:bg-white/15"
+            class="page-card hover-lift-soft group rounded-[1.75rem] transition hover:bg-white/15"
           >
             <p class="text-sm font-semibold uppercase tracking-[0.2em] text-amber-200">
               {{ religion.nombre }}
@@ -156,8 +186,15 @@ const religiones = [
             </p>
           </article>
         </div>
-      </div>
+        </div>
       </section>
+
+      <ScrollVisualSection
+        eyebrow="Escena doctrinal"
+        title="Una composición visual que acompaña la lectura comparativa"
+        description="La entrada por scroll mantiene el tono sobrio del sitio y agrega una pausa visual con movimiento medido y alineación limpia."
+        :items="visualItems"
+      />
     </template>
   </SiteShell>
 </template>

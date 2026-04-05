@@ -34,4 +34,26 @@ body {
   .section-heading {
     @apply text-sm font-semibold uppercase tracking-[0.24em];
   }
+
+  .hover-lift-soft {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-lift-soft:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 24px 60px rgba(2, 6, 23, 0.34);
+  }
+
+  .hover-lift-soft:focus-visible {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 24px 60px rgba(2, 6, 23, 0.34);
+  }
+}
+
+@media (hover: none) {
+  .hover-lift-soft:hover,
+  .hover-lift-soft:focus-visible {
+    transform: none;
+    box-shadow: none;
+  }
 }
