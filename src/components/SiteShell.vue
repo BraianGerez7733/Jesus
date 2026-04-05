@@ -68,6 +68,7 @@ const themeClasses = computed(() => {
 
 const links = [
   { to: '/', label: 'Inicio' },
+  { to: '/religiones', label: 'Religiones' },
   { to: '/diferencias', label: 'Diferencias' },
 ]
 </script>

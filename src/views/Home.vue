@@ -23,6 +23,10 @@ const secciones = [
     texto: 'Acceso simple al texto para leer con calma, sin elementos que interrumpan la atencion.',
   },
   {
+    titulo: 'Religiones en perspectiva',
+    texto: 'Una comparacion breve y neutral entre cristianismo, judaísmo, mormonismo, islam, budismo y catolicismo.',
+  },
+  {
     titulo: 'Estudio comparativo',
     texto: 'Espacio para observar diferencias doctrinales con base bíblica y un tono sereno.',
   },
@@ -59,6 +63,13 @@ const secciones = [
         class="inline-flex items-center rounded-2xl border border-white/25 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/20"
       >
         Explorar diferencias
+      </RouterLink>
+
+      <RouterLink
+        to="/religiones"
+        class="inline-flex items-center rounded-2xl border border-amber-200/30 bg-amber-300/10 px-6 py-3 text-sm font-semibold text-amber-100 backdrop-blur-md transition hover:bg-amber-300/20"
+      >
+        Comparar religiones
       </RouterLink>
     </template>
 
