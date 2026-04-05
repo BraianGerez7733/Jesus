@@ -134,6 +134,17 @@ onBeforeUnmount(() => {
                 <p class="mt-3 text-sm leading-6 text-slate-100">
                   {{ item.text }}
                 </p>
+                <div
+                  v-if="item.verse"
+                  class="mt-4 rounded-[1.25rem] border border-white/15 bg-slate-950/35 p-4 backdrop-blur-md"
+                >
+                  <p class="text-sm leading-6 text-white/95">
+                    {{ item.verse }}
+                  </p>
+                  <p class="mt-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-amber-200/90">
+                    {{ item.verseRef }}
+                  </p>
+                </div>
               </div>
             </div>
           </article>
@@ -160,6 +171,17 @@ onBeforeUnmount(() => {
                 <p class="mt-2 text-sm leading-6 text-slate-100">
                   {{ item.text }}
                 </p>
+                <div
+                  v-if="item.verse"
+                  class="mt-4 rounded-[1.25rem] border border-white/15 bg-slate-950/40 p-4 backdrop-blur-md"
+                >
+                  <p class="text-sm leading-6 text-white/95">
+                    {{ item.verse }}
+                  </p>
+                  <p class="mt-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-amber-200/90">
+                    {{ item.verseRef }}
+                  </p>
+                </div>
               </div>
             </div>
           </article>
@@ -168,4 +190,3 @@ onBeforeUnmount(() => {
     </div>
   </section>
 </template>
-

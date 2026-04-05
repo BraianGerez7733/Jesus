@@ -2,6 +2,8 @@
 import { RouterLink } from 'vue-router'
 import ScrollVisualSection from '../components/ScrollVisualSection.vue'
 import SiteShell from '../components/SiteShell.vue'
+import VerseGallery from '../components/VerseGallery.vue'
+import cloudsWide from '../assets/images/clouds.jpg'
 
 const criterios = [
   'Autoridad final de la Biblia',
@@ -42,6 +44,24 @@ const religiones = [
   },
 ]
 
+const verseHighlights = [
+  {
+    text: 'Y en ningún otro hay salvación; porque no hay otro nombre bajo el cielo, dado a los hombres, en que podamos ser salvos.',
+    reference: 'Hechos 4:12',
+    layout: 'wide',
+  },
+  {
+    text: 'Porque por gracia sois salvos por medio de la fe; y esto no de vosotros, pues es don de Dios.',
+    reference: 'Efesios 2:8',
+    layout: 'pill',
+  },
+  {
+    text: 'Santifícalos en tu verdad; tu palabra es verdad.',
+    reference: 'Juan 17:17',
+    layout: 'stacked',
+  },
+]
+
 // Cambia aqui textos, superficies y posiciones de la seccion visual.
 // Si luego quieres usar imagenes reales, agrega `image` a cada objeto.
 const visualItems = [
@@ -52,6 +72,9 @@ const visualItems = [
     enterFrom: 'left',
     positionClass: '-translate-x-[118%] -translate-y-[62%] lg:-translate-x-[128%] lg:-translate-y-[58%]',
     surfaceClass: 'bg-[linear-gradient(145deg,_rgba(34,211,238,0.36),_rgba(15,23,42,0.94))]',
+    image: cloudsWide,
+    verse: 'Toda la Escritura es inspirada por Dios.',
+    verseRef: '2 Timoteo 3:16',
   },
   {
     kicker: 'Desde la derecha',
@@ -60,6 +83,9 @@ const visualItems = [
     enterFrom: 'right',
     positionClass: 'translate-x-[18%] -translate-y-[62%] lg:translate-x-[28%] lg:-translate-y-[58%]',
     surfaceClass: 'bg-[linear-gradient(145deg,_rgba(250,204,21,0.28),_rgba(15,23,42,0.95))]',
+    image: cloudsWide,
+    verse: 'Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí.',
+    verseRef: 'Juan 14:6',
   },
   {
     kicker: 'Desde abajo',
@@ -68,6 +94,9 @@ const visualItems = [
     enterFrom: 'bottom',
     positionClass: '-translate-x-1/2 translate-y-[2%] lg:-translate-x-1/2 lg:translate-y-[8%]',
     surfaceClass: 'bg-[linear-gradient(155deg,_rgba(56,189,248,0.24),_rgba(15,23,42,0.95),_rgba(14,165,233,0.18))]',
+    image: cloudsWide,
+    verse: 'Justificados, pues, por la fe, tenemos paz para con Dios por medio de nuestro Señor Jesucristo.',
+    verseRef: 'Romanos 5:1',
   },
 ]
 </script>
@@ -140,54 +169,62 @@ const visualItems = [
 
     <template #content>
       <section id="comparaciones" class="section-shell">
-      <div class="mx-auto max-w-6xl">
-        <div class="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p class="section-heading text-cyan-200">
-              Temas a desarrollar
+        <div class="mx-auto max-w-6xl">
+          <div class="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p class="section-heading text-cyan-200">
+                Temas a desarrollar
+              </p>
+              <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">
+                Comparaciones organizadas por enfoque doctrinal
+              </h2>
+            </div>
+
+            <p class="max-w-xl text-sm leading-7 text-slate-300">
+              Cada bloque resume una diferencia importante y deja abierta la posibilidad de
+              ampliar luego con textos bíblicos concretos.
             </p>
-            <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">
-              Comparaciones organizadas por enfoque doctrinal
-            </h2>
           </div>
 
-          <p class="max-w-xl text-sm leading-7 text-slate-300">
-            Cada bloque resume una diferencia importante y deja abierta la posibilidad de
-            ampliar luego con textos bíblicos concretos.
-          </p>
-        </div>
+          <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            <article
+              v-for="religion in religiones"
+              :key="religion.nombre"
+              class="page-card hover-lift-soft group rounded-[1.75rem] transition hover:bg-white/15"
+            >
+              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-amber-200">
+                {{ religion.nombre }}
+              </p>
 
-        <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          <article
-            v-for="religion in religiones"
-            :key="religion.nombre"
-            class="page-card hover-lift-soft group rounded-[1.75rem] transition hover:bg-white/15"
-          >
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-amber-200">
-              {{ religion.nombre }}
-            </p>
+              <p class="mt-4 text-xl font-bold text-white">
+                {{ religion.enfoque }}
+              </p>
 
-            <p class="mt-4 text-xl font-bold text-white">
-              {{ religion.enfoque }}
-            </p>
+              <p class="mt-4 text-sm leading-7 text-slate-200">
+                {{ religion.resumen }}
+              </p>
 
-            <p class="mt-4 text-sm leading-7 text-slate-200">
-              {{ religion.resumen }}
-            </p>
+              <p class="mt-4 text-sm leading-7 text-slate-300">
+                {{ religion.detalle }}
+              </p>
 
-            <p class="mt-4 text-sm leading-7 text-slate-300">
-              {{ religion.detalle }}
-            </p>
+              <div class="mt-6 h-px w-full bg-white/10"></div>
 
-            <div class="mt-6 h-px w-full bg-white/10"></div>
-
-            <p class="mt-5 text-sm font-semibold text-cyan-100 transition group-hover:text-white">
-              Lectura sintetica lista para ampliar
-            </p>
-          </article>
-        </div>
+              <p class="mt-5 text-sm font-semibold text-cyan-100 transition group-hover:text-white">
+                Lectura sintetica lista para ampliar
+              </p>
+            </article>
+          </div>
         </div>
       </section>
+
+      <VerseGallery
+        eyebrow="Base bíblica"
+        title="Versículos distribuidos a lo largo de la página doctrinal"
+        description="La comparación ahora queda acompañada por textos bíblicos visibles en distintos formatos para reforzar la lectura en cada tramo."
+        :verses="verseHighlights"
+        accent="cyan"
+      />
 
       <ScrollVisualSection
         eyebrow="Escena doctrinal"

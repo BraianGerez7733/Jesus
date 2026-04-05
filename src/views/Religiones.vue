@@ -2,6 +2,8 @@
 import { RouterLink } from 'vue-router'
 import ScrollVisualSection from '../components/ScrollVisualSection.vue'
 import SiteShell from '../components/SiteShell.vue'
+import VerseGallery from '../components/VerseGallery.vue'
+import cloudsWide from '../assets/images/clouds.jpg'
 
 const religiones = [
   {
@@ -99,6 +101,24 @@ const diferencias = [
   },
 ]
 
+const verseHighlights = [
+  {
+    text: 'Examinadlo todo; retened lo bueno.',
+    reference: '1 Tesalonicenses 5:21',
+    layout: 'wide',
+  },
+  {
+    text: 'Y conoceréis la verdad, y la verdad os hará libres.',
+    reference: 'Juan 8:32',
+    layout: 'corner',
+  },
+  {
+    text: 'Porque hay un solo Dios, y un solo mediador entre Dios y los hombres, Jesucristo hombre.',
+    reference: '1 Timoteo 2:5',
+    layout: 'stacked',
+  },
+]
+
 // Cambia aqui textos, superficies y posiciones del bloque visual reutilizable.
 // Si prefieres imagenes reales, agrega `image` a cada item.
 const visualItems = [
@@ -109,6 +129,9 @@ const visualItems = [
     enterFrom: 'left',
     positionClass: '-translate-x-[118%] -translate-y-[62%] lg:-translate-x-[128%] lg:-translate-y-[58%]',
     surfaceClass: 'bg-[linear-gradient(145deg,_rgba(125,211,252,0.34),_rgba(15,23,42,0.94))]',
+    image: cloudsWide,
+    verse: 'Escudriñad las Escrituras.',
+    verseRef: 'Juan 5:39',
   },
   {
     kicker: 'Desde la derecha',
@@ -117,6 +140,9 @@ const visualItems = [
     enterFrom: 'right',
     positionClass: 'translate-x-[18%] -translate-y-[62%] lg:translate-x-[28%] lg:-translate-y-[58%]',
     surfaceClass: 'bg-[linear-gradient(145deg,_rgba(250,204,21,0.24),_rgba(15,23,42,0.95))]',
+    image: cloudsWide,
+    verse: 'Mirad que nadie os engañe por medio de filosofías y huecas sutilezas.',
+    verseRef: 'Colosenses 2:8',
   },
   {
     kicker: 'Desde abajo',
@@ -125,6 +151,9 @@ const visualItems = [
     enterFrom: 'bottom',
     positionClass: '-translate-x-1/2 translate-y-[2%] lg:-translate-x-1/2 lg:translate-y-[8%]',
     surfaceClass: 'bg-[linear-gradient(160deg,_rgba(148,163,184,0.24),_rgba(15,23,42,0.96),_rgba(34,211,238,0.16))]',
+    image: cloudsWide,
+    verse: 'Tu palabra es verdad.',
+    verseRef: 'Juan 17:17',
   },
 ]
 </script>
@@ -322,6 +351,14 @@ const visualItems = [
           </div>
         </div>
       </section>
+
+      <VerseGallery
+        eyebrow="Textos para discernir"
+        title="Versículos distribuidos también en esta página comparativa"
+        description="Estas citas acompañan la lectura del panorama religioso y refuerzan el criterio bíblico en medio de la comparación."
+        :verses="verseHighlights"
+        accent="cyan"
+      />
 
       <ScrollVisualSection
         eyebrow="Montaje visual"

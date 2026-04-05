@@ -33,6 +33,9 @@ const normalizedSlides = computed(() =>
     accentClass:
       slide.accentClass ??
       'bg-[radial-gradient(circle_at_top_left,_rgba(250,204,21,0.42),_transparent_38%),radial-gradient(circle_at_bottom_right,_rgba(34,211,238,0.3),_transparent_34%)]',
+    verse: slide.verse ?? '',
+    verseRef: slide.verseRef ?? '',
+    verseLayout: slide.verseLayout ?? 'inline',
   })),
 )
 
@@ -137,6 +140,23 @@ onBeforeUnmount(() => {
             <p class="mt-4 max-w-xl text-sm leading-7 text-slate-100 sm:text-base sm:leading-8">
               {{ slide.text }}
             </p>
+
+            <div
+              v-if="slide.verse"
+              class="mt-6 border border-white/15 bg-slate-950/35 text-left backdrop-blur-md"
+              :class="slide.verseLayout === 'pill'
+                ? 'inline-flex max-w-xl flex-col rounded-full px-5 py-3'
+                : slide.verseLayout === 'corner'
+                  ? 'max-w-md rounded-[1.5rem] border-l-4 border-amber-300 px-5 py-4'
+                  : 'max-w-xl rounded-[1.5rem] px-5 py-4'"
+            >
+              <p class="text-sm leading-7 text-white/95">
+                {{ slide.verse }}
+              </p>
+              <p class="mt-2 text-xs font-semibold uppercase tracking-[0.24em] text-amber-200/90">
+                {{ slide.verseRef }}
+              </p>
+            </div>
 
             <component
               v-if="slide.ctaLabel"

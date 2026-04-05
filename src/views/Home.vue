@@ -4,6 +4,8 @@ import FlipCardsSection from '../components/FlipCardsSection.vue'
 import HeroCarousel from '../components/HeroCarousel.vue'
 import ScrollVisualSection from '../components/ScrollVisualSection.vue'
 import SiteShell from '../components/SiteShell.vue'
+import VerseGallery from '../components/VerseGallery.vue'
+import cloudsWide from '../assets/images/clouds.jpg'
 import lightsWide from '../assets/images/slides/lights-wide.svg'
 import mountainsWide from '../assets/images/slides/mountains-wide.svg'
 import snowWide from '../assets/images/slides/snow-wide.svg'
@@ -65,12 +67,31 @@ const flipCards = [
 
 const heroSlides = [
   {
+    eyebrow: 'Nubes',
+    title: 'Contempla la gloria de Dios con un comienzo más amplio y reverente',
+    text: 'El slideshow ahora abre con un fondo de nubes para dar una entrada más celestial y acompañar mejor el tono devocional del sitio.',
+    image: cloudsWide,
+    ctaLabel: 'Ir a lectura',
+    ctaHref: '#proposito',
+    align: 'left',
+    verse: 'Los cielos cuentan la gloria de Dios, Y el firmamento anuncia la obra de sus manos.',
+    verseRef: 'Salmos 19:1',
+    verseLayout: 'corner',
+    overlayClass:
+      'bg-[linear-gradient(130deg,_rgba(15,23,42,0.68),_rgba(14,116,144,0.2),_rgba(250,204,21,0.08))]',
+    accentClass:
+      'bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.18),_transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(56,189,248,0.18),_transparent_30%)]',
+  },
+  {
     eyebrow: 'Bosque',
     title: 'Lee la Escritura con una apertura visual tipo slideshow',
     text: 'Primer slide con un paisaje natural amplio, inspirado en el ejemplo de referencia y adaptado al tono sobrio de la portada.',
     image: woodsWide,
     ctaLabel: 'Ir a lectura',
     ctaHref: '#proposito',
+    verse: 'Lámpara es a mis pies tu palabra, Y lumbrera a mi camino.',
+    verseRef: 'Salmos 119:105',
+    verseLayout: 'inline',
     overlayClass:
       'bg-[linear-gradient(125deg,_rgba(15,23,42,0.72),_rgba(12,74,110,0.22),_rgba(250,204,21,0.14))]',
     accentClass:
@@ -84,6 +105,9 @@ const heroSlides = [
     ctaLabel: 'Ver diferencias',
     ctaTo: '/diferencias',
     align: 'center',
+    verse: 'Venid a mí todos los que estáis trabajados y cargados, y yo os haré descansar.',
+    verseRef: 'Mateo 11:28',
+    verseLayout: 'pill',
     overlayClass:
       'bg-[linear-gradient(135deg,_rgba(2,6,23,0.58),_rgba(71,85,105,0.16),_rgba(34,211,238,0.1))]',
     accentClass:
@@ -97,10 +121,29 @@ const heroSlides = [
     ctaLabel: 'Comparar religiones',
     ctaTo: '/religiones',
     align: 'left',
+    verse: 'Jesucristo es el mismo ayer, y hoy, y por los siglos.',
+    verseRef: 'Hebreos 13:8',
+    verseLayout: 'corner',
     overlayClass:
       'bg-[linear-gradient(140deg,_rgba(15,23,42,0.62),_rgba(120,53,15,0.16),_rgba(251,191,36,0.12))]',
     accentClass:
       'bg-[radial-gradient(circle_at_top_right,_rgba(251,191,36,0.18),_transparent_32%),radial-gradient(circle_at_bottom_left,_rgba(249,115,22,0.12),_transparent_28%)]',
+  },
+  {
+    eyebrow: 'Nubes doradas',
+    title: 'Intercala fondos de nubes para dar más aire entre escenas panorámicas',
+    text: 'Se añadió otra variación de nubes para que el slideshow dure más y conserve una transición suave entre paisajes y textos bíblicos.',
+    image: cloudsWide,
+    ctaLabel: 'Seguir leyendo',
+    ctaHref: '#versiculos',
+    align: 'center',
+    verse: 'Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito.',
+    verseRef: 'Juan 3:16',
+    verseLayout: 'pill',
+    overlayClass:
+      'bg-[linear-gradient(135deg,_rgba(15,23,42,0.56),_rgba(180,83,9,0.16),_rgba(251,191,36,0.12))]',
+    accentClass:
+      'bg-[radial-gradient(circle_at_top,_rgba(251,191,36,0.2),_transparent_28%),radial-gradient(circle_at_bottom_left,_rgba(255,255,255,0.14),_transparent_34%)]',
   },
   {
     eyebrow: 'Luces',
@@ -110,10 +153,52 @@ const heroSlides = [
     ctaLabel: 'Ver enfoque',
     ctaHref: '#proposito',
     align: 'right',
+    verse: 'Yo soy la luz del mundo; el que me sigue, no andará en tinieblas.',
+    verseRef: 'Juan 8:12',
+    verseLayout: 'inline',
     overlayClass:
       'bg-[linear-gradient(140deg,_rgba(2,6,23,0.66),_rgba(15,23,42,0.18),_rgba(8,145,178,0.12))]',
     accentClass:
       'bg-[radial-gradient(circle_at_top,_rgba(45,212,191,0.18),_transparent_24%),radial-gradient(circle_at_bottom_right,_rgba(96,165,250,0.12),_transparent_32%)]',
+  },
+  {
+    eyebrow: 'Nubes finales',
+    title: 'Cierra la secuencia con otra capa de nubes y una confesión centrada en Cristo',
+    text: 'El último slide extiende la duración del carrusel y deja una impresión final de calma, amplitud y esperanza.',
+    image: cloudsWide,
+    ctaLabel: 'Meditar',
+    ctaHref: '#proposito',
+    align: 'right',
+    verse: 'Y en ningún otro hay salvación; porque no hay otro nombre bajo el cielo, dado a los hombres, en que podamos ser salvos.',
+    verseRef: 'Hechos 4:12',
+    verseLayout: 'corner',
+    overlayClass:
+      'bg-[linear-gradient(140deg,_rgba(2,6,23,0.7),_rgba(12,74,110,0.22),_rgba(165,243,252,0.08))]',
+    accentClass:
+      'bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.18),_transparent_30%),radial-gradient(circle_at_bottom_left,_rgba(34,211,238,0.16),_transparent_34%)]',
+  },
+]
+
+const homeVerses = [
+  {
+    text: 'Mas Dios muestra su amor para con nosotros, en que siendo aún pecadores, Cristo murió por nosotros.',
+    reference: 'Romanos 5:8',
+    layout: 'wide',
+  },
+  {
+    text: 'Fíate de Jehová de todo tu corazón, Y no te apoyes en tu propia prudencia.',
+    reference: 'Proverbios 3:5',
+    layout: 'stacked',
+  },
+  {
+    text: 'Dios es nuestro amparo y fortaleza, Nuestro pronto auxilio en las tribulaciones.',
+    reference: 'Salmos 46:1',
+    layout: 'corner',
+  },
+  {
+    text: 'Porque por gracia sois salvos por medio de la fe; y esto no de vosotros, pues es don de Dios.',
+    reference: 'Efesios 2:8',
+    layout: 'pill',
   },
 ]
 
@@ -127,6 +212,9 @@ const visualItems = [
     enterFrom: 'left',
     positionClass: '-translate-x-[118%] -translate-y-[62%] lg:-translate-x-[128%] lg:-translate-y-[58%]',
     surfaceClass: 'bg-[linear-gradient(140deg,_rgba(245,158,11,0.45),_rgba(15,23,42,0.9))]',
+    image: cloudsWide,
+    verse: 'Buscad a Jehová mientras puede ser hallado, llamadle en tanto que está cercano.',
+    verseRef: 'Isaías 55:6',
   },
   {
     kicker: 'Desde la derecha',
@@ -135,6 +223,9 @@ const visualItems = [
     enterFrom: 'right',
     positionClass: 'translate-x-[18%] -translate-y-[62%] lg:translate-x-[28%] lg:-translate-y-[58%]',
     surfaceClass: 'bg-[linear-gradient(145deg,_rgba(34,211,238,0.42),_rgba(15,23,42,0.92))]',
+    image: cloudsWide,
+    verse: 'Santifícalos en tu verdad; tu palabra es verdad.',
+    verseRef: 'Juan 17:17',
   },
   {
     kicker: 'Desde abajo',
@@ -143,6 +234,9 @@ const visualItems = [
     enterFrom: 'bottom',
     positionClass: '-translate-x-1/2 translate-y-[2%] lg:-translate-x-1/2 lg:translate-y-[8%]',
     surfaceClass: 'bg-[linear-gradient(155deg,_rgba(148,163,184,0.28),_rgba(15,23,42,0.95),_rgba(250,204,21,0.2))]',
+    image: cloudsWide,
+    verse: 'Clama a mí, y yo te responderé, y te enseñaré cosas grandes y ocultas que tú no conoces.',
+    verseRef: 'Jeremías 33:3',
   },
 ]
 </script>
@@ -257,6 +351,14 @@ const visualItems = [
           </div>
         </div>
       </section>
+
+      <VerseGallery
+        id="versiculos"
+        eyebrow="Versículos destacados"
+        title="Más textos bíblicos distribuidos con composiciones diferentes"
+        description="Se añadieron bloques amplios, pastillas y tarjetas verticales para que la Palabra aparezca repetida a lo largo de la portada sin verse monótona."
+        :verses="homeVerses"
+      />
 
       <section class="section-shell border-t-0 pt-0">
         <div class="mx-auto max-w-6xl">
