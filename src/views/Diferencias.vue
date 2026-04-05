@@ -11,28 +11,33 @@ const criterios = [
 const religiones = [
   {
     nombre: 'Judaísmo',
-    resumen: 'Comparacion sobre el Mesias prometido, la ley y el cumplimiento en Cristo.',
-    enfoque: 'Profecias, pacto y reconocimiento de Jesús.',
+    resumen: 'Se compara la expectativa del Mesias con la afirmacion cristiana de que Jesús cumple las promesas del Antiguo Testamento.',
+    enfoque: 'Mesias prometido y cumplimiento en Cristo.',
+    detalle: 'El punto central no es la moral solamente, sino la identidad de Jesús.',
   },
   {
     nombre: 'Catolicismo',
-    resumen: 'Revision de autoridad doctrinal, tradicion, mediacion y justificacion.',
-    enfoque: 'Biblia, gracia y suficiencia de Cristo.',
+    resumen: 'Se revisan autoridad doctrinal, mediacion y justificacion, contrastando tradición e Iglesia con la suficiencia de Cristo y la Escritura.',
+    enfoque: 'Autoridad, gracia y mediacion.',
+    detalle: 'La comparacion apunta a la salvacion por gracia y al lugar único de Cristo.',
   },
   {
     nombre: 'Mormonismo',
-    resumen: 'Analisis de revelaciones posteriores, naturaleza de Dios y evangelio.',
-    enfoque: 'Canon biblico, deidad y salvacion.',
+    resumen: 'Se observan las revelaciones posteriores, la idea de Dios y el mensaje de salvacion frente al testimonio bíblico histórico.',
+    enfoque: 'Revelacion, deidad y evangelio.',
+    detalle: 'El eje es si el canon bíblico es suficiente y quién es realmente Jesús.',
   },
   {
     nombre: 'Islam',
-    resumen: 'Contraste entre la persona de Jesús, la cruz y la revelacion coranica.',
-    enfoque: 'Hijo de Dios, redencion y autoridad.',
+    resumen: 'Se contrasta la vision islamica de Jesús con la confesión cristiana sobre su divinidad, su muerte en la cruz y su resurreccion.',
+    enfoque: 'Jesús, cruz y redencion.',
+    detalle: 'La diferencia principal está en la persona de Cristo y en la obra redentora.',
   },
   {
     nombre: 'Budismo',
-    resumen: 'Diferencias entre cosmovision, pecado, sufrimiento y esperanza eterna.',
-    enfoque: 'Gracia, verdad y vida nueva en Cristo.',
+    resumen: 'Se comparan la comprensión del sufrimiento, el problema del pecado y la esperanza final con la respuesta del evangelio.',
+    enfoque: 'Sufrimiento, pecado y esperanza.',
+    detalle: 'Aquí cambia la base completa: no solo una practica, sino la visión del ser humano y de la salvacion.',
   },
 ]
 </script>
@@ -117,8 +122,8 @@ const religiones = [
           </div>
 
           <p class="max-w-xl text-sm leading-7 text-slate-300">
-            Cada bloque puede crecer luego hacia estudios mas profundos, citas biblicas y
-            cuadros comparativos.
+            Cada bloque resume una diferencia importante y deja abierta la posibilidad de
+            ampliar luego con textos bíblicos concretos.
           </p>
         </div>
 
@@ -140,10 +145,14 @@ const religiones = [
               {{ religion.resumen }}
             </p>
 
+            <p class="mt-4 text-sm leading-7 text-slate-300">
+              {{ religion.detalle }}
+            </p>
+
             <div class="mt-6 h-px w-full bg-white/10"></div>
 
             <p class="mt-5 text-sm font-semibold text-cyan-100 transition group-hover:text-white">
-              Proximo paso: desarrollar estudio detallado
+              Lectura sintetica lista para ampliar
             </p>
           </article>
         </div>

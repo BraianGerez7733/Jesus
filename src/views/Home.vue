@@ -16,6 +16,25 @@ const pilares = [
     texto: 'Los accesos principales quedan visibles desde el primer pliegue para orientar el recorrido.',
   },
 ]
+
+const secciones = [
+  {
+    titulo: 'Lectura bíblica',
+    texto: 'Acceso simple al texto para leer con calma, sin elementos que interrumpan la atencion.',
+  },
+  {
+    titulo: 'Estudio comparativo',
+    texto: 'Espacio para observar diferencias doctrinales con base bíblica y un tono sereno.',
+  },
+  {
+    titulo: 'Enfoque en Cristo',
+    texto: 'Cada contenido busca volver al evangelio, a la gracia y a la persona de Jesucristo.',
+  },
+  {
+    titulo: 'Crecimiento gradual',
+    texto: 'La estructura queda preparada para sumar luego versiculos, notas y desarrollos breves.',
+  },
+]
 </script>
 
 <template>
@@ -77,43 +96,26 @@ const pilares = [
       <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
           <p class="section-heading text-amber-200">
-            Diseno de inicio
+            Contenido principal
           </p>
           <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">
-            Una Home mas firme, mas legible y con mejor direccion visual
+            Una portada breve para ubicar el sentido del sitio
           </h2>
+          <p class="mt-4 max-w-xl text-sm leading-7 text-slate-300">
+            La idea es que el visitante entienda rapido qué va a encontrar: lectura,
+            orientación doctrinal y una presentación reverente del mensaje bíblico.
+          </p>
         </div>
 
         <div class="grid gap-4 sm:grid-cols-2">
-          <div class="page-card">
-            <p class="text-lg font-semibold text-white">Jerarquia visual</p>
+          <div
+            v-for="seccion in secciones"
+            :key="seccion.titulo"
+            class="page-card"
+          >
+            <p class="text-lg font-semibold text-white">{{ seccion.titulo }}</p>
             <p class="mt-3 text-sm leading-7 text-slate-200">
-              El mensaje principal ahora domina la pantalla y las acciones secundarias no
-              compiten con el titulo.
-            </p>
-          </div>
-
-          <div class="page-card">
-            <p class="text-lg font-semibold text-white">Mejor contraste</p>
-            <p class="mt-3 text-sm leading-7 text-slate-200">
-              Las capas oscuras y la luz calida superior mejoran la lectura sobre la imagen
-              de fondo en desktop y mobile.
-            </p>
-          </div>
-
-          <div class="page-card">
-            <p class="text-lg font-semibold text-white">Contenido util</p>
-            <p class="mt-3 text-sm leading-7 text-slate-200">
-              Se incorporan pilares y un bloque destacado para dar contexto sin saturar la
-              primera pantalla.
-            </p>
-          </div>
-
-          <div class="page-card">
-            <p class="text-lg font-semibold text-white">CTA consistente</p>
-            <p class="mt-3 text-sm leading-7 text-slate-200">
-              Las llamadas a la accion priorizan recorridos reales del proyecto y eliminan
-              accesos a rutas que hoy no existen.
+              {{ seccion.texto }}
             </p>
           </div>
         </div>
