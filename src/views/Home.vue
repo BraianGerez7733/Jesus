@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import FlipCardsSection from '../components/FlipCardsSection.vue'
 import SiteShell from '../components/SiteShell.vue'
 
 const pilares = [
@@ -37,6 +38,22 @@ const secciones = [
   {
     titulo: 'Crecimiento gradual',
     texto: 'La estructura queda preparada para sumar luego versiculos, notas y desarrollos breves.',
+  },
+]
+
+// Cambia aqui el titulo y la descripcion de cada flip card.
+const flipCards = [
+  {
+    title: 'Leer',
+    description: 'Un acceso directo y ordenado para entrar al contenido biblico sin distracciones innecesarias.',
+  },
+  {
+    title: 'Comparar',
+    description: 'Un resumen visual para contrastar ideas y ubicar diferencias doctrinales con claridad.',
+  },
+  {
+    title: 'Consultar',
+    description: 'Un punto rapido de contacto para hacer preguntas, pedir oración o continuar por WhatsApp.',
   },
 ]
 </script>
@@ -104,33 +121,52 @@ const secciones = [
 
     <template #content>
       <section id="proposito" class="section-shell">
-      <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-        <div>
-          <p class="section-heading text-amber-200">
-            Contenido principal
-          </p>
-          <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">
-            Una portada breve para ubicar el sentido del sitio
-          </h2>
-          <p class="mt-4 max-w-xl text-sm leading-7 text-slate-300">
-            La idea es que el visitante entienda rapido qué va a encontrar: lectura,
-            orientación doctrinal y una presentación reverente del mensaje bíblico.
-          </p>
-        </div>
-
-        <div class="grid gap-4 sm:grid-cols-2">
-          <div
-            v-for="seccion in secciones"
-            :key="seccion.titulo"
-            class="page-card"
-          >
-            <p class="text-lg font-semibold text-white">{{ seccion.titulo }}</p>
-            <p class="mt-3 text-sm leading-7 text-slate-200">
-              {{ seccion.texto }}
+        <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <p class="section-heading text-amber-200">
+              Contenido principal
+            </p>
+            <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">
+              Una portada breve para ubicar el sentido del sitio
+            </h2>
+            <p class="mt-4 max-w-xl text-sm leading-7 text-slate-300">
+              La idea es que el visitante entienda rapido qué va a encontrar: lectura,
+              orientación doctrinal y una presentación reverente del mensaje bíblico.
             </p>
           </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div
+              v-for="seccion in secciones"
+              :key="seccion.titulo"
+              class="page-card"
+            >
+              <p class="text-lg font-semibold text-white">{{ seccion.titulo }}</p>
+              <p class="mt-3 text-sm leading-7 text-slate-200">
+                {{ seccion.texto }}
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section class="section-shell border-t-0 pt-0">
+        <div class="mx-auto max-w-6xl">
+          <div class="mb-8 max-w-2xl">
+            <p class="section-heading text-cyan-200">
+              Interacción breve
+            </p>
+            <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">
+              Tarjetas con efecto flip para destacar ideas clave
+            </h2>
+            <p class="mt-4 text-sm leading-7 text-slate-300">
+              El frente resume el concepto y el reverso agrega una explicación corta,
+              con una animación suave tanto en escritorio como en móvil.
+            </p>
+          </div>
+
+          <FlipCardsSection :cards="flipCards" />
+        </div>
       </section>
     </template>
   </SiteShell>

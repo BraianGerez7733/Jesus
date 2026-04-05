@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import cloudsBg from '../assets/images/clouds.jpg'
 
@@ -35,6 +35,21 @@ const props = defineProps({
 })
 
 const route = useRoute()
+const heroOffset = ref(0)
+
+const updateParallax = () => {
+  // Ajusta este multiplicador para un parallax mas o menos sutil.
+  heroOffset.value = Math.min(window.scrollY * 0.18, 120)
+}
+
+onMounted(() => {
+  updateParallax()
+  window.addEventListener('scroll', updateParallax, { passive: true })
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', updateParallax)
+})
 
 const themeClasses = computed(() => {
   if (props.theme === 'cyan') {
@@ -76,9 +91,15 @@ const links = [
 <template>
   <main
     class="relative isolate min-h-screen overflow-hidden"
-    :style="{ backgroundImage: `url(${cloudsBg})` }"
     role="main"
   >
+    <div
+      class="absolute inset-0 scale-110 bg-cover bg-center bg-no-repeat will-change-transform"
+      :style="{
+        backgroundImage: `url(${cloudsBg})`,
+        transform: `translate3d(0, ${heroOffset}px, 0) scale(1.1)`,
+      }"
+    ></div>
     <div class="absolute inset-0 bg-slate-950/72"></div>
     <div class="absolute inset-0" :class="themeClasses.glow"></div>
     <div class="absolute inset-x-0 top-0 h-44 bg-gradient-to-b to-transparent" :class="themeClasses.topGlow"></div>
