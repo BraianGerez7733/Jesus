@@ -22,6 +22,7 @@ const normalizedSlides = computed(() =>
     eyebrow: slide.eyebrow ?? '',
     title: slide.title ?? '',
     text: slide.text ?? '',
+    image: slide.image ?? '',
     ctaLabel: slide.ctaLabel ?? '',
     ctaHref: slide.ctaHref ?? '#',
     ctaTo: slide.ctaTo ?? '',
@@ -111,6 +112,11 @@ onBeforeUnmount(() => {
         :class="index === activeIndex ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'"
         :aria-hidden="index === activeIndex ? 'false' : 'true'"
       >
+        <div
+          v-if="slide.image"
+          class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          :style="{ backgroundImage: `url(${slide.image})` }"
+        ></div>
         <div class="absolute inset-0 bg-[linear-gradient(180deg,_rgba(2,6,23,0.08),_rgba(2,6,23,0.78))]"></div>
         <div class="absolute inset-0" :class="slide.accentClass"></div>
         <div class="absolute inset-0" :class="slide.overlayClass"></div>

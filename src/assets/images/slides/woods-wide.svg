@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Bosque al amanecer">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#18354a"/>
+      <stop offset="55%" stop-color="#4f7b63"/>
+      <stop offset="100%" stop-color="#d5a15c"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3f5c44"/>
+      <stop offset="100%" stop-color="#16261b"/>
+    </linearGradient>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1220" cy="180" r="96" fill="#ffd18b" opacity="0.65"/>
+  <ellipse cx="800" cy="590" rx="920" ry="250" fill="url(#ground)"/>
+  <path d="M0 620 C220 540 330 560 520 610 C760 675 930 665 1180 602 C1355 558 1470 560 1600 610 L1600 900 L0 900 Z" fill="#254131"/>
+  <g opacity="0.35" filter="url(#blur)">
+    <ellipse cx="270" cy="420" rx="180" ry="280" fill="#efc27d"/>
+    <ellipse cx="1320" cy="470" rx="220" ry="300" fill="#f3b87a"/>
+  </g>
+  <g fill="#0d1d15">
+    <rect x="120" y="250" width="26" height="430"/>
+    <rect x="248" y="170" width="30" height="520"/>
+    <rect x="386" y="220" width="28" height="470"/>
+    <rect x="520" y="120" width="34" height="580"/>
+    <rect x="676" y="180" width="30" height="520"/>
+    <rect x="820" y="135" width="34" height="565"/>
+    <rect x="986" y="205" width="28" height="485"/>
+    <rect x="1138" y="145" width="32" height="560"/>
+    <rect x="1290" y="220" width="28" height="470"/>
+    <rect x="1438" y="175" width="30" height="515"/>
+  </g>
+  <g fill="#162d20">
+    <polygon points="133,180 78,325 188,325"/>
+    <polygon points="263,110 198,300 328,300"/>
+    <polygon points="400,158 336,336 464,336"/>
+    <polygon points="537,46 454,290 620,290"/>
+    <polygon points="691,120 625,312 757,312"/>
+    <polygon points="837,58 752,305 922,305"/>
+    <polygon points="1000,136 935,320 1065,320"/>
+    <polygon points="1154,68 1070,315 1238,315"/>
+    <polygon points="1304,152 1240,334 1368,334"/>
+    <polygon points="1453,112 1388,304 1518,304"/>
+  </g>
+  <path d="M725 620 C830 585 935 610 1015 694 C940 720 852 740 760 752 C700 726 682 662 725 620 Z" fill="#edb26b" opacity="0.88"/>
+</svg>

@@ -4,6 +4,10 @@ import FlipCardsSection from '../components/FlipCardsSection.vue'
 import HeroCarousel from '../components/HeroCarousel.vue'
 import ScrollVisualSection from '../components/ScrollVisualSection.vue'
 import SiteShell from '../components/SiteShell.vue'
+import lightsWide from '../assets/images/slides/lights-wide.svg'
+import mountainsWide from '../assets/images/slides/mountains-wide.svg'
+import snowWide from '../assets/images/slides/snow-wide.svg'
+import woodsWide from '../assets/images/slides/woods-wide.svg'
 
 const pilares = [
   {
@@ -61,39 +65,55 @@ const flipCards = [
 
 const heroSlides = [
   {
-    eyebrow: 'Lectura bíblica',
-    title: 'Lee la Escritura con una portada más visual y directa',
-    text: 'Un carrusel amplio, con transición suave y controles manuales, para destacar lectura, doctrina y acceso rápido sin salir del tono sobrio del sitio.',
+    eyebrow: 'Bosque',
+    title: 'Lee la Escritura con una apertura visual tipo slideshow',
+    text: 'Primer slide con un paisaje natural amplio, inspirado en el ejemplo de referencia y adaptado al tono sobrio de la portada.',
+    image: woodsWide,
     ctaLabel: 'Ir a lectura',
     ctaHref: '#proposito',
     overlayClass:
-      'bg-[linear-gradient(125deg,_rgba(15,23,42,0.9),_rgba(12,74,110,0.46),_rgba(250,204,21,0.18))]',
+      'bg-[linear-gradient(125deg,_rgba(15,23,42,0.72),_rgba(12,74,110,0.22),_rgba(250,204,21,0.14))]',
     accentClass:
-      'bg-[radial-gradient(circle_at_top_left,_rgba(250,204,21,0.35),_transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(59,130,246,0.28),_transparent_30%)]',
+      'bg-[radial-gradient(circle_at_top_left,_rgba(250,204,21,0.22),_transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(59,130,246,0.16),_transparent_30%)]',
   },
   {
-    eyebrow: 'Comparación doctrinal',
-    title: 'Presenta tus secciones principales como un slideshow de portada',
-    text: 'Cada slide puede resaltar una idea distinta con texto principal, descripción breve y llamada a la acción, al estilo del ejemplo que compartiste.',
+    eyebrow: 'Nieve',
+    title: 'Alterna escenas panorámicas con texto principal y CTA',
+    text: 'Segundo slide con estética nevada y horizonte limpio, similar al tipo de fotografía ancha que usa W3Schools en su demo.',
+    image: snowWide,
     ctaLabel: 'Ver diferencias',
     ctaTo: '/diferencias',
     align: 'center',
     overlayClass:
-      'bg-[linear-gradient(135deg,_rgba(2,6,23,0.88),_rgba(71,85,105,0.32),_rgba(34,211,238,0.2))]',
+      'bg-[linear-gradient(135deg,_rgba(2,6,23,0.58),_rgba(71,85,105,0.16),_rgba(34,211,238,0.1))]',
     accentClass:
-      'bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.34),_transparent_26%),radial-gradient(circle_at_bottom_left,_rgba(148,163,184,0.24),_transparent_32%)]',
+      'bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.18),_transparent_26%),radial-gradient(circle_at_bottom_left,_rgba(148,163,184,0.16),_transparent_32%)]',
   },
   {
-    eyebrow: 'Acceso rápido',
-    title: 'Incluye navegación con flechas, puntos y avance automático',
-    text: 'El carrusel rota solo, permite pausa al pasar el cursor y mantiene una estructura reutilizable para cambiar slides después sin rehacer el diseño.',
+    eyebrow: 'Montañas',
+    title: 'Usa imágenes anchas para dar el mismo efecto de portada',
+    text: 'Tercer slide con montañas y lago para conservar el patrón visual del ejemplo: paisaje amplio, texto superpuesto y navegación lateral.',
+    image: mountainsWide,
     ctaLabel: 'Comparar religiones',
     ctaTo: '/religiones',
+    align: 'left',
+    overlayClass:
+      'bg-[linear-gradient(140deg,_rgba(15,23,42,0.62),_rgba(120,53,15,0.16),_rgba(251,191,36,0.12))]',
+    accentClass:
+      'bg-[radial-gradient(circle_at_top_right,_rgba(251,191,36,0.18),_transparent_32%),radial-gradient(circle_at_bottom_left,_rgba(249,115,22,0.12),_transparent_28%)]',
+  },
+  {
+    eyebrow: 'Luces',
+    title: 'Cierra el carrusel con una escena nocturna más dramática',
+    text: 'Cuarto slide con luces y montaña oscura para completar un set de imágenes similar al slideshow clásico de referencia.',
+    image: lightsWide,
+    ctaLabel: 'Ver enfoque',
+    ctaHref: '#proposito',
     align: 'right',
     overlayClass:
-      'bg-[linear-gradient(140deg,_rgba(15,23,42,0.88),_rgba(120,53,15,0.32),_rgba(251,191,36,0.18))]',
+      'bg-[linear-gradient(140deg,_rgba(2,6,23,0.66),_rgba(15,23,42,0.18),_rgba(8,145,178,0.12))]',
     accentClass:
-      'bg-[radial-gradient(circle_at_top_right,_rgba(251,191,36,0.36),_transparent_32%),radial-gradient(circle_at_bottom_left,_rgba(249,115,22,0.2),_transparent_28%)]',
+      'bg-[radial-gradient(circle_at_top,_rgba(45,212,191,0.18),_transparent_24%),radial-gradient(circle_at_bottom_right,_rgba(96,165,250,0.12),_transparent_32%)]',
   },
 ]
 
