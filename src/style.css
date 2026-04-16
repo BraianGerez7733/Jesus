@@ -2,21 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, #app {
+html,
+body,
+#app {
   min-height: 100%;
   margin: 0;
 }
 
 body {
   min-height: 100vh;
-  color: #f4e8ff;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background-color: #0b0416;
+  color: #1e293b;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  background-color: #f0f9ff;
   background-image:
-    radial-gradient(circle at 15% 10%, rgba(217, 70, 239, 0.28), transparent 45%),
-    radial-gradient(circle at 85% 0%, rgba(99, 102, 241, 0.32), transparent 50%),
-    radial-gradient(circle at 50% 100%, rgba(244, 114, 182, 0.18), transparent 55%),
-    linear-gradient(180deg, #0b0416 0%, #1a0733 45%, #050110 100%);
+    radial-gradient(circle at 12% -10%, rgba(186, 230, 253, 0.9), transparent 45%),
+    radial-gradient(circle at 90% 0%, rgba(196, 181, 253, 0.7), transparent 50%),
+    radial-gradient(circle at 30% 100%, rgba(253, 230, 138, 0.45), transparent 55%),
+    linear-gradient(180deg, #f0f9ff 0%, #eef2ff 55%, #fff7ed 100%);
   background-attachment: fixed;
 }
 
@@ -24,54 +26,131 @@ body {
   min-height: 100vh;
 }
 
+.font-display {
+  font-family: Fraunces, "Times New Roman", serif;
+  font-optical-sizing: auto;
+  letter-spacing: -0.01em;
+}
+
 @layer components {
-  .page-panel {
-    @apply rounded-[2rem] border border-fuchsia-300/15 bg-violet-950/30 shadow-[0_30px_80px_-40px_rgba(217,70,239,0.5)] backdrop-blur-xl;
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-full bg-sky-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-500/30 transition hover:-translate-y-0.5 hover:bg-sky-400 hover:shadow-sky-500/40 focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-300;
   }
 
-  .page-card {
-    @apply rounded-2xl border border-fuchsia-300/15 bg-violet-950/30 p-6 backdrop-blur-md;
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-6 py-3 text-sm font-semibold text-slate-700 backdrop-blur transition hover:-translate-y-0.5 hover:border-sky-300 hover:text-sky-700 hover:shadow-md;
   }
 
-  .section-shell {
-    @apply relative z-10 border-t border-fuchsia-300/10 bg-[#0b0416]/70 px-6 py-16 backdrop-blur-sm;
+  .btn-accent {
+    @apply inline-flex items-center gap-2 rounded-full bg-amber-400 px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-amber-300/40 transition hover:-translate-y-0.5 hover:bg-amber-300;
+  }
+
+  .surface-card {
+    @apply relative overflow-hidden rounded-3xl border border-white/70 bg-white/70 p-6 shadow-lg shadow-sky-500/10 backdrop-blur-md;
+  }
+
+  .surface-soft {
+    @apply relative overflow-hidden rounded-3xl border border-white/70 bg-white/55 p-6 backdrop-blur-md;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700;
+  }
+
+  .chip-violet {
+    @apply inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-violet-700;
+  }
+
+  .chip-amber {
+    @apply inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-amber-700;
+  }
+
+  .chip-rose {
+    @apply inline-flex items-center gap-2 rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-rose-700;
   }
 
   .section-heading {
-    @apply text-sm font-semibold uppercase tracking-[0.28em];
+    @apply text-xs font-semibold uppercase tracking-[0.32em];
   }
 
-  .hover-lift-soft {
+  .section-title {
+    @apply font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl;
+  }
+
+  .section-lead {
+    @apply mt-5 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg;
+  }
+
+  .hover-lift {
     @apply transition-all duration-300 ease-out;
   }
 
-  .hover-lift-soft:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 28px 70px rgba(217, 70, 239, 0.25);
-  }
-
-  .hover-lift-soft:focus-visible {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 28px 70px rgba(217, 70, 239, 0.25);
-  }
-
-  .v2-banner {
-    @apply relative z-30 flex flex-wrap items-center justify-center gap-2 px-4 py-2 text-center text-xs font-semibold uppercase tracking-[0.32em] text-white;
-    background: linear-gradient(90deg, #d946ef 0%, #8b5cf6 50%, #ec4899 100%);
-    box-shadow: 0 4px 30px rgba(217, 70, 239, 0.35);
-  }
-
-  .v2-banner::before,
-  .v2-banner::after {
-    content: "✦";
-    @apply text-amber-200;
+  .hover-lift:hover,
+  .hover-lift:focus-visible {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px -30px rgba(14, 165, 233, 0.45);
   }
 }
 
-@media (hover: none) {
-  .hover-lift-soft:hover,
-  .hover-lift-soft:focus-visible {
-    transform: none;
-    box-shadow: none;
+/* Cloud animation for hero */
+.cloud-drift {
+  animation: cloud-drift 26s ease-in-out infinite alternate;
+}
+.cloud-drift-slow {
+  animation: cloud-drift 40s ease-in-out infinite alternate;
+}
+
+@keyframes cloud-drift {
+  from {
+    transform: translateX(-3%);
+  }
+  to {
+    transform: translateX(4%);
+  }
+}
+
+/* Flashcard flip */
+.flip-card {
+  perspective: 1400px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.flip-card.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+}
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+/* Subtle fade-in used sparingly */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cloud-drift,
+  .cloud-drift-slow {
+    animation: none;
+  }
+  .flip-card-inner {
+    transition: none;
   }
 }

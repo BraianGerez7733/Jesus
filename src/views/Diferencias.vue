@@ -1,237 +1,142 @@
 <script setup>
-import { RouterLink } from 'vue-router'
-import ScrollVisualSection from '../components/ScrollVisualSection.vue'
-import SiteShell from '../components/SiteShell.vue'
-import VerseGallery from '../components/VerseGallery.vue'
-import cloudsWide from '../assets/images/clouds.jpg'
+import PageHeader from '../components/PageHeader.vue'
+import FlashCardDeck from '../components/FlashCardDeck.vue'
+import VerseCard from '../components/VerseCard.vue'
 
-const criterios = [
-  'Autoridad final de la Biblia',
-  'Identidad y divinidad de Jesucristo',
-  'Salvacion por gracia mediante la fe',
-]
-
-const religiones = [
+const temas = [
   {
-    nombre: 'Judaísmo',
-    resumen: 'Se compara la expectativa del Mesias con la afirmacion cristiana de que Jesús cumple las promesas del Antiguo Testamento.',
-    enfoque: 'Mesias prometido y cumplimiento en Cristo.',
-    detalle: 'El punto central no es la moral solamente, sino la identidad de Jesús.',
+    tema: 'Salvación',
+    emoji: '🕊️',
+    color: 'from-sky-400 to-cyan-300',
+    biblia: 'Por gracia, mediante la fe en Jesús. No por obras.',
+    otras: 'Otras tradiciones añaden obras, ritos o ciclos de reencarnación.',
+    refs: ['Efesios 2:8-9', 'Romanos 3:23-24'],
   },
   {
-    nombre: 'Catolicismo',
-    resumen: 'Se revisan autoridad doctrinal, mediacion y justificacion, contrastando tradición e Iglesia con la suficiencia de Cristo y la Escritura.',
-    enfoque: 'Autoridad, gracia y mediacion.',
-    detalle: 'La comparacion apunta a la salvacion por gracia y al lugar único de Cristo.',
+    tema: 'Identidad de Jesús',
+    emoji: '✝️',
+    color: 'from-violet-400 to-fuchsia-300',
+    biblia: 'Verdadero Dios y verdadero hombre. Único Salvador.',
+    otras: 'Profeta, maestro o ser divino menor según otras religiones.',
+    refs: ['Juan 1:1-14', 'Colosenses 2:9'],
   },
   {
-    nombre: 'Mormonismo',
-    resumen: 'Se observan las revelaciones posteriores, la idea de Dios y el mensaje de salvacion frente al testimonio bíblico histórico.',
-    enfoque: 'Revelacion, deidad y evangelio.',
-    detalle: 'El eje es si el canon bíblico es suficiente y quién es realmente Jesús.',
+    tema: 'Fuente de autoridad',
+    emoji: '📖',
+    color: 'from-amber-400 to-orange-300',
+    biblia: 'La Biblia (AT + NT) como Palabra de Dios inspirada.',
+    otras: 'Otros libros, tradición oral, magisterio o revelaciones posteriores.',
+    refs: ['2 Timoteo 3:16', 'Salmos 119:160'],
   },
   {
-    nombre: 'Islam',
-    resumen: 'Se contrasta la vision islamica de Jesús con la confesión cristiana sobre su divinidad, su muerte en la cruz y su resurreccion.',
-    enfoque: 'Jesús, cruz y redencion.',
-    detalle: 'La diferencia principal está en la persona de Cristo y en la obra redentora.',
+    tema: 'Naturaleza de Dios',
+    emoji: '🌟',
+    color: 'from-emerald-400 to-teal-300',
+    biblia: 'Un solo Dios en tres personas: Padre, Hijo y Espíritu.',
+    otras: 'Monoteísmo estricto, politeísmo, panteísmo o no teísmo.',
+    refs: ['Mateo 28:19', 'Deuteronomio 6:4'],
   },
   {
-    nombre: 'Budismo',
-    resumen: 'Se comparan la comprensión del sufrimiento, el problema del pecado y la esperanza final con la respuesta del evangelio.',
-    enfoque: 'Sufrimiento, pecado y esperanza.',
-    detalle: 'Aquí cambia la base completa: no solo una practica, sino la visión del ser humano y de la salvacion.',
-  },
-]
-
-const verseHighlights = [
-  {
-    text: 'Y en ningún otro hay salvación; porque no hay otro nombre bajo el cielo, dado a los hombres, en que podamos ser salvos.',
-    reference: 'Hechos 4:12',
-    layout: 'wide',
+    tema: 'Vida después de la muerte',
+    emoji: '⏳',
+    color: 'from-rose-400 to-pink-300',
+    biblia: 'Resurrección y vida eterna con Dios o separación de Él.',
+    otras: 'Reencarnación, extinción, purgatorio o reinos intermedios.',
+    refs: ['Juan 5:28-29', 'Apocalipsis 21:1-4'],
   },
   {
-    text: 'Porque por gracia sois salvos por medio de la fe; y esto no de vosotros, pues es don de Dios.',
-    reference: 'Efesios 2:8',
-    layout: 'pill',
-  },
-  {
-    text: 'Santifícalos en tu verdad; tu palabra es verdad.',
-    reference: 'Juan 17:17',
-    layout: 'stacked',
+    tema: 'Base de la moral',
+    emoji: '⚖️',
+    color: 'from-indigo-400 to-sky-300',
+    biblia: 'Amor a Dios y al prójimo, reflejo del carácter de Dios.',
+    otras: 'Ley, karma, pilares, consenso humano o deber cósmico.',
+    refs: ['Mateo 22:37-40'],
   },
 ]
 
-// Cambia aqui textos, superficies y posiciones de la seccion visual.
-// Si luego quieres usar imagenes reales, agrega `image` a cada objeto.
-const visualItems = [
-  {
-    kicker: 'Desde la izquierda',
-    title: 'Autoridad bíblica',
-    text: 'Una pieza lateral que introduce el eje de comparación con presencia sobria.',
-    enterFrom: 'left',
-    positionClass: '-translate-x-[118%] -translate-y-[62%] lg:-translate-x-[128%] lg:-translate-y-[58%]',
-    surfaceClass: 'bg-[linear-gradient(145deg,_rgba(34,211,238,0.36),_rgba(15,23,42,0.94))]',
-    image: cloudsWide,
-    verse: 'Toda la Escritura es inspirada por Dios.',
-    verseRef: '2 Timoteo 3:16',
-  },
-  {
-    kicker: 'Desde la derecha',
-    title: 'Persona de Cristo',
-    text: 'El segundo bloque equilibra la escena y deja claro el centro doctrinal del conjunto.',
-    enterFrom: 'right',
-    positionClass: 'translate-x-[18%] -translate-y-[62%] lg:translate-x-[28%] lg:-translate-y-[58%]',
-    surfaceClass: 'bg-[linear-gradient(145deg,_rgba(250,204,21,0.28),_rgba(15,23,42,0.95))]',
-    image: cloudsWide,
-    verse: 'Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí.',
-    verseRef: 'Juan 14:6',
-  },
-  {
-    kicker: 'Desde abajo',
-    title: 'Salvación por gracia',
-    text: 'El bloque inferior ancla la composición y completa una lectura visual ordenada.',
-    enterFrom: 'bottom',
-    positionClass: '-translate-x-1/2 translate-y-[2%] lg:-translate-x-1/2 lg:translate-y-[8%]',
-    surfaceClass: 'bg-[linear-gradient(155deg,_rgba(56,189,248,0.24),_rgba(15,23,42,0.95),_rgba(14,165,233,0.18))]',
-    image: cloudsWide,
-    verse: 'Justificados, pues, por la fe, tenemos paz para con Dios por medio de nuestro Señor Jesucristo.',
-    verseRef: 'Romanos 5:1',
-  },
+const flashcards = [
+  { front: { tag: 'Diferencia', emoji: '🪶', title: 'Gracia vs. obras', subtitle: 'Cristianismo bíblico' }, back: { tag: 'Síntesis', text: 'La Biblia enseña que somos salvos por gracia, no por acumular méritos.', reference: 'Efesios 2:8-9' }, accent: 'sky' },
+  { front: { tag: 'Diferencia', emoji: '✝️', title: 'Cristo único', subtitle: 'No hay otro nombre' }, back: { tag: 'Síntesis', text: 'Pedro afirma que solo en Jesús hay salvación, ante autoridades religiosas.', reference: 'Hechos 4:12' }, accent: 'violet' },
+  { front: { tag: 'Diferencia', emoji: '📖', title: 'Sola Scriptura', subtitle: 'Autoridad final' }, back: { tag: 'Síntesis', text: 'La Biblia es suficiente para enseñar, corregir e instruir en justicia.', reference: '2 Timoteo 3:16-17' }, accent: 'amber' },
+  { front: { tag: 'Diferencia', emoji: '🌅', title: 'Resurrección', subtitle: 'Vida nueva' }, back: { tag: 'Síntesis', text: 'El cristianismo se sostiene en un hecho histórico: Jesús resucitó.', reference: '1 Corintios 15:3-4' }, accent: 'rose' },
+]
+
+const versos = [
+  { text: 'Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí.', reference: 'Juan 14:6', theme: 'sky' },
+  { text: 'Y en ningún otro hay salvación; porque no hay otro nombre bajo el cielo, dado a los hombres, en que podamos ser salvos.', reference: 'Hechos 4:12', theme: 'violet' },
+  { text: 'Porque por gracia sois salvos por medio de la fe; y esto no de vosotros, pues es don de Dios.', reference: 'Efesios 2:8', theme: 'amber' },
 ]
 </script>
 
 <template>
-  <SiteShell
-    badge="Estudio comparativo"
-    title="Diferencias con otras religiones"
-    description="Una seccion pensada para comparar doctrinas con claridad, respeto y base biblica, manteniendo a Jesucristo y a la Escritura como referencia central."
-    quote="“Examinadlo todo; retened lo bueno.”"
-    verse="1 Tesalonicenses 5:21"
-    aside-label="Enfoque del contenido"
-    theme="cyan"
-  >
-    <template #actions>
-      <RouterLink
-        to="/"
-        class="inline-flex items-center rounded-2xl bg-cyan-300 px-6 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-200"
+  <PageHeader
+    eyebrow="Diferencias doctrinales"
+    title="¿En qué difiere el cristianismo bíblico?"
+    description="Miramos con respeto las distinciones clave con otras tradiciones, usando la Biblia como referencia."
+    image="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
+  />
+
+  <section class="mx-auto max-w-7xl px-6 py-14 sm:px-8">
+    <div class="grid gap-5 lg:grid-cols-2">
+      <article
+        v-for="t in temas"
+        :key="t.tema"
+        class="hover-lift group relative overflow-hidden rounded-3xl border border-white/70 bg-white/80 p-6 shadow-sm backdrop-blur-md"
       >
-        Volver al inicio
-      </RouterLink>
-
-      <a
-        href="#comparaciones"
-        class="inline-flex items-center rounded-2xl border border-white/25 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/20"
-      >
-        Ver comparaciones
-      </a>
-    </template>
-
-    <template #highlights>
-      <div class="grid gap-4 sm:grid-cols-3">
-        <article
-          v-for="criterio in criterios"
-          :key="criterio"
-          class="page-card hover-lift-soft p-5 backdrop-blur-md"
-        >
-          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-200">
-            Criterio
-          </p>
-          <p class="mt-3 text-base font-semibold leading-7 text-white">
-            {{ criterio }}
-          </p>
-        </article>
-      </div>
-    </template>
-
-    <template #aside>
-      <div class="space-y-4">
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-white">
-            Tono
-          </p>
-          <p class="mt-2 text-sm leading-7 text-slate-200">
-            Comparacion respetuosa, lenguaje claro y enfoque en convicciones biblicas.
-          </p>
+        <div
+          class="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-gradient-to-br opacity-40 blur-2xl transition group-hover:opacity-70"
+          :class="t.color"
+        ></div>
+        <div class="relative flex items-center gap-3">
+          <span
+            class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br text-2xl text-white shadow"
+            :class="t.color"
+            aria-hidden="true"
+          >
+            {{ t.emoji }}
+          </span>
+          <h3 class="font-display text-2xl font-bold text-slate-900">{{ t.tema }}</h3>
         </div>
-
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-white">
-            Objetivo
-          </p>
-          <p class="mt-2 text-sm leading-7 text-slate-200">
-            Ayudar al lector a distinguir diferencias doctrinales sin agresividad ni
-            simplificaciones vacias.
-          </p>
-        </div>
-      </div>
-    </template>
-
-    <template #content>
-      <section id="comparaciones" class="section-shell">
-        <div class="mx-auto max-w-6xl">
-          <div class="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p class="section-heading text-cyan-200">
-                Temas a desarrollar
-              </p>
-              <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">
-                Comparaciones organizadas por enfoque doctrinal
-              </h2>
-            </div>
-
-            <p class="max-w-xl text-sm leading-7 text-slate-300">
-              Cada bloque resume una diferencia importante y deja abierta la posibilidad de
-              ampliar luego con textos bíblicos concretos.
-            </p>
+        <div class="relative mt-5 grid gap-3 text-sm leading-7 sm:grid-cols-2">
+          <div class="rounded-2xl border border-sky-100 bg-sky-50/60 p-4">
+            <p class="section-heading text-sky-700">Biblia</p>
+            <p class="mt-2 text-slate-700">{{ t.biblia }}</p>
           </div>
-
-          <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            <article
-              v-for="religion in religiones"
-              :key="religion.nombre"
-              class="page-card hover-lift-soft group rounded-[1.75rem] transition hover:bg-white/15"
-            >
-              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-fuchsia-200">
-                {{ religion.nombre }}
-              </p>
-
-              <p class="mt-4 text-xl font-bold text-white">
-                {{ religion.enfoque }}
-              </p>
-
-              <p class="mt-4 text-sm leading-7 text-slate-200">
-                {{ religion.resumen }}
-              </p>
-
-              <p class="mt-4 text-sm leading-7 text-slate-300">
-                {{ religion.detalle }}
-              </p>
-
-              <div class="mt-6 h-px w-full bg-white/10"></div>
-
-              <p class="mt-5 text-sm font-semibold text-cyan-100 transition group-hover:text-white">
-                Lectura sintetica lista para ampliar
-              </p>
-            </article>
+          <div class="rounded-2xl border border-slate-100 bg-white/70 p-4">
+            <p class="section-heading text-slate-500">Otras tradiciones</p>
+            <p class="mt-2 text-slate-700">{{ t.otras }}</p>
           </div>
         </div>
-      </section>
+        <div class="relative mt-5 flex flex-wrap gap-2">
+          <span
+            v-for="ref in t.refs"
+            :key="ref"
+            class="chip"
+          >
+            {{ ref }}
+          </span>
+        </div>
+      </article>
+    </div>
+  </section>
 
-      <VerseGallery
-        eyebrow="Base bíblica"
-        title="Versículos distribuidos a lo largo de la página doctrinal"
-        description="La comparación ahora queda acompañada por textos bíblicos visibles en distintos formatos para reforzar la lectura en cada tramo."
-        :verses="verseHighlights"
-        accent="cyan"
-      />
+  <section class="mx-auto max-w-7xl px-6 pb-14 sm:px-8">
+    <div class="max-w-2xl">
+      <p class="section-heading text-violet-600">Flashcards</p>
+      <h2 class="section-title mt-3">Ideas para recordar</h2>
+    </div>
+    <div class="mt-10">
+      <FlashCardDeck :cards="flashcards" />
+    </div>
+  </section>
 
-      <ScrollVisualSection
-        eyebrow="Escena doctrinal"
-        title="Una composición visual que acompaña la lectura comparativa"
-        description="La entrada por scroll mantiene el tono sobrio del sitio y agrega una pausa visual con movimiento medido y alineación limpia."
-        :items="visualItems"
-      />
-    </template>
-  </SiteShell>
+  <section class="mx-auto max-w-7xl px-6 pb-20 sm:px-8">
+    <div class="max-w-2xl">
+      <p class="section-heading text-rose-600">Versículos clave</p>
+      <h2 class="section-title mt-3">Palabras que marcan diferencia</h2>
+    </div>
+    <div class="mt-10 grid gap-5 sm:grid-cols-3">
+      <VerseCard v-for="v in versos" :key="v.reference" v-bind="v" />
+    </div>
+  </section>
 </template>

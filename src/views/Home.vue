@@ -1,393 +1,237 @@
 <script setup>
 import { RouterLink } from 'vue-router'
-import FlipCardsSection from '../components/FlipCardsSection.vue'
-import HeroCarousel from '../components/HeroCarousel.vue'
-import ScrollVisualSection from '../components/ScrollVisualSection.vue'
-import SiteShell from '../components/SiteShell.vue'
-import VerseGallery from '../components/VerseGallery.vue'
-import VerseOfTheDay from '../components/VerseOfTheDay.vue'
-import cloudsWide from '../assets/images/clouds.jpg'
-import lightsWide from '../assets/images/slides/lights-wide.svg'
-import mountainsWide from '../assets/images/slides/mountains-wide.svg'
-import snowWide from '../assets/images/slides/snow-wide.svg'
-import woodsWide from '../assets/images/slides/woods-wide.svg'
+import TopicCard from '../components/TopicCard.vue'
+import FeatureGrid from '../components/FeatureGrid.vue'
+import VerseCard from '../components/VerseCard.vue'
+import StatsBanner from '../components/StatsBanner.vue'
+import FlashCardDeck from '../components/FlashCardDeck.vue'
+import { versiculos } from '../data/versiculos.js'
 
-const pilares = [
-  {
-    titulo: 'Lectura clara',
-    texto: 'Una portada simple y directa para entrar a la Palabra sin ruido visual ni distracciones innecesarias.',
-  },
-  {
-    titulo: 'Enfoque cristocentrico',
-    texto: 'El mensaje principal pone a Jesucristo en el centro, con un tono reverente y accesible.',
-  },
-  {
-    titulo: 'Navegacion inmediata',
-    texto: 'Los accesos principales quedan visibles desde el primer pliegue para orientar el recorrido.',
-  },
+const destacados = versiculos.slice(0, 4)
+
+const topics = [
+  { to: '/biblia', title: 'La Biblia', description: 'Conoce qué es, cómo está formada y por qué se considera la Palabra de Dios.', emoji: '📖', tag: 'Base', accent: 'sky' },
+  { to: '/jesus', title: 'Jesús', description: 'Su vida, sus enseñanzas, sus milagros y el mensaje que transformó al mundo.', emoji: '✝️', tag: 'Figura central', accent: 'amber' },
+  { to: '/antiguo-testamento', title: 'Antiguo Testamento', description: 'Creación, alianza, Ley y profetas: cómo Dios se reveló a su pueblo.', emoji: '📜', tag: '39 libros', accent: 'indigo' },
+  { to: '/nuevo-testamento', title: 'Nuevo Testamento', description: 'Evangelios, Hechos, epístolas y Apocalipsis: la esperanza cumplida.', emoji: '✉️', tag: '27 libros', accent: 'violet' },
+  { to: '/religiones', title: 'Religiones del mundo', description: 'Un panorama claro de las grandes religiones, con imágenes y contexto.', emoji: '🌍', tag: 'Comparar', accent: 'emerald' },
+  { to: '/comparacion', title: 'Cuadro comparativo', description: 'Filtra, elige religiones y compáralas criterio por criterio.', emoji: '📊', tag: 'Interactivo', accent: 'rose' },
+  { to: '/parabolas', title: 'Parábolas', description: 'Historias breves que enseñan con imágenes cotidianas del Reino.', emoji: '🌱', tag: 'Flashcards', accent: 'sky' },
+  { to: '/personajes', title: 'Personajes', description: 'De Abraham a Pablo: las personas detrás de la historia bíblica.', emoji: '👥', tag: 'Flashcards', accent: 'amber' },
+  { to: '/quiz', title: 'Quiz bíblico', description: '10 preguntas para repasar lo aprendido jugando.', emoji: '🎯', tag: 'Juega', accent: 'violet' },
 ]
 
-const secciones = [
-  {
-    titulo: 'Lectura bíblica',
-    texto: 'Acceso simple al texto para leer con calma, sin elementos que interrumpan la atencion.',
-  },
-  {
-    titulo: 'Religiones en perspectiva',
-    texto: 'Una comparacion breve y neutral entre cristianismo, judaísmo, mormonismo, islam, budismo y catolicismo.',
-  },
-  {
-    titulo: 'Estudio comparativo',
-    texto: 'Espacio para observar diferencias doctrinales con base bíblica y un tono sereno.',
-  },
-  {
-    titulo: 'Enfoque en Cristo',
-    texto: 'Cada contenido busca volver al evangelio, a la gracia y a la persona de Jesucristo.',
-  },
-  {
-    titulo: 'Crecimiento gradual',
-    texto: 'La estructura queda preparada para sumar luego versiculos, notas y desarrollos breves.',
-  },
+const features = [
+  { emoji: '🧠', title: 'Flashcards interactivas', text: 'Gira las tarjetas para descubrir definiciones, referencias y contexto histórico.' },
+  { emoji: '📊', title: 'Comparaciones lado a lado', text: 'Elige las religiones y compáralas criterio por criterio en una tabla editable.' },
+  { emoji: '🎨', title: 'Ilustraciones y fotografías', text: 'Cada sección combina imágenes libres de Unsplash con SVG propios para una lectura amena.' },
+  { emoji: '✨', title: 'Versículo del día', text: 'Un versículo elegido por la fecha para inspirar tu jornada.' },
+  { emoji: '🎯', title: 'Quiz con explicaciones', text: 'Responde y recibe la explicación de cada respuesta, con progreso visible.' },
+  { emoji: '🌤️', title: 'Diseño claro y limpio', text: 'Fondos con nubes, tipografía serif contemporánea y gran legibilidad.' },
 ]
 
-// Cambia aqui el titulo y la descripcion de cada flip card.
-const flipCards = [
-  {
-    title: 'Leer',
-    description: 'Un acceso directo y ordenado para entrar al contenido biblico sin distracciones innecesarias.',
-  },
-  {
-    title: 'Comparar',
-    description: 'Un resumen visual para contrastar ideas y ubicar diferencias doctrinales con claridad.',
-  },
-  {
-    title: 'Consultar',
-    description: 'Un punto rapido de contacto para hacer preguntas, pedir oración o continuar por WhatsApp.',
-  },
+const stats = [
+  { emoji: '📚', label: 'Libros', value: '66', hint: '39 Antiguo + 27 Nuevo' },
+  { emoji: '🌐', label: 'Religiones', value: '8', hint: 'Con cuadro comparativo' },
+  { emoji: '🃏', label: 'Flashcards', value: '60+', hint: 'Para aprender jugando' },
+  { emoji: '⏱️', label: 'Páginas', value: '13', hint: 'Listo para explorar' },
 ]
 
-const heroSlides = [
+const flashcardsPreview = [
   {
-    eyebrow: 'Nubes',
-    title: 'Contempla la gloria de Dios con un comienzo más amplio y reverente',
-    text: 'El slideshow ahora abre con un fondo de nubes para dar una entrada más celestial y acompañar mejor el tono devocional del sitio.',
-    image: cloudsWide,
-    ctaLabel: 'Ir a lectura',
-    ctaHref: '#proposito',
-    align: 'left',
-    verse: 'Los cielos cuentan la gloria de Dios, Y el firmamento anuncia la obra de sus manos.',
-    verseRef: 'Salmos 19:1',
-    verseLayout: 'corner',
-    overlayClass:
-      'bg-[linear-gradient(130deg,_rgba(15,23,42,0.68),_rgba(14,116,144,0.2),_rgba(250,204,21,0.08))]',
-    accentClass:
-      'bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.18),_transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(56,189,248,0.18),_transparent_30%)]',
+    front: { tag: 'Parábola', emoji: '🌱', title: 'La semilla', subtitle: 'Diferentes tipos de terreno' },
+    back: { tag: 'Enseñanza', text: 'La palabra se siembra en corazones: unos la rechazan, otros la escuchan y dan fruto abundante.', reference: 'Mateo 13:3-23' },
+    accent: 'emerald',
   },
   {
-    eyebrow: 'Bosque',
-    title: 'Lee la Escritura con una apertura visual tipo slideshow',
-    text: 'Primer slide con un paisaje natural amplio, inspirado en el ejemplo de referencia y adaptado al tono sobrio de la portada.',
-    image: woodsWide,
-    ctaLabel: 'Ir a lectura',
-    ctaHref: '#proposito',
-    verse: 'Lámpara es a mis pies tu palabra, Y lumbrera a mi camino.',
-    verseRef: 'Salmos 119:105',
-    verseLayout: 'inline',
-    overlayClass:
-      'bg-[linear-gradient(125deg,_rgba(15,23,42,0.72),_rgba(12,74,110,0.22),_rgba(250,204,21,0.14))]',
-    accentClass:
-      'bg-[radial-gradient(circle_at_top_left,_rgba(250,204,21,0.22),_transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(59,130,246,0.16),_transparent_30%)]',
+    front: { tag: 'Personaje', emoji: '👑', title: 'David', subtitle: 'Pastor, músico y rey' },
+    back: { tag: 'Historia', text: 'Rey elegido por Dios para Israel. Valiente, adorador y padre de Salomón. Reconocido por su corazón según el Señor.', reference: '1 Samuel 16' },
+    accent: 'amber',
   },
   {
-    eyebrow: 'Nieve',
-    title: 'Alterna escenas panorámicas con texto principal y CTA',
-    text: 'Segundo slide con estética nevada y horizonte limpio, similar al tipo de fotografía ancha que usa W3Schools en su demo.',
-    image: snowWide,
-    ctaLabel: 'Ver diferencias',
-    ctaTo: '/diferencias',
-    align: 'center',
-    verse: 'Venid a mí todos los que estáis trabajados y cargados, y yo os haré descansar.',
-    verseRef: 'Mateo 11:28',
-    verseLayout: 'pill',
-    overlayClass:
-      'bg-[linear-gradient(135deg,_rgba(2,6,23,0.58),_rgba(71,85,105,0.16),_rgba(34,211,238,0.1))]',
-    accentClass:
-      'bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.18),_transparent_26%),radial-gradient(circle_at_bottom_left,_rgba(148,163,184,0.16),_transparent_32%)]',
-  },
-  {
-    eyebrow: 'Montañas',
-    title: 'Usa imágenes anchas para dar el mismo efecto de portada',
-    text: 'Tercer slide con montañas y lago para conservar el patrón visual del ejemplo: paisaje amplio, texto superpuesto y navegación lateral.',
-    image: mountainsWide,
-    ctaLabel: 'Comparar religiones',
-    ctaTo: '/religiones',
-    align: 'left',
-    verse: 'Jesucristo es el mismo ayer, y hoy, y por los siglos.',
-    verseRef: 'Hebreos 13:8',
-    verseLayout: 'corner',
-    overlayClass:
-      'bg-[linear-gradient(140deg,_rgba(15,23,42,0.62),_rgba(120,53,15,0.16),_rgba(251,191,36,0.12))]',
-    accentClass:
-      'bg-[radial-gradient(circle_at_top_right,_rgba(251,191,36,0.18),_transparent_32%),radial-gradient(circle_at_bottom_left,_rgba(249,115,22,0.12),_transparent_28%)]',
-  },
-  {
-    eyebrow: 'Nubes doradas',
-    title: 'Intercala fondos de nubes para dar más aire entre escenas panorámicas',
-    text: 'Se añadió otra variación de nubes para que el slideshow dure más y conserve una transición suave entre paisajes y textos bíblicos.',
-    image: cloudsWide,
-    ctaLabel: 'Seguir leyendo',
-    ctaHref: '#versiculos',
-    align: 'center',
-    verse: 'Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito.',
-    verseRef: 'Juan 3:16',
-    verseLayout: 'pill',
-    overlayClass:
-      'bg-[linear-gradient(135deg,_rgba(15,23,42,0.56),_rgba(180,83,9,0.16),_rgba(251,191,36,0.12))]',
-    accentClass:
-      'bg-[radial-gradient(circle_at_top,_rgba(251,191,36,0.2),_transparent_28%),radial-gradient(circle_at_bottom_left,_rgba(255,255,255,0.14),_transparent_34%)]',
-  },
-  {
-    eyebrow: 'Luces',
-    title: 'Cierra el carrusel con una escena nocturna más dramática',
-    text: 'Cuarto slide con luces y montaña oscura para completar un set de imágenes similar al slideshow clásico de referencia.',
-    image: lightsWide,
-    ctaLabel: 'Ver enfoque',
-    ctaHref: '#proposito',
-    align: 'right',
-    verse: 'Yo soy la luz del mundo; el que me sigue, no andará en tinieblas.',
-    verseRef: 'Juan 8:12',
-    verseLayout: 'inline',
-    overlayClass:
-      'bg-[linear-gradient(140deg,_rgba(2,6,23,0.66),_rgba(15,23,42,0.18),_rgba(8,145,178,0.12))]',
-    accentClass:
-      'bg-[radial-gradient(circle_at_top,_rgba(45,212,191,0.18),_transparent_24%),radial-gradient(circle_at_bottom_right,_rgba(96,165,250,0.12),_transparent_32%)]',
-  },
-  {
-    eyebrow: 'Nubes finales',
-    title: 'Cierra la secuencia con otra capa de nubes y una confesión centrada en Cristo',
-    text: 'El último slide extiende la duración del carrusel y deja una impresión final de calma, amplitud y esperanza.',
-    image: cloudsWide,
-    ctaLabel: 'Meditar',
-    ctaHref: '#proposito',
-    align: 'right',
-    verse: 'Y en ningún otro hay salvación; porque no hay otro nombre bajo el cielo, dado a los hombres, en que podamos ser salvos.',
-    verseRef: 'Hechos 4:12',
-    verseLayout: 'corner',
-    overlayClass:
-      'bg-[linear-gradient(140deg,_rgba(2,6,23,0.7),_rgba(12,74,110,0.22),_rgba(165,243,252,0.08))]',
-    accentClass:
-      'bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.18),_transparent_30%),radial-gradient(circle_at_bottom_left,_rgba(34,211,238,0.16),_transparent_34%)]',
-  },
-]
-
-const homeVerses = [
-  {
-    text: 'Mas Dios muestra su amor para con nosotros, en que siendo aún pecadores, Cristo murió por nosotros.',
-    reference: 'Romanos 5:8',
-    layout: 'wide',
-  },
-  {
-    text: 'Fíate de Jehová de todo tu corazón, Y no te apoyes en tu propia prudencia.',
-    reference: 'Proverbios 3:5',
-    layout: 'stacked',
-  },
-  {
-    text: 'Dios es nuestro amparo y fortaleza, Nuestro pronto auxilio en las tribulaciones.',
-    reference: 'Salmos 46:1',
-    layout: 'corner',
-  },
-  {
-    text: 'Porque por gracia sois salvos por medio de la fe; y esto no de vosotros, pues es don de Dios.',
-    reference: 'Efesios 2:8',
-    layout: 'pill',
-  },
-]
-
-// Cambia aqui titulos, textos, superficies y posiciones del montaje visual.
-// Para usar imagenes reales, agrega `image: '/ruta-o-import'` en cada bloque.
-const visualItems = [
-  {
-    kicker: 'Desde la izquierda',
-    title: 'Lectura serena',
-    text: 'Un bloque visual pensado para transmitir calma, orden y acceso claro al contenido.',
-    enterFrom: 'left',
-    positionClass: '-translate-x-[118%] -translate-y-[62%] lg:-translate-x-[128%] lg:-translate-y-[58%]',
-    surfaceClass: 'bg-[linear-gradient(140deg,_rgba(245,158,11,0.45),_rgba(15,23,42,0.9))]',
-    image: cloudsWide,
-    verse: 'Buscad a Jehová mientras puede ser hallado, llamadle en tanto que está cercano.',
-    verseRef: 'Isaías 55:6',
-  },
-  {
-    kicker: 'Desde la derecha',
-    title: 'Doctrina comparada',
-    text: 'La composición equilibra contraste visual con una estética sobria y elegante.',
-    enterFrom: 'right',
-    positionClass: 'translate-x-[18%] -translate-y-[62%] lg:translate-x-[28%] lg:-translate-y-[58%]',
-    surfaceClass: 'bg-[linear-gradient(145deg,_rgba(34,211,238,0.42),_rgba(15,23,42,0.92))]',
-    image: cloudsWide,
-    verse: 'Santifícalos en tu verdad; tu palabra es verdad.',
-    verseRef: 'Juan 17:17',
-  },
-  {
-    kicker: 'Desde abajo',
-    title: 'Contacto directo',
-    text: 'Una pieza inferior que cierra el conjunto y genera un punto focal estable en el centro.',
-    enterFrom: 'bottom',
-    positionClass: '-translate-x-1/2 translate-y-[2%] lg:-translate-x-1/2 lg:translate-y-[8%]',
-    surfaceClass: 'bg-[linear-gradient(155deg,_rgba(148,163,184,0.28),_rgba(15,23,42,0.95),_rgba(250,204,21,0.2))]',
-    image: cloudsWide,
-    verse: 'Clama a mí, y yo te responderé, y te enseñaré cosas grandes y ocultas que tú no conoces.',
-    verseRef: 'Jeremías 33:3',
+    front: { tag: 'Milagro', emoji: '🍞', title: 'Los 5 panes y 2 peces', subtitle: 'Multiplicación para 5000' },
+    back: { tag: 'Enseñanza', text: 'Jesús bendice un almuerzo humilde y alimenta a miles. Dios hace mucho con poco cuando lo ponemos en sus manos.', reference: 'Juan 6:1-14' },
+    accent: 'sky',
   },
 ]
 </script>
 
 <template>
-  <SiteShell
-    badge="La Biblia · RVR 1960"
-    title="Jesús es el Señor"
-    description="Un espacio sobrio para leer, estudiar y meditar en las Escrituras con una presentacion clara, centrada en Jesucristo y preparada para seguir creciendo."
-    quote="“Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí.”"
-    verse="Juan 14:6"
-    aside-label="Texto destacado"
-  >
-    <template #actions>
-      <a
-        href="#proposito"
-        class="inline-flex items-center rounded-2xl bg-fuchsia-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-fuchsia-500/30 transition hover:bg-fuchsia-400"
-      >
-        Ver enfoque
-      </a>
-
-      <RouterLink
-        to="/diferencias"
-        class="inline-flex items-center rounded-2xl border border-white/25 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/20"
-      >
-        Explorar diferencias
-      </RouterLink>
-
-      <RouterLink
-        to="/religiones"
-        class="inline-flex items-center rounded-2xl border border-fuchsia-200/30 bg-fuchsia-500/10 px-6 py-3 text-sm font-semibold text-fuchsia-100 backdrop-blur-md transition hover:bg-fuchsia-500/20"
-      >
-        Comparar religiones
-      </RouterLink>
-    </template>
-
-    <template #highlights>
-      <div class="grid gap-4 sm:grid-cols-3">
-        <article
-          v-for="pilar in pilares"
-          :key="pilar.titulo"
-          class="page-card hover-lift-soft p-5 backdrop-blur-md"
-        >
-          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-fuchsia-200">
-            {{ pilar.titulo }}
-          </p>
-          <p class="mt-3 text-sm leading-6 text-slate-200">
-            {{ pilar.texto }}
-          </p>
-        </article>
-      </div>
-    </template>
-
-    <template #aside>
-      <div class="rounded-2xl border border-fuchsia-200/20 bg-fuchsia-500/10 p-5">
-        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-fuchsia-100">
-          Proposito del sitio
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="mx-auto grid max-w-7xl items-center gap-12 px-6 py-16 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:py-24">
+      <div>
+        <span class="chip">
+          <span aria-hidden="true">✨</span>
+          Una app interactiva sobre la Biblia
+        </span>
+        <h1 class="font-display mt-6 text-5xl font-bold leading-[1.05] tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
+          Luz del <span class="bg-gradient-to-r from-sky-500 via-violet-500 to-amber-500 bg-clip-text text-transparent">Camino</span>
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-8 text-slate-600 sm:text-xl">
+          Una experiencia clara y visual para <strong class="text-slate-900">leer la Biblia</strong>,
+          conocer a <strong class="text-slate-900">Jesús</strong> y <strong class="text-slate-900">comparar las religiones</strong>
+          del mundo con flashcards, ilustraciones y un quiz interactivo.
         </p>
-        <p class="mt-3 text-sm leading-7 text-slate-200">
-          Presentar contenido biblico con respeto, legibilidad y una estructura que
-          facilite el estudio personal y la comparacion doctrinal.
-        </p>
-      </div>
-    </template>
-
-    <template #content>
-      <section class="section-shell border-t-0 pt-0">
-        <div class="mx-auto max-w-6xl">
-          <div class="mb-8 max-w-2xl">
-            <p class="section-heading text-fuchsia-200">
-              Carrusel principal
-            </p>
-            <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">
-              Un slideshow inicial con el estilo del ejemplo de referencia
-            </h2>
-            <p class="mt-4 text-sm leading-7 text-slate-300">
-              Se agregó un carrusel ancho con autoplay, flechas laterales y navegación
-              por puntos para abrir la portada con más movimiento visual.
-            </p>
-          </div>
-
-          <HeroCarousel :slides="heroSlides" />
+        <div class="mt-8 flex flex-wrap gap-3">
+          <RouterLink to="/biblia" class="btn-primary">
+            Comenzar por la Biblia
+            <span aria-hidden="true">→</span>
+          </RouterLink>
+          <RouterLink to="/religiones" class="btn-ghost">Comparar religiones</RouterLink>
+          <RouterLink to="/quiz" class="btn-accent">Probar el quiz</RouterLink>
         </div>
-      </section>
 
-      <section id="proposito" class="section-shell">
-        <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <p class="section-heading text-fuchsia-200">
-              Contenido principal
-            </p>
-            <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">
-              Una portada breve para ubicar el sentido del sitio
-            </h2>
-            <p class="mt-4 max-w-xl text-sm leading-7 text-slate-300">
-              La idea es que el visitante entienda rapido qué va a encontrar: lectura,
-              orientación doctrinal y una presentación reverente del mensaje bíblico.
-            </p>
-          </div>
+        <div class="mt-10">
+          <StatsBanner :stats="stats" />
+        </div>
+      </div>
 
-          <div class="grid gap-4 sm:grid-cols-2">
-            <div
-              v-for="seccion in secciones"
-              :key="seccion.titulo"
-              class="page-card hover-lift-soft"
-            >
-              <p class="text-lg font-semibold text-white">{{ seccion.titulo }}</p>
-              <p class="mt-3 text-sm leading-7 text-slate-200">
-                {{ seccion.texto }}
-              </p>
+      <!-- Hero illustration (SVG + imagen) -->
+      <div class="relative">
+        <div class="absolute -inset-6 rounded-[3rem] bg-gradient-to-br from-sky-300/40 via-violet-300/30 to-amber-200/40 blur-2xl"></div>
+        <div class="relative overflow-hidden rounded-[2.5rem] border border-white/70 bg-white/80 p-5 shadow-2xl shadow-sky-500/20 backdrop-blur-md">
+          <img
+            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"
+            alt="Cielo y mar con nubes"
+            class="h-64 w-full rounded-2xl object-cover sm:h-80"
+            loading="eager"
+          />
+          <div class="mt-5 grid grid-cols-3 gap-3">
+            <div class="rounded-2xl bg-sky-50 p-4 text-center">
+              <p class="text-3xl" aria-hidden="true">📖</p>
+              <p class="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Biblia</p>
+            </div>
+            <div class="rounded-2xl bg-amber-50 p-4 text-center">
+              <p class="text-3xl" aria-hidden="true">✝️</p>
+              <p class="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">Jesús</p>
+            </div>
+            <div class="rounded-2xl bg-violet-50 p-4 text-center">
+              <p class="text-3xl" aria-hidden="true">🌍</p>
+              <p class="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-violet-700">Religiones</p>
             </div>
           </div>
-        </div>
-      </section>
-
-      <VerseOfTheDay />
-
-      <VerseGallery
-        id="versiculos"
-        eyebrow="Versículos destacados"
-        title="Más textos bíblicos distribuidos con composiciones diferentes"
-        description="Se añadieron bloques amplios, pastillas y tarjetas verticales para que la Palabra aparezca repetida a lo largo de la portada sin verse monótona."
-        :verses="homeVerses"
-      />
-
-      <section class="section-shell border-t-0 pt-0">
-        <div class="mx-auto max-w-6xl">
-          <div class="mb-8 max-w-2xl">
-            <p class="section-heading text-cyan-200">
-              Interacción breve
-            </p>
-            <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">
-              Tarjetas con efecto flip para destacar ideas clave
-            </h2>
-            <p class="mt-4 text-sm leading-7 text-slate-300">
-              El frente resume el concepto y el reverso agrega una explicación corta,
-              con una animación suave tanto en escritorio como en móvil.
+          <div class="mt-5 flex items-center gap-3 rounded-2xl border border-sky-100 bg-gradient-to-r from-sky-50 to-violet-50 p-4">
+            <span class="grid h-10 w-10 place-items-center rounded-full bg-white text-sky-600 shadow" aria-hidden="true">🔎</span>
+            <p class="text-sm font-semibold text-slate-700">
+              Explora 13 páginas llenas de recursos visuales.
             </p>
           </div>
-
-          <FlipCardsSection :cards="flipCards" />
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
-      <ScrollVisualSection
-        eyebrow="Composición visual"
-        title="Una sección amplia con entrada suave y alineación al centro"
-        description="Los bloques entran cuando la sección aparece en pantalla y terminan formando una composición limpia, equilibrada y fácil de adaptar después."
-        :items="visualItems"
+  <!-- Secciones del sitio -->
+  <section class="mx-auto max-w-7xl px-6 py-16 sm:px-8">
+    <div class="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
+      <div class="max-w-2xl">
+        <p class="section-heading text-sky-600">Explora la app</p>
+        <h2 class="section-title mt-3">13 secciones pensadas para aprender visualmente</h2>
+        <p class="section-lead">
+          Cada página combina texto breve, imágenes y recursos interactivos para que puedas
+          saltar de un tema a otro sin perder el hilo.
+        </p>
+      </div>
+      <RouterLink to="/contacto" class="btn-ghost">
+        ¿Ideas o dudas? Escríbenos
+        <span aria-hidden="true">→</span>
+      </RouterLink>
+    </div>
+
+    <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <TopicCard v-for="topic in topics" :key="topic.to" v-bind="topic" />
+    </div>
+  </section>
+
+  <!-- Qué ofrece -->
+  <section class="mx-auto max-w-7xl px-6 py-16 sm:px-8">
+    <div class="max-w-2xl">
+      <p class="section-heading text-violet-600">Recursos interactivos</p>
+      <h2 class="section-title mt-3">Hecho para aprender jugando</h2>
+      <p class="section-lead">
+        Diseñamos la app con elementos interactivos en casi todas las secciones: flashcards,
+        tablas filtrables, versículos categorizados y un quiz con explicaciones.
+      </p>
+    </div>
+    <div class="mt-10">
+      <FeatureGrid :items="features" />
+    </div>
+  </section>
+
+  <!-- Flashcards preview -->
+  <section class="mx-auto max-w-7xl px-6 py-16 sm:px-8">
+    <div class="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
+      <div class="max-w-2xl">
+        <p class="section-heading text-amber-600">Probá una flashcard</p>
+        <h2 class="section-title mt-3">Tocá las tarjetas y descubrí el reverso</h2>
+        <p class="section-lead">
+          Cada sección temática trae decenas de tarjetas. Acá hay un anticipo con una
+          parábola, un personaje y un milagro.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-2 text-xs">
+        <span class="chip">Parábolas</span>
+        <span class="chip-amber">Personajes</span>
+        <span class="chip-rose">Milagros</span>
+      </div>
+    </div>
+    <div class="mt-10">
+      <FlashCardDeck :cards="flashcardsPreview" />
+    </div>
+  </section>
+
+  <!-- Versículos destacados -->
+  <section class="mx-auto max-w-7xl px-6 py-16 sm:px-8">
+    <div class="max-w-2xl">
+      <p class="section-heading text-rose-600">Para meditar</p>
+      <h2 class="section-title mt-3">Versículos para guardar hoy</h2>
+      <p class="section-lead">
+        Una selección breve para llevar contigo. Mirá más en la sección de versículos.
+      </p>
+    </div>
+    <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <VerseCard
+        v-for="v in destacados"
+        :key="v.reference"
+        :text="v.text"
+        :reference="v.reference"
+        :theme="v.theme"
       />
-    </template>
-  </SiteShell>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="mx-auto max-w-7xl px-6 pb-16 sm:px-8">
+    <div
+      class="relative overflow-hidden rounded-[2.5rem] border border-white/70 bg-gradient-to-br from-sky-500 via-violet-500 to-fuchsia-500 p-10 text-white shadow-2xl shadow-sky-500/30 sm:p-14"
+    >
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <svg class="cloud-drift absolute -right-10 top-0 w-96 opacity-30" viewBox="0 0 600 200" fill="currentColor">
+          <path d="M60 130c-22 0-40-16-40-38s18-38 40-38c4 0 8 .5 12 1.4C80 36 107 18 140 18c38 0 69 26 76 60h8c22 0 40 16 40 38s-18 38-40 38H60z" />
+        </svg>
+      </div>
+      <div class="relative grid items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+        <div>
+          <p class="section-heading text-white/80">Empieza hoy</p>
+          <h2 class="font-display mt-3 text-4xl font-bold sm:text-5xl">
+            Aprende la Biblia con tarjetas, imágenes y un quiz divertido.
+          </h2>
+          <p class="mt-4 max-w-xl text-white/90">
+            Sin publicidad, sin registro y con contenido cuidadosamente seleccionado
+            para todas las edades.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3 lg:justify-end">
+          <RouterLink to="/quiz" class="btn-accent">
+            Jugar el quiz
+            <span aria-hidden="true">→</span>
+          </RouterLink>
+          <RouterLink to="/jesus" class="btn-ghost bg-white/15 text-white hover:bg-white/25">
+            Conocer a Jesús
+          </RouterLink>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
