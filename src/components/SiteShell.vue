@@ -55,28 +55,28 @@ const themeClasses = computed(() => {
   if (props.theme === 'cyan') {
     return {
       glow:
-        'bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.16),_transparent_28%),linear-gradient(160deg,_rgba(15,23,42,0.45),_rgba(2,132,199,0.22),_rgba(2,6,23,0.92))]',
-      topGlow: 'from-cyan-200/10',
+        'bg-[radial-gradient(circle_at_top_left,_rgba(99,102,241,0.28),_transparent_32%),linear-gradient(160deg,_rgba(11,4,22,0.6),_rgba(88,28,135,0.35),_rgba(5,1,16,0.95))]',
+      topGlow: 'from-indigo-300/15',
       badge:
-        'border-cyan-200/30 bg-white/10 text-cyan-100',
-      eyebrow: 'text-cyan-200',
-      quoteLabel: 'text-amber-200',
+        'border-indigo-300/40 bg-white/10 text-indigo-100',
+      eyebrow: 'text-indigo-200',
+      quoteLabel: 'text-fuchsia-200',
       active:
-        'border-cyan-200/40 bg-cyan-300/15 text-cyan-50',
+        'border-indigo-300/50 bg-indigo-400/15 text-indigo-50',
       muted: 'border-white/10 bg-white/10 text-slate-200',
     }
   }
 
   return {
     glow:
-      'bg-[radial-gradient(circle_at_top,_rgba(250,204,21,0.18),_transparent_30%),linear-gradient(135deg,_rgba(15,23,42,0.4),_rgba(12,74,110,0.35),_rgba(2,6,23,0.88))]',
-    topGlow: 'from-amber-200/15',
+      'bg-[radial-gradient(circle_at_top,_rgba(217,70,239,0.32),_transparent_32%),linear-gradient(135deg,_rgba(11,4,22,0.6),_rgba(91,33,182,0.45),_rgba(5,1,16,0.95))]',
+    topGlow: 'from-fuchsia-300/20',
     badge:
-      'border-amber-200/30 bg-white/10 text-amber-200',
-    eyebrow: 'text-amber-200',
-    quoteLabel: 'text-sky-200',
+      'border-fuchsia-300/40 bg-white/10 text-fuchsia-100',
+    eyebrow: 'text-fuchsia-200',
+    quoteLabel: 'text-violet-200',
     active:
-      'border-amber-200/40 bg-amber-300/15 text-amber-50',
+      'border-fuchsia-300/50 bg-fuchsia-400/15 text-fuchsia-50',
     muted: 'border-white/10 bg-white/10 text-slate-200',
   }
 })
@@ -94,13 +94,13 @@ const links = [
     role="main"
   >
     <div
-      class="absolute inset-0 scale-110 bg-cover bg-center bg-no-repeat will-change-transform"
+      class="absolute inset-0 scale-110 bg-cover bg-center bg-no-repeat opacity-20 mix-blend-luminosity will-change-transform"
       :style="{
         backgroundImage: `url(${cloudsBg})`,
         transform: `translate3d(0, ${heroOffset}px, 0) scale(1.1)`,
       }"
     ></div>
-    <div class="absolute inset-0 bg-slate-950/72"></div>
+    <div class="absolute inset-0 bg-[#0b0416]/78"></div>
     <div class="absolute inset-0" :class="themeClasses.glow"></div>
     <div class="absolute inset-x-0 top-0 h-44 bg-gradient-to-b to-transparent" :class="themeClasses.topGlow"></div>
 
@@ -139,7 +139,7 @@ const links = [
             {{ badge }}
           </span>
 
-          <h1 class="mt-6 max-w-3xl text-5xl font-black leading-none text-white sm:text-6xl lg:text-7xl">
+          <h1 class="mt-6 max-w-3xl bg-gradient-to-r from-white via-fuchsia-200 to-violet-300 bg-clip-text text-5xl font-black leading-none text-transparent drop-shadow-[0_6px_30px_rgba(217,70,239,0.35)] sm:text-6xl lg:text-7xl">
             {{ title }}
           </h1>
 

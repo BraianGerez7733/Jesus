@@ -263,7 +263,7 @@ const visualItems = [
           >
               <div class="flex items-start justify-between gap-4">
                 <div>
-                  <p class="text-sm font-semibold uppercase tracking-[0.2em] text-amber-200">
+                  <p class="text-sm font-semibold uppercase tracking-[0.2em] text-fuchsia-200">
                     {{ religion.origen }}
                   </p>
                   <h3 class="mt-3 text-2xl font-bold text-white">
@@ -303,7 +303,7 @@ const visualItems = [
       <section class="section-shell border-t-0 pt-0">
         <div class="mx-auto max-w-6xl">
           <div class="mb-8">
-            <p class="section-heading text-amber-200">
+            <p class="section-heading text-fuchsia-200">
               Diferencias clave
             </p>
             <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">
@@ -319,7 +319,7 @@ const visualItems = [
               <table class="min-w-full text-left">
                 <thead class="bg-slate-950/50">
                   <tr>
-                    <th class="px-5 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-amber-200">Criterio</th>
+                    <th class="px-5 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-fuchsia-200">Criterio</th>
                     <th class="px-5 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-slate-200">Cristianismo</th>
                     <th class="px-5 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-slate-200">Judaísmo</th>
                     <th class="px-5 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-slate-200">Mormonismo</th>

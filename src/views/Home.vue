@@ -254,7 +254,7 @@ const visualItems = [
     <template #actions>
       <a
         href="#proposito"
-        class="inline-flex items-center rounded-2xl bg-amber-300 px-6 py-3 text-sm font-bold text-slate-950 transition hover:bg-amber-200"
+        class="inline-flex items-center rounded-2xl bg-fuchsia-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-fuchsia-500/30 transition hover:bg-fuchsia-400"
       >
         Ver enfoque
       </a>
@@ -268,7 +268,7 @@ const visualItems = [
 
       <RouterLink
         to="/religiones"
-        class="inline-flex items-center rounded-2xl border border-amber-200/30 bg-amber-300/10 px-6 py-3 text-sm font-semibold text-amber-100 backdrop-blur-md transition hover:bg-amber-300/20"
+        class="inline-flex items-center rounded-2xl border border-fuchsia-200/30 bg-fuchsia-500/10 px-6 py-3 text-sm font-semibold text-fuchsia-100 backdrop-blur-md transition hover:bg-fuchsia-500/20"
       >
         Comparar religiones
       </RouterLink>
@@ -281,7 +281,7 @@ const visualItems = [
           :key="pilar.titulo"
           class="page-card hover-lift-soft p-5 backdrop-blur-md"
         >
-          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-amber-200">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-fuchsia-200">
             {{ pilar.titulo }}
           </p>
           <p class="mt-3 text-sm leading-6 text-slate-200">
@@ -292,8 +292,8 @@ const visualItems = [
     </template>
 
     <template #aside>
-      <div class="rounded-2xl border border-amber-200/20 bg-amber-300/10 p-5">
-        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-amber-100">
+      <div class="rounded-2xl border border-fuchsia-200/20 bg-fuchsia-500/10 p-5">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-fuchsia-100">
           Proposito del sitio
         </p>
         <p class="mt-3 text-sm leading-7 text-slate-200">
@@ -307,7 +307,7 @@ const visualItems = [
       <section class="section-shell border-t-0 pt-0">
         <div class="mx-auto max-w-6xl">
           <div class="mb-8 max-w-2xl">
-            <p class="section-heading text-amber-200">
+            <p class="section-heading text-fuchsia-200">
               Carrusel principal
             </p>
             <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">
@@ -326,7 +326,7 @@ const visualItems = [
       <section id="proposito" class="section-shell">
         <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <p class="section-heading text-amber-200">
+            <p class="section-heading text-fuchsia-200">
               Contenido principal
             </p>
             <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">

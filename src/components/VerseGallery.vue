@@ -24,9 +24,9 @@ const props = defineProps({
 
 const accentMap = {
   amber: {
-    eyebrow: 'text-amber-200',
-    badge: 'text-amber-100',
-    border: 'border-amber-200/20',
+    eyebrow: 'text-fuchsia-200',
+    badge: 'text-fuchsia-100',
+    border: 'border-fuchsia-200/20',
     glow: 'bg-[radial-gradient(circle_at_top,_rgba(250,204,21,0.12),_transparent_30%),linear-gradient(180deg,_rgba(15,23,42,0.86),_rgba(2,6,23,0.95))]',
   },
   cyan: {

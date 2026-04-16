@@ -99,7 +99,7 @@ async function copyVerse() {
   <section class="section-shell border-t-0 pt-0">
     <div class="mx-auto max-w-5xl">
       <div class="mb-8 max-w-2xl">
-        <p class="section-heading text-amber-200">Versículo del día</p>
+        <p class="section-heading text-fuchsia-200">Versículo del día</p>
         <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">
           Un texto breve para meditar hoy
         </h2>
@@ -110,15 +110,15 @@ async function copyVerse() {
       </div>
 
       <article
-        class="relative overflow-hidden rounded-[1.75rem] border border-amber-200/20 bg-slate-950/70 p-8 shadow-xl shadow-slate-950/30 backdrop-blur-md sm:p-10"
+        class="relative overflow-hidden rounded-[1.75rem] border border-fuchsia-200/20 bg-slate-950/70 p-8 shadow-xl shadow-slate-950/30 backdrop-blur-md sm:p-10"
       >
         <div
-          class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(250,204,21,0.14),_transparent_38%),radial-gradient(circle_at_bottom_right,_rgba(34,211,238,0.12),_transparent_34%)]"
+          class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(217,70,239,0.22),_transparent_38%),radial-gradient(circle_at_bottom_right,_rgba(99,102,241,0.22),_transparent_34%)]"
         ></div>
 
         <div class="relative flex flex-col gap-6">
-          <div class="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-amber-100">
-            <span class="inline-flex items-center rounded-full border border-amber-200/30 bg-amber-300/10 px-3 py-1">
+          <div class="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-fuchsia-100">
+            <span class="inline-flex items-center rounded-full border border-fuchsia-200/30 bg-fuchsia-400/10 px-3 py-1">
               Reina Valera 1960
             </span>
             <span class="text-slate-300">{{ formattedDate }}</span>
@@ -129,7 +129,7 @@ async function copyVerse() {
               <blockquote class="text-2xl leading-9 text-white sm:text-3xl">
                 {{ current.text }}
               </blockquote>
-              <p class="text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">
+              <p class="text-sm font-semibold uppercase tracking-[0.22em] text-fuchsia-200">
                 {{ current.reference }}
               </p>
             </div>
@@ -138,7 +138,7 @@ async function copyVerse() {
           <div class="flex flex-wrap gap-3 pt-2">
             <button
               type="button"
-              class="inline-flex items-center rounded-2xl bg-amber-300 px-5 py-2.5 text-sm font-bold text-slate-950 transition hover:bg-amber-200"
+              class="inline-flex items-center rounded-2xl bg-fuchsia-500 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-fuchsia-500/30 transition hover:bg-fuchsia-400"
               @click="shuffle"
             >
               Otro versículo

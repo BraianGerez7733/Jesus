@@ -129,7 +129,7 @@ onBeforeUnmount(() => {
           :class="slide.align === 'center' ? 'justify-center text-center' : slide.align === 'right' ? 'justify-end text-right' : 'justify-start text-left'"
         >
           <div class="max-w-2xl">
-            <p class="text-xs font-semibold uppercase tracking-[0.32em] text-amber-200/90 sm:text-sm">
+            <p class="text-xs font-semibold uppercase tracking-[0.32em] text-fuchsia-200/90 sm:text-sm">
               {{ slide.eyebrow }}
             </p>
 
@@ -147,13 +147,13 @@ onBeforeUnmount(() => {
               :class="slide.verseLayout === 'pill'
                 ? 'inline-flex max-w-xl flex-col rounded-full px-5 py-3'
                 : slide.verseLayout === 'corner'
-                  ? 'max-w-md rounded-[1.5rem] border-l-4 border-amber-300 px-5 py-4'
+                  ? 'max-w-md rounded-[1.5rem] border-l-4 border-fuchsia-500 px-5 py-4'
                   : 'max-w-xl rounded-[1.5rem] px-5 py-4'"
             >
               <p class="text-sm leading-7 text-white/95">
                 {{ slide.verse }}
               </p>
-              <p class="mt-2 text-xs font-semibold uppercase tracking-[0.24em] text-amber-200/90">
+              <p class="mt-2 text-xs font-semibold uppercase tracking-[0.24em] text-fuchsia-200/90">
                 {{ slide.verseRef }}
               </p>
             </div>
@@ -163,7 +163,7 @@ onBeforeUnmount(() => {
               :is="slide.ctaTo ? RouterLink : 'a'"
               :to="slide.ctaTo || undefined"
               :href="slide.ctaTo ? undefined : slide.ctaHref"
-              class="mt-6 inline-flex items-center rounded-full border border-amber-200/30 bg-amber-300 px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-amber-200"
+              class="mt-6 inline-flex items-center rounded-full border border-fuchsia-200/30 bg-fuchsia-500 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-fuchsia-500/30 transition hover:bg-fuchsia-400"
             >
               {{ slide.ctaLabel }}
             </component>
@@ -196,7 +196,7 @@ onBeforeUnmount(() => {
         :key="`${slide.id}-dot`"
         type="button"
         class="h-3 rounded-full transition-all duration-300"
-        :class="index === activeIndex ? 'w-10 bg-amber-300' : 'w-3 bg-white/45 hover:bg-white/70'"
+        :class="index === activeIndex ? 'w-10 bg-fuchsia-500' : 'w-3 bg-white/45 hover:bg-white/70'"
         :aria-label="`Ir al slide ${index + 1}`"
         :aria-current="index === activeIndex ? 'true' : 'false'"
         @click="goTo(index)"

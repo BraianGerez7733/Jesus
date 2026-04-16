@@ -9,9 +9,15 @@ html, body, #app {
 
 body {
   min-height: 100vh;
-  background: #020617;
-  color: #e2e8f0;
+  color: #f4e8ff;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #0b0416;
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(217, 70, 239, 0.28), transparent 45%),
+    radial-gradient(circle at 85% 0%, rgba(99, 102, 241, 0.32), transparent 50%),
+    radial-gradient(circle at 50% 100%, rgba(244, 114, 182, 0.18), transparent 55%),
+    linear-gradient(180deg, #0b0416 0%, #1a0733 45%, #050110 100%);
+  background-attachment: fixed;
 }
 
 #app {
@@ -20,19 +26,19 @@ body {
 
 @layer components {
   .page-panel {
-    @apply rounded-[2rem] border border-white/10 bg-white/10;
+    @apply rounded-[2rem] border border-fuchsia-300/15 bg-violet-950/30 shadow-[0_30px_80px_-40px_rgba(217,70,239,0.5)] backdrop-blur-xl;
   }
 
   .page-card {
-    @apply rounded-2xl border border-white/10 bg-white/10 p-6;
+    @apply rounded-2xl border border-fuchsia-300/15 bg-violet-950/30 p-6 backdrop-blur-md;
   }
 
   .section-shell {
-    @apply relative z-10 border-t border-white/10 bg-slate-950/55 px-6 py-16 backdrop-blur-sm;
+    @apply relative z-10 border-t border-fuchsia-300/10 bg-[#0b0416]/70 px-6 py-16 backdrop-blur-sm;
   }
 
   .section-heading {
-    @apply text-sm font-semibold uppercase tracking-[0.24em];
+    @apply text-sm font-semibold uppercase tracking-[0.28em];
   }
 
   .hover-lift-soft {
@@ -41,12 +47,24 @@ body {
 
   .hover-lift-soft:hover {
     transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 24px 60px rgba(2, 6, 23, 0.34);
+    box-shadow: 0 28px 70px rgba(217, 70, 239, 0.25);
   }
 
   .hover-lift-soft:focus-visible {
     transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 24px 60px rgba(2, 6, 23, 0.34);
+    box-shadow: 0 28px 70px rgba(217, 70, 239, 0.25);
+  }
+
+  .v2-banner {
+    @apply relative z-30 flex flex-wrap items-center justify-center gap-2 px-4 py-2 text-center text-xs font-semibold uppercase tracking-[0.32em] text-white;
+    background: linear-gradient(90deg, #d946ef 0%, #8b5cf6 50%, #ec4899 100%);
+    box-shadow: 0 4px 30px rgba(217, 70, 239, 0.35);
+  }
+
+  .v2-banner::before,
+  .v2-banner::after {
+    content: "✦";
+    @apply text-amber-200;
   }
 }
 

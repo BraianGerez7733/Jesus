@@ -141,7 +141,7 @@ onBeforeUnmount(() => {
                   <p class="text-sm leading-6 text-white/95">
                     {{ item.verse }}
                   </p>
-                  <p class="mt-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-amber-200/90">
+                  <p class="mt-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-fuchsia-200/90">
                     {{ item.verseRef }}
                   </p>
                 </div>
@@ -178,7 +178,7 @@ onBeforeUnmount(() => {
                   <p class="text-sm leading-6 text-white/95">
                     {{ item.verse }}
                   </p>
-                  <p class="mt-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-amber-200/90">
+                  <p class="mt-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-fuchsia-200/90">
                     {{ item.verseRef }}
                   </p>
                 </div>

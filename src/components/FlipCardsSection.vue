@@ -33,7 +33,7 @@ const clearCard = () => {
     >
       <span class="flip-card-inner block h-full w-full rounded-[1.75rem]">
         <span class="flip-card-face page-card flex h-full flex-col justify-end rounded-[1.75rem] bg-white/10 p-6">
-          <span class="text-xs font-semibold uppercase tracking-[0.24em] text-amber-200">
+          <span class="text-xs font-semibold uppercase tracking-[0.24em] text-fuchsia-200">
             Frente
           </span>
           <span class="mt-4 text-2xl font-bold text-white">
@@ -41,7 +41,7 @@ const clearCard = () => {
           </span>
         </span>
 
-        <span class="flip-card-face flip-card-back page-card flex h-full flex-col justify-between rounded-[1.75rem] border-amber-200/20 bg-slate-950/85 p-6">
+        <span class="flip-card-face flip-card-back page-card flex h-full flex-col justify-between rounded-[1.75rem] border-fuchsia-200/20 bg-slate-950/85 p-6">
           <span class="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200">
             Reverso
           </span>

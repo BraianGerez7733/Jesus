@@ -192,7 +192,7 @@ const visualItems = [
               :key="religion.nombre"
               class="page-card hover-lift-soft group rounded-[1.75rem] transition hover:bg-white/15"
             >
-              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-amber-200">
+              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-fuchsia-200">
                 {{ religion.nombre }}
               </p>
 
