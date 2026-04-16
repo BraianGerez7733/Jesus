@@ -28,7 +28,7 @@ const router = createRouter({
 })
 
 router.afterEach((to) => {
-  const base = 'Luz del Camino'
+  const base = 'Jesús el camino'
   document.title = to.meta?.title ? `${to.meta.title} · ${base}` : base
 })
 

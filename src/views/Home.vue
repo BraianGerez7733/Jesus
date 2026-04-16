@@ -66,7 +66,7 @@ const flashcardsPreview = [
           Una app interactiva sobre la Biblia
         </span>
         <h1 class="font-display mt-6 text-5xl font-bold leading-[1.05] tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
-          Luz del <span class="bg-gradient-to-r from-sky-500 via-violet-500 to-amber-500 bg-clip-text text-transparent">Camino</span>
+          Jesús el <span class="bg-gradient-to-r from-sky-500 via-violet-500 to-amber-500 bg-clip-text text-transparent">camino</span>
         </h1>
         <p class="mt-6 max-w-xl text-lg leading-8 text-slate-600 sm:text-xl">
           Una experiencia clara y visual para <strong class="text-slate-900">leer la Biblia</strong>,
