@@ -5,6 +5,7 @@ import HeroCarousel from '../components/HeroCarousel.vue'
 import ScrollVisualSection from '../components/ScrollVisualSection.vue'
 import SiteShell from '../components/SiteShell.vue'
 import VerseGallery from '../components/VerseGallery.vue'
+import VerseOfTheDay from '../components/VerseOfTheDay.vue'
 import cloudsWide from '../assets/images/clouds.jpg'
 import lightsWide from '../assets/images/slides/lights-wide.svg'
 import mountainsWide from '../assets/images/slides/mountains-wide.svg'
@@ -351,6 +352,8 @@ const visualItems = [
           </div>
         </div>
       </section>
+
+      <VerseOfTheDay />
 
       <VerseGallery
         id="versiculos"
