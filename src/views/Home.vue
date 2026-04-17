@@ -57,7 +57,11 @@ const flashcardsPreview = [
 </script>
 
 <template>
-  <!-- Hero -->
+  <div class="relative bg-cover bg-top bg-fixed min-h-screen" style="background-image: url('/fondo.jpg');">
+    <!-- Overlay para mantener legibilidad -->
+    <div class="absolute inset-0 bg-white/60 backdrop-blur-[1px] pointer-events-none"></div>
+    <div class="relative z-10">
+      <!-- Hero -->
   <section class="relative overflow-hidden">
     <div class="mx-auto grid max-w-7xl items-center gap-12 px-6 py-16 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:py-24">
       <div>
@@ -253,4 +257,6 @@ const flashcardsPreview = [
       </div>
     </div>
   </section>
+    </div>
+  </div>
 </template>
