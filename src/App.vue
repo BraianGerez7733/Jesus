@@ -41,9 +41,22 @@ async function copiarVersiculo() {
 </script>
 
 <template>
-  <!-- Claro, aireado, elegante (Light Theme) -->
-  <main class="min-h-screen bg-[#FDFDFD] text-slate-600 font-sans selection:bg-indigo-500/20">
+  <!-- Claro, aireado, elegante (Light Theme) con fondo de nubes -->
+  <main class="min-h-screen text-slate-600 font-sans selection:bg-indigo-500/20 relative">
     
+    <!-- Fondo Fijo de Nubes -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+      <div 
+        class="absolute inset-0 bg-cover bg-center"
+        style="background-image: url('https://esferacomunicacional.ar/wp-content/uploads/2021/03/cumulus_tipos-de-nubes.jpg');"
+      ></div>
+      <!-- Capa overlay blanca para mantener altísima legibilidad -->
+      <div class="absolute inset-0 bg-[#FDFDFD]/85 backdrop-blur-[2px]"></div>
+    </div>
+
+    <!-- Contenedor principal que se eleva sobre el fondo -->
+    <div class="relative z-10 flex flex-col min-h-screen w-full">
+
     <!-- Hero -->
     <section class="relative overflow-hidden w-full">
       <!-- Glow backgrounds muy suaves (efecto de luz diurna) -->
@@ -188,10 +201,12 @@ async function copiarVersiculo() {
     </section>
 
     <!-- Footer minimal -->
-    <footer class="border-t border-slate-100 bg-white py-10 text-center relative z-10 w-full mt-auto">
-      <p class="text-[11px] text-slate-400 font-semibold tracking-widest uppercase">
+    <footer class="border-t border-white/40 bg-white/60 py-10 text-center relative z-10 w-full mt-auto backdrop-blur-md">
+      <p class="text-[11px] text-slate-500 font-semibold tracking-widest uppercase">
         Hecho con Vue 3 · Vite · Tailwind. Texto bíblico: Reina-Valera 1960.
       </p>
     </footer>
+    
+    </div>
   </main>
 </template>
