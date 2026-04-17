@@ -58,8 +58,8 @@ async function copiarVersiculo() {
 
     <!-- Hero -->
     <section class="relative overflow-hidden w-full">
-      <!-- Glow backgrounds muy suaves (efecto de luz diurna) -->
-      <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gradient-to-r from-sky-100 to-indigo-50 blur-[100px] rounded-full pointer-events-none"></div>
+      <!-- Glow backgrounds muy suaves (efecto de luz diurna) reducido  -->
+      <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[450px] h-[250px] bg-gradient-to-r from-sky-100/80 to-white/70 blur-[70px] rounded-full pointer-events-none"></div>
 
       <div class="mx-auto flex max-w-4xl flex-col items-center px-6 py-24 text-center sm:py-32 relative z-10">
         <span
