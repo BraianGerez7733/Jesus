@@ -90,9 +90,12 @@ const flashcardsPreview = [
           del mundo con flashcards, ilustraciones y un quiz interactivo.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <RouterLink to="/biblia" class="btn-primary">
-            Comenzar por la Biblia
+          <RouterLink to="/jesus-es-el-camino" class="btn-primary">
+            Jesús es el camino
             <span aria-hidden="true">→</span>
+          </RouterLink>
+          <RouterLink to="/biblia" class="btn-ghost">
+            Comenzar por la Biblia
           </RouterLink>
           <RouterLink to="/religiones" class="btn-ghost">Comparar religiones</RouterLink>
           <RouterLink to="/quiz" class="btn-accent">Probar el quiz</RouterLink>
