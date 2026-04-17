@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import DailyMeditation from './components/DailyMeditation.vue'
 
 const pilares = [
   {
@@ -189,6 +190,11 @@ async function copiarVersiculo() {
           </p>
         </article>
       </div>
+    </section>
+
+    <!-- Daily Meditation Component -->
+    <section class="relative mx-auto max-w-5xl px-6 pb-24 z-10">
+      <DailyMeditation />
     </section>
 
     <!-- Footer minimal -->
