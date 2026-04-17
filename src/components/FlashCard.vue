@@ -1,89 +1,29 @@
-<script setup>
-import { ref } from 'vue'
-
-defineProps({
-  front: { type: Object, required: true },
-  back: { type: Object, required: true },
-  accent: { type: String, default: 'sky' },
-})
-
-const flipped = ref(false)
-
-function toggle() {
-  flipped.value = !flipped.value
-}
-
-const accentMap = {
-  sky: 'from-sky-100 via-white to-sky-50',
-  violet: 'from-violet-100 via-white to-violet-50',
-  amber: 'from-amber-100 via-white to-amber-50',
-  rose: 'from-rose-100 via-white to-rose-50',
-  emerald: 'from-emerald-100 via-white to-emerald-50',
-}
-</script>
-
 <template>
-  <button
-    type="button"
-    class="flip-card group relative h-64 w-full cursor-pointer text-left focus:outline-none"
-    :class="{ 'is-flipped': flipped }"
-    :aria-pressed="flipped"
-    @click="toggle"
-    @keydown.space.prevent="toggle"
-  >
-    <span class="flip-card-inner block h-full w-full rounded-3xl">
-      <span
-        class="flip-face surface-card flex h-full w-full flex-col justify-between p-6 transition group-hover:shadow-sky-500/20 group-hover:-translate-y-1"
-        :class="[`bg-gradient-to-br ${accentMap[accent] ?? accentMap.sky}`]"
-      >
-        <span class="flex items-start justify-between gap-4">
-          <span class="chip">{{ front.tag ?? 'Flashcard' }}</span>
-          <span
-            class="grid h-10 w-10 place-items-center rounded-full bg-white/90 text-lg shadow-sm ring-1 ring-slate-100"
-            aria-hidden="true"
-          >
-            {{ front.emoji ?? '✨' }}
-          </span>
-        </span>
-        <span class="block">
-          <span class="font-display block text-2xl font-bold leading-tight text-slate-900">
-            {{ front.title }}
-          </span>
-          <span v-if="front.subtitle" class="mt-2 block text-sm text-slate-600">
-            {{ front.subtitle }}
-          </span>
-        </span>
-        <span class="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-          <span>Toca para girar</span>
-          <span aria-hidden="true">↺</span>
-        </span>
-      </span>
+  <div class="group w-80 h-96 [perspective:1000px] cursor-pointer">
+    <div class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+      
+      <!-- Front of card -->
+      <div class="absolute inset-0 w-full h-full bg-slate-800 rounded-3xl p-8 flex flex-col items-center justify-center border border-white/5 shadow-xl [backface-visibility:hidden]">
+        <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 text-blue-400 rotate-12">
+          <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-white text-center">¿Qué es Vue 3?</h3>
+        <p class="mt-4 text-sm text-gray-400 font-medium tracking-wider uppercase">Pasa el cursor ➔</p>
+      </div>
 
-      <span
-        class="flip-face flip-back surface-card flex h-full w-full flex-col justify-between bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6 text-white"
-      >
-        <span class="flex items-start justify-between gap-4">
-          <span class="chip border-white/30 bg-white/10 text-white">{{ back.tag ?? 'Detalle' }}</span>
-          <span
-            class="grid h-10 w-10 place-items-center rounded-full bg-white/15 text-lg"
-            aria-hidden="true"
-          >
-            📖
-          </span>
-        </span>
-        <span class="block">
-          <span class="block text-base leading-7 text-white/90">
-            {{ back.text }}
-          </span>
-          <span v-if="back.reference" class="mt-3 block text-xs font-semibold uppercase tracking-[0.2em] text-amber-200">
-            {{ back.reference }}
-          </span>
-        </span>
-        <span class="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
-          <span>Volver</span>
-          <span aria-hidden="true">↻</span>
-        </span>
-      </span>
-    </span>
-  </button>
+      <!-- Back of card -->
+      <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 to-cyan-500 rounded-3xl p-8 flex flex-col items-center justify-center text-center shadow-xl [transform:rotateY(180deg)] [backface-visibility:hidden]">
+        <h3 class="text-2xl font-black text-white mb-4">Vue.js 3</h3>
+        <p class="text-blue-50 text-base leading-relaxed">
+          Es un framework progresivo de JavaScript utilizado para construir interfaces de usuario e interfaces de aplicaciones web de una sola página (SPA).
+        </p>
+      </div>
+
+    </div>
+  </div>
 </template>
+
+<script setup>
+</script>
