@@ -99,42 +99,113 @@ const relacionados = [
 </script>
 
 <template>
-  <!-- Hero centrado -->
+  <!-- Hero centrado oscuro -->
   <section class="relative overflow-hidden">
-    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-      <svg class="cloud-drift absolute -top-10 left-[5%] w-[45vw] text-white/80" viewBox="0 0 600 200" fill="currentColor">
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-slate-900 via-sky-900 to-violet-900"
+      aria-hidden="true"
+    ></div>
+    <div class="pointer-events-none absolute inset-0 opacity-20" aria-hidden="true">
+      <svg class="cloud-drift absolute -top-6 left-[-5%] w-[60vw] text-white" viewBox="0 0 600 200" fill="currentColor">
         <path d="M60 130c-22 0-40-16-40-38s18-38 40-38c4 0 8 .5 12 1.4C80 36 107 18 140 18c38 0 69 26 76 60h8c22 0 40 16 40 38s-18 38-40 38H60z" />
       </svg>
-      <svg class="cloud-drift-slow absolute top-20 right-[0%] w-[40vw] text-sky-200/70" viewBox="0 0 600 200" fill="currentColor">
+      <svg class="cloud-drift-slow absolute bottom-0 right-[-5%] w-[55vw] text-sky-300" viewBox="0 0 600 200" fill="currentColor">
         <path d="M60 130c-22 0-40-16-40-38s18-38 40-38c4 0 8 .5 12 1.4C80 36 107 18 140 18c38 0 69 26 76 60h8c22 0 40 16 40 38s-18 38-40 38H60z" />
       </svg>
     </div>
 
-    <div class="relative mx-auto flex max-w-5xl flex-col items-center px-6 py-20 text-center sm:px-8 sm:py-28">
-      <span class="chip">
+    <div class="relative mx-auto flex max-w-5xl flex-col items-center px-6 py-24 text-center sm:px-8 sm:py-32">
+      <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-white backdrop-blur">
         <span aria-hidden="true">✝️</span>
         Juan 14:6
       </span>
-      <h1 class="font-display mt-6 text-5xl font-black leading-[1.05] tracking-tight text-slate-900 drop-shadow-[0_6px_24px_rgba(56,189,248,0.25)] sm:text-6xl lg:text-7xl">
-        Jesús es el
-        <span class="text-white drop-shadow-[0_6px_22px_rgba(15,23,42,0.4)]">camino</span>
+
+      <h1
+        class="font-display mt-8 text-[2.75rem] font-black leading-[1] tracking-tight text-white drop-shadow-[0_10px_30px_rgba(14,165,233,0.35)] sm:text-7xl lg:text-[5.5rem]"
+      >
+        Jesús es el camino
       </h1>
 
-      <p class="font-display mt-8 max-w-3xl text-2xl italic leading-relaxed text-slate-700 sm:text-3xl">
-        “Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí.”
-      </p>
-      <p class="mt-4 text-sm font-semibold uppercase tracking-[0.24em] text-sky-600">
-        Juan 14:6 · Reina-Valera 1960
-      </p>
+      <figure class="mt-10 max-w-3xl">
+        <blockquote class="font-display text-xl italic leading-relaxed text-white/95 sm:text-2xl lg:text-3xl">
+          “Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí.”
+        </blockquote>
+        <figcaption class="mt-4 text-xs font-semibold uppercase tracking-[0.28em] text-sky-200">
+          Juan 14:6 · Reina-Valera 1960
+        </figcaption>
+      </figure>
 
       <div class="mt-10 flex flex-wrap justify-center gap-3">
-        <RouterLink to="/jesus" class="btn-primary">
+        <a href="#significado" class="btn-accent">
+          Ver el significado
+          <span aria-hidden="true">↓</span>
+        </a>
+        <RouterLink to="/jesus" class="btn-ghost bg-white/15 text-white hover:bg-white/25 border-white/25">
           Conocer más a Jesús
-          <span aria-hidden="true">→</span>
         </RouterLink>
-        <RouterLink to="/biblia" class="btn-ghost">Leer la Biblia</RouterLink>
       </div>
     </div>
+  </section>
+
+  <!-- Desarrollo del versículo: qué significa -->
+  <section id="significado" class="mx-auto max-w-4xl px-6 py-16 sm:px-8 sm:py-20">
+    <div class="text-center">
+      <p class="section-heading text-sky-600">El versículo, explicado</p>
+      <h2 class="section-title mt-3">¿Qué significa Juan 14:6?</h2>
+      <p class="section-lead mx-auto text-center">
+        Jesús pronunció estas palabras la noche antes de morir, durante la última cena,
+        mientras consolaba a unos discípulos asustados por saber que Él se iba. Tomás
+        acababa de preguntar: <em>“¿cómo podemos saber el camino?”</em>. La respuesta de
+        Jesús es una de las frases más profundas de la Biblia.
+      </p>
+    </div>
+
+    <div class="mt-10 space-y-5 text-base leading-8 text-slate-700 sm:text-lg sm:leading-9">
+      <p>
+        Cuando Jesús dice <strong class="text-slate-900">“Yo soy el camino”</strong>,
+        está afirmando algo inédito: no vino a mostrar un sendero, ni a enseñar un
+        método, ni a sumar una religión más. Él mismo, como persona viva, es el camino
+        por el que llegamos a Dios. Seguirle no es cumplir un manual: es caminar con Él.
+      </p>
+      <p>
+        Al continuar con <strong class="text-slate-900">“y la verdad”</strong>, Jesús se
+        declara la realidad definitiva de Dios revelada al mundo. En medio de muchas
+        voces que proclaman verdades parciales, Él no habla <em>sobre</em> la verdad,
+        sino que <em>es</em> la Verdad. Por eso escuchar sus palabras y meditarlas
+        ordena la manera de pensar, de elegir y de vivir.
+      </p>
+      <p>
+        Cuando añade <strong class="text-slate-900">“y la vida”</strong>, habla de una
+        vida nueva que no se mide en años ni en logros. Es vida espiritual que comienza
+        hoy, cuando alguien confía en Él, y continúa más allá de la muerte física. Jesús
+        no ofrece mera supervivencia: ofrece <em>plenitud eterna</em>.
+      </p>
+      <p>
+        El cierre de la frase —
+        <strong class="text-slate-900">“nadie viene al Padre, sino por mí”</strong>— no
+        es arrogancia: es la razón de todo el evangelio. Jesús, como Hijo eterno hecho
+        hombre, es el único puente suficiente entre un Dios santo y una humanidad herida
+        por el pecado. Por eso murió y resucitó: para abrir, con su propio cuerpo, el
+        acceso al Padre.
+      </p>
+      <p>
+        Juan 14:6 condensa lo esencial del cristianismo en una sola oración:
+        <strong class="text-slate-900"
+          >el camino no es una fórmula, la verdad no es una teoría y la vida no es una
+          técnica</strong
+        >. Los tres son una misma persona, Jesucristo, que sale a buscarnos donde
+        estamos y nos lleva de regreso a casa.
+      </p>
+    </div>
+
+    <aside
+      class="mt-10 overflow-hidden rounded-3xl border border-sky-100 bg-gradient-to-br from-sky-50 via-white to-violet-50 p-6 shadow-sm sm:p-8"
+    >
+      <p class="section-heading text-sky-600">Una idea para llevarte</p>
+      <p class="font-display mt-3 text-2xl leading-relaxed text-slate-900 sm:text-3xl">
+        Jesús no te muestra el camino. <span class="text-sky-600">Él es el camino.</span>
+      </p>
+    </aside>
   </section>
 
   <!-- Contexto: el momento en que Jesús lo dijo -->
