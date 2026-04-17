@@ -58,16 +58,8 @@ async function copiarVersiculo() {
 
     <!-- Hero -->
     <section class="relative overflow-hidden w-full">
-      <!-- Glow backgrounds muy suaves (efecto de luz diurna) reducido  -->
-      <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[450px] h-[250px] bg-gradient-to-r from-sky-100/80 to-white/70 blur-[70px] rounded-full pointer-events-none"></div>
 
-      <div class="mx-auto flex max-w-4xl flex-col items-center px-6 py-24 text-center sm:py-32 relative z-10">
-        <span
-          class="inline-flex items-center gap-2 rounded-full border border-sky-100 bg-white/60 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.24em] text-sky-700 backdrop-blur-md shadow-sm"
-        >
-          <span aria-hidden="true">✝️</span>
-          Juan 14:6 · RVR 1960
-        </span>
+      <div class="mx-auto flex max-w-4xl flex-col items-center px-6 py-24 text-center sm:py-32 relative z-10 pt-16 sm:pt-20">
 
         <h1
           class="mt-10 font-display text-5xl font-black leading-[1.05] tracking-tight text-slate-800 drop-shadow-sm sm:text-6xl lg:text-7xl"
