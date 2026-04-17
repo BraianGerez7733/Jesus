@@ -1,9 +1,12 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
+import { useTheme } from '../composables/useTheme.js'
 
 const route = useRoute()
 const open = ref(false)
+const { theme, toggle: toggleTheme } = useTheme()
+const themeLabel = computed(() => (theme.value === 'dark' ? 'Modo claro' : 'Modo oscuro'))
 
 const primary = [
   { to: '/', label: 'Inicio' },
@@ -70,21 +73,55 @@ function close() {
         </RouterLink>
       </nav>
 
-      <div class="hidden lg:block">
+      <div class="hidden items-center gap-2 lg:flex">
+        <button
+          type="button"
+          class="grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white/80 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-300 hover:text-sky-700 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-200 dark:border-white/10 dark:bg-slate-800/70 dark:text-slate-200 dark:hover:border-sky-300/50 dark:hover:text-sky-200"
+          :aria-label="themeLabel"
+          :title="themeLabel"
+          aria-live="polite"
+          @click="toggleTheme"
+        >
+          <svg v-if="theme === 'dark'" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" fill="currentColor" />
+            <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 13.5A9 9 0 1 1 10.5 3a7 7 0 0 0 10.5 10.5z" fill="currentColor" />
+          </svg>
+        </button>
+
         <RouterLink to="/contacto" class="btn-primary">
           Escríbenos
           <span aria-hidden="true">→</span>
         </RouterLink>
       </div>
 
-      <button
-        type="button"
-        class="grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white/80 text-slate-700 shadow-sm transition hover:border-sky-300 hover:text-sky-700 lg:hidden"
-        :aria-expanded="open"
-        aria-controls="mobile-menu"
-        aria-label="Abrir menú"
-        @click="open = !open"
-      >
+      <div class="flex items-center gap-2 lg:hidden">
+        <button
+          type="button"
+          class="grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white/80 text-slate-700 shadow-sm transition hover:border-sky-300 hover:text-sky-700 dark:border-white/10 dark:bg-slate-800/70 dark:text-slate-200"
+          :aria-label="themeLabel"
+          :title="themeLabel"
+          @click="toggleTheme"
+        >
+          <svg v-if="theme === 'dark'" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" fill="currentColor" />
+            <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <svg v-else width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 13.5A9 9 0 1 1 10.5 3a7 7 0 0 0 10.5 10.5z" fill="currentColor" />
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          class="grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white/80 text-slate-700 shadow-sm transition hover:border-sky-300 hover:text-sky-700 dark:border-white/10 dark:bg-slate-800/70 dark:text-slate-200"
+          :aria-expanded="open"
+          aria-controls="mobile-menu"
+          aria-label="Abrir menú"
+          @click="open = !open"
+        >
         <svg v-if="!open" width="20" height="20" viewBox="0 0 24 24" fill="none">
           <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
         </svg>
@@ -92,6 +129,7 @@ function close() {
           <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
         </svg>
       </button>
+      </div>
     </div>
 
     <transition name="fade">

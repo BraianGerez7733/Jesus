@@ -13,12 +13,13 @@ body {
   min-height: 100vh;
   color: #1e293b;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  background-color: #f0f9ff;
+  background-color: #e0f2fe;
   background-image:
-    radial-gradient(circle at 12% -10%, rgba(186, 230, 253, 0.9), transparent 45%),
-    radial-gradient(circle at 90% 0%, rgba(196, 181, 253, 0.7), transparent 50%),
-    radial-gradient(circle at 30% 100%, rgba(253, 230, 138, 0.45), transparent 55%),
-    linear-gradient(180deg, #f0f9ff 0%, #eef2ff 55%, #fff7ed 100%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(240, 249, 255, 0.4) 55%, rgba(255, 247, 237, 0.35) 100%),
+    url("https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=1920&q=80");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
@@ -153,4 +154,108 @@ body {
   .flip-card-inner {
     transition: none;
   }
+}
+
+/* ─────────────────────────────────────────────────────
+   Dark mode (class "dark" on <html>)
+   Overrides globales para que toda la app se adapte
+   sin tocar cada componente individual.
+   ───────────────────────────────────────────────────── */
+html.dark body {
+  color: #e2e8f0;
+  background-color: #020617;
+  background-image:
+    linear-gradient(180deg, rgba(2, 6, 23, 0.82) 0%, rgba(15, 23, 42, 0.88) 55%, rgba(2, 6, 23, 0.92) 100%),
+    url("https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=1920&q=80");
+}
+
+/* Fondos blancos translúcidos → slate oscuros */
+html.dark .bg-white { background-color: #0f172a; }
+html.dark .bg-white\/95 { background-color: rgba(15, 23, 42, 0.95); }
+html.dark .bg-white\/90 { background-color: rgba(15, 23, 42, 0.9); }
+html.dark .bg-white\/80 { background-color: rgba(15, 23, 42, 0.8); }
+html.dark .bg-white\/75 { background-color: rgba(15, 23, 42, 0.75); }
+html.dark .bg-white\/70 { background-color: rgba(15, 23, 42, 0.7); }
+html.dark .bg-white\/55 { background-color: rgba(15, 23, 42, 0.55); }
+html.dark .bg-white\/40 { background-color: rgba(15, 23, 42, 0.4); }
+
+/* Tonos pastel claros → versión sobria oscura */
+html.dark .bg-sky-50 { background-color: rgba(56, 189, 248, 0.14); }
+html.dark .bg-sky-50\/60 { background-color: rgba(56, 189, 248, 0.14); }
+html.dark .bg-violet-50 { background-color: rgba(167, 139, 250, 0.14); }
+html.dark .bg-amber-50 { background-color: rgba(251, 191, 36, 0.14); }
+html.dark .bg-rose-50 { background-color: rgba(244, 114, 182, 0.14); }
+html.dark .bg-emerald-50 { background-color: rgba(52, 211, 153, 0.14); }
+html.dark .bg-slate-50 { background-color: rgba(148, 163, 184, 0.08); }
+html.dark .bg-slate-50\/40 { background-color: rgba(148, 163, 184, 0.06); }
+html.dark .bg-slate-100 { background-color: rgba(148, 163, 184, 0.1); }
+
+/* Bordes claros → bordes sobrios oscuros */
+html.dark .border-white { border-color: rgba(148, 163, 184, 0.15); }
+html.dark .border-white\/70 { border-color: rgba(148, 163, 184, 0.15); }
+html.dark .border-white\/60 { border-color: rgba(148, 163, 184, 0.12); }
+html.dark .border-slate-100 { border-color: rgba(148, 163, 184, 0.15); }
+html.dark .border-slate-200 { border-color: rgba(148, 163, 184, 0.2); }
+html.dark .divide-white\/60 > :not([hidden]) ~ :not([hidden]) { border-color: rgba(148, 163, 184, 0.12); }
+
+/* Texto */
+html.dark .text-slate-900 { color: #f1f5f9; }
+html.dark .text-slate-800 { color: #e2e8f0; }
+html.dark .text-slate-700 { color: #cbd5e1; }
+html.dark .text-slate-600 { color: #94a3b8; }
+html.dark .text-slate-500 { color: #94a3b8; }
+html.dark .text-slate-400 { color: #64748b; }
+
+/* Inputs y placeholders */
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background-color: rgba(15, 23, 42, 0.75);
+  color: #f1f5f9;
+  border-color: rgba(148, 163, 184, 0.2);
+}
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: rgba(148, 163, 184, 0.65);
+}
+
+/* Componentes propios */
+html.dark .surface-card,
+html.dark .surface-soft,
+html.dark .page-card,
+html.dark .page-panel {
+  background-color: rgba(15, 23, 42, 0.72);
+  border-color: rgba(148, 163, 184, 0.18);
+  box-shadow: 0 20px 50px -30px rgba(2, 6, 23, 0.7);
+}
+
+html.dark .btn-ghost {
+  background-color: rgba(15, 23, 42, 0.6);
+  color: #cbd5e1;
+  border-color: rgba(148, 163, 184, 0.22);
+}
+html.dark .btn-ghost:hover {
+  color: #7dd3fc;
+  border-color: rgba(56, 189, 248, 0.45);
+}
+
+/* Chips con acentos */
+html.dark .chip { background-color: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.3); color: #bae6fd; }
+html.dark .chip-violet { background-color: rgba(167, 139, 250, 0.15); border-color: rgba(167, 139, 250, 0.3); color: #ddd6fe; }
+html.dark .chip-amber { background-color: rgba(251, 191, 36, 0.15); border-color: rgba(251, 191, 36, 0.3); color: #fde68a; }
+html.dark .chip-rose { background-color: rgba(244, 114, 182, 0.15); border-color: rgba(244, 114, 182, 0.3); color: #fbcfe8; }
+
+/* Header y footer conservan transparencia, pero sobre fondo oscuro */
+html.dark header {
+  background-color: rgba(15, 23, 42, 0.7) !important;
+  border-bottom-color: rgba(148, 163, 184, 0.15);
+}
+html.dark footer {
+  background-color: rgba(15, 23, 42, 0.7);
+}
+
+/* Nubes decorativas: reducir protagonismo en modo oscuro */
+html.dark .cloud-drift,
+html.dark .cloud-drift-slow {
+  opacity: 0.35;
 }
