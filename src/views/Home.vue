@@ -57,9 +57,9 @@ const flashcardsPreview = [
 </script>
 
 <template>
-  <div class="relative bg-cover bg-top bg-fixed min-h-screen" style="background-image: url('https://billiken.wpenginepowered.com/wp-content/uploads/2022/01/nube-fb.jpg');">
-    <!-- Overlay para mantener legibilidad -->
-    <div class="absolute inset-0 bg-white/60 backdrop-blur-[1px] pointer-events-none"></div>
+  <div class="relative bg-[length:100%_auto] bg-repeat-y sm:bg-cover bg-center min-h-screen" style="background-image: url('https://billiken.wpenginepowered.com/wp-content/uploads/2022/01/nube-fb.jpg');">
+    <!-- Overlay oscurecido y más transparente para que resalten los azules de las nubes -->
+    <div class="absolute inset-0 bg-gradient-to-b from-sky-900/10 via-white/40 to-white/70 pointer-events-none"></div>
     <div class="relative z-10">
       <!-- Hero -->
   <section class="relative overflow-hidden">
