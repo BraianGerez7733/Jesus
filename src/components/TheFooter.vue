@@ -43,7 +43,7 @@ const cols = [
   <footer class="relative z-10 mt-16 border-t border-white/60 bg-white/70 backdrop-blur-xl">
     <div class="mx-auto grid max-w-7xl gap-10 px-8 py-14 lg:grid-cols-[1.2fr_2fr]">
       <div>
-        <p class="section-heading text-sky-600">Jesús el camino</p>
+        <p class="section-heading text-sky-600">Jesús es el camino</p>
         <h3 class="font-display mt-3 text-3xl font-bold text-slate-900">
           Una forma clara, visual y cercana de conocer la Biblia.
         </h3>
@@ -81,7 +81,7 @@ const cols = [
 
     <div class="border-t border-white/60 bg-gradient-to-r from-sky-50 via-white to-violet-50">
       <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-8 py-5 text-xs text-slate-500 sm:flex-row">
-        <p>© {{ year }} Jesús el camino · Contenido educativo con base en la Reina-Valera 1960.</p>
+        <p>© {{ year }} Jesús es el camino · Contenido educativo con base en la Reina-Valera 1960.</p>
         <p class="flex items-center gap-2">
           <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
           Gratis · Sin publicidad · Apto para todas las edades

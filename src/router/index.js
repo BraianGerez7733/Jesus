@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   { path: '/', name: 'home', component: () => import('../views/Home.vue'), meta: { title: 'Inicio' } },
+  { path: '/jesus-es-el-camino', name: 'jesus-es-el-camino', component: () => import('../views/JesusEsElCamino.vue'), meta: { title: 'Jesús es el camino' } },
   { path: '/biblia', name: 'biblia', component: () => import('../views/Biblia.vue'), meta: { title: 'La Biblia' } },
   { path: '/antiguo-testamento', name: 'antiguo-testamento', component: () => import('../views/AntiguoTestamento.vue'), meta: { title: 'Antiguo Testamento' } },
   { path: '/nuevo-testamento', name: 'nuevo-testamento', component: () => import('../views/NuevoTestamento.vue'), meta: { title: 'Nuevo Testamento' } },
@@ -28,7 +29,7 @@ const router = createRouter({
 })
 
 router.afterEach((to) => {
-  const base = 'Jesús el camino'
+  const base = 'Jesús es el camino'
   document.title = to.meta?.title ? `${to.meta.title} · ${base}` : base
 })
 

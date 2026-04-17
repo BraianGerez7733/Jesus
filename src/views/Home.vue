@@ -66,8 +66,24 @@ const flashcardsPreview = [
           Una app interactiva sobre la Biblia
         </span>
         <h1 class="font-display mt-6 text-5xl font-bold leading-[1.05] tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
-          Jesús el <span class="text-white drop-shadow-[0_4px_18px_rgba(15,23,42,0.35)]">camino</span>
+          <RouterLink
+            to="/jesus-es-el-camino"
+            class="group inline-flex flex-wrap items-baseline gap-x-3 transition hover:text-sky-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-200 focus-visible:ring-offset-4 focus-visible:ring-offset-white rounded-2xl"
+            aria-label="Jesús es el camino — abrir página completa"
+          >
+            <span>Jesús es el</span>
+            <span class="text-white drop-shadow-[0_4px_18px_rgba(15,23,42,0.35)] transition group-hover:translate-y-[-2px]">camino</span>
+            <span
+              aria-hidden="true"
+              class="ml-1 inline-block translate-y-[-4px] text-3xl text-sky-500 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100 sm:text-4xl"
+            >
+              →
+            </span>
+          </RouterLink>
         </h1>
+        <p class="mt-3 text-xs font-semibold uppercase tracking-[0.22em] text-sky-600">
+          Toca el título para leer Juan 14:6
+        </p>
         <p class="mt-6 max-w-xl text-lg leading-8 text-slate-600 sm:text-xl">
           Una experiencia clara y visual para <strong class="text-slate-900">leer la Biblia</strong>,
           conocer a <strong class="text-slate-900">Jesús</strong> y <strong class="text-slate-900">comparar las religiones</strong>

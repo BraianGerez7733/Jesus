@@ -46,7 +46,7 @@ function close() {
         </span>
         <span>
           <span class="block font-display text-lg font-bold leading-none text-slate-900">
-            Jesús el camino
+            Jesús es el camino
           </span>
           <span class="mt-1 block text-[11px] font-semibold uppercase tracking-[0.24em] text-sky-600">
             Biblia · Religiones · Interactivo
