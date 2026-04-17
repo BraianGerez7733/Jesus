@@ -163,7 +163,7 @@ const onTouchEndLocal = () => {
       @touchmove="onTouchMoveLocal"
       @touchend="onTouchEndLocal"
     >
-      <div class="relative w-full h-[50vh] max-w-md perspective-3000">
+      <div class="relative w-full h-[50vh] max-w-2xl perspective-3000">
         <div 
           :class="['relative w-full h-full transition-all duration-700 transform-style-3d cursor-pointer', 
             isFlipped ? 'rotate-y-180' : '',
@@ -235,7 +235,7 @@ const onTouchEndLocal = () => {
 
     <!-- Controles y Progreso -->
     <footer :class="['relative z-50 px-8 pt-6 pb-12 transition-all duration-500 border-t', darkMode ? 'bg-[#0f172a]/80 border-slate-800/60' : 'bg-white border-slate-100 shadow-[0_-15px_40px_rgba(0,0,0,0.04)]']">
-      <div class="max-w-md mx-auto flex items-center justify-between">
+      <div class="max-w-2xl mx-auto flex items-center justify-between">
         <button 
           @click="handlePrev" 
           :class="['w-12 h-12 flex items-center justify-center rounded-2xl transition-all active:scale-90', darkMode ? 'bg-slate-800 text-slate-400 hover:text-white' : 'bg-slate-100 text-slate-500 hover:text-indigo-500']"
