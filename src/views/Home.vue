@@ -57,7 +57,7 @@ const flashcardsPreview = [
 </script>
 
 <template>
-  <div class="relative bg-cover bg-top bg-fixed min-h-screen" style="background-image: url('/fondo.jpg');">
+  <div class="relative bg-cover bg-top bg-fixed min-h-screen" style="background-image: url('https://billiken.wpenginepowered.com/wp-content/uploads/2022/01/nube-fb.jpg');">
     <!-- Overlay para mantener legibilidad -->
     <div class="absolute inset-0 bg-white/60 backdrop-blur-[1px] pointer-events-none"></div>
     <div class="relative z-10">
