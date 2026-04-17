@@ -13,10 +13,10 @@ body {
   min-height: 100vh;
   color: #1e293b;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  background-color: #f0f9ff;
+  background-color: #cfe8ff;
   background-image:
-    linear-gradient(180deg, rgba(240, 249, 255, 0.55) 0%, rgba(245, 243, 255, 0.7) 55%, rgba(254, 243, 226, 0.6) 100%),
-    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80");
+    linear-gradient(180deg, rgba(240, 249, 255, 0.35) 0%, rgba(245, 243, 255, 0.45) 55%, rgba(255, 247, 237, 0.45) 100%),
+    url("https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=1920&q=80");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
