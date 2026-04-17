@@ -50,8 +50,7 @@ async function copiarVersiculo() {
         class="absolute inset-0 bg-cover bg-center"
         style="background-image: url('https://esferacomunicacional.ar/wp-content/uploads/2021/03/cumulus_tipos-de-nubes.jpg');"
       ></div>
-      <!-- Capa overlay blanca para mantener altísima legibilidad -->
-      <div class="absolute inset-0 bg-[#FDFDFD]/85 backdrop-blur-[2px]"></div>
+      <!-- Capa overlay retirada temporalmente para ver la imagen cruda -->
     </div>
 
     <!-- Contenedor principal que se eleva sobre el fondo -->
