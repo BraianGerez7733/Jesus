@@ -122,7 +122,7 @@ const onTouchEndLocal = () => {
 </script>
 
 <template>
-  <div :class="['relative w-[95%] md:w-[90%] max-w-5xl mx-auto h-[650px] flex flex-col transition-all duration-700 overflow-hidden rounded-[2.5rem] shadow-2xl my-20 border', darkMode ? 'bg-[#0b1120] text-slate-200 border-slate-800' : 'bg-slate-50 text-slate-800 border-slate-200']">
+  <div :class="['relative w-[95%] md:w-full max-w-5xl mx-auto h-[650px] flex flex-col transition-all duration-700 overflow-hidden rounded-[2.5rem] shadow-2xl my-20 border', darkMode ? 'bg-[#0b1120] text-slate-200 border-slate-800' : 'bg-slate-50 text-slate-800 border-slate-200']">
     
     <!-- Elementos decorativos de fondo -->
     <div :class="['absolute top-[-10%] left-[-10%] w-[60%] h-[50%] rounded-full blur-[120px] opacity-15 pointer-events-none', darkMode ? 'bg-indigo-600' : 'bg-indigo-300']"></div>
@@ -163,7 +163,7 @@ const onTouchEndLocal = () => {
       @touchmove="onTouchMoveLocal"
       @touchend="onTouchEndLocal"
     >
-      <div class="relative w-full h-[50vh] max-w-4xl perspective-3000">
+      <div class="relative w-[95%] md:w-[95%] h-[50vh] perspective-3000">
         <div 
           :class="['relative w-full h-full transition-all duration-700 transform-style-3d cursor-pointer', 
             isFlipped ? 'rotate-y-180' : '',
