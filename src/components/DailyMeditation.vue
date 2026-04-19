@@ -122,7 +122,7 @@ const onTouchEndLocal = () => {
 </script>
 
 <template>
-  <div :class="['relative w-[90%] md:w-2/3 lg:w-2/3 mx-auto h-[650px] flex flex-col transition-all duration-700 overflow-hidden rounded-[2.5rem] shadow-2xl my-20 border', darkMode ? 'bg-[#0b1120] text-slate-200 border-slate-800' : 'bg-slate-50 text-slate-800 border-slate-200']">
+  <div :class="['relative w-[90%] md:w-full mx-auto h-[650px] flex flex-col transition-all duration-700 overflow-hidden rounded-[2.5rem] shadow-2xl my-20 border', darkMode ? 'bg-[#0b1120] text-slate-200 border-slate-800' : 'bg-slate-50 text-slate-800 border-slate-200']">
     
     <!-- Elementos decorativos de fondo -->
     <div :class="['absolute top-[-10%] left-[-10%] w-[60%] h-[50%] rounded-full blur-[120px] opacity-15 pointer-events-none', darkMode ? 'bg-indigo-600' : 'bg-indigo-300']"></div>
