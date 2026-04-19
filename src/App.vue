@@ -193,7 +193,7 @@ async function copiarVersiculo() {
     </section>
 
     <!-- Daily Meditation Component -->
-    <section class="relative mx-auto w-full px-6 pb-24 z-10">
+    <section class="relative mx-auto max-w-5xl px-6 pb-24 z-10">
       <DailyMeditation />
     </section>
 
