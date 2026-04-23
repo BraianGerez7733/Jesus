@@ -45,13 +45,15 @@ async function copiarVersiculo() {
   <!-- Claro, aireado, elegante (Light Theme) con fondo de nubes -->
   <main class="min-h-screen text-slate-600 font-sans selection:bg-indigo-500/20 relative">
     
-    <!-- Fondo Fijo de Nubes -->
-    <div class="fixed inset-0 z-0 pointer-events-none">
+    <!-- Fondo de Nubes en Movimiento -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
       <div 
         class="absolute inset-0 bg-cover bg-center"
         style="background-image: url('https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=2000&q=80');"
       ></div>
-      <!-- Capa overlay retirada temporalmente para ver la imagen cruda -->
+      <div class="absolute -inset-[8%] cloud-layer cloud-layer-1"></div>
+      <div class="absolute -inset-[10%] cloud-layer cloud-layer-2"></div>
+      <div class="absolute inset-0 bg-white/10"></div>
     </div>
 
     <!-- Contenedor principal que se eleva sobre el fondo -->
@@ -205,3 +207,42 @@ async function copiarVersiculo() {
     </div>
   </main>
 </template>
+
+<style scoped>
+.cloud-layer {
+  background-image: url('https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=2000&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  will-change: transform;
+}
+
+.cloud-layer-1 {
+  opacity: 0.22;
+  animation: driftClouds 45s ease-in-out infinite alternate;
+}
+
+.cloud-layer-2 {
+  opacity: 0.14;
+  filter: blur(2px);
+  animation: driftCloudsReverse 70s ease-in-out infinite alternate;
+}
+
+@keyframes driftClouds {
+  0% {
+    transform: translateX(0) translateY(0) scale(1.08);
+  }
+  100% {
+    transform: translateX(-3%) translateY(1%) scale(1.12);
+  }
+}
+
+@keyframes driftCloudsReverse {
+  0% {
+    transform: translateX(0) translateY(0) scale(1.1);
+  }
+  100% {
+    transform: translateX(3%) translateY(-1%) scale(1.14);
+  }
+}
+</style>
