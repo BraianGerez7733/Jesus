@@ -49,7 +49,7 @@ async function copiarVersiculo() {
     <div class="fixed inset-0 z-0 pointer-events-none">
       <div 
         class="absolute inset-0 bg-cover bg-center"
-        style="background-image: url('https://esferacomunicacional.ar/wp-content/uploads/2021/03/cumulus_tipos-de-nubes.jpg');"
+        style="background-image: url('https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=2000&q=80');"
       ></div>
       <!-- Capa overlay retirada temporalmente para ver la imagen cruda -->
     </div>
@@ -101,10 +101,9 @@ async function copiarVersiculo() {
     <!-- Cloud Banner -->
     <div class="mx-auto max-w-5xl px-6 py-8 relative z-10">
       <div class="w-full h-64 sm:h-80 md:h-96 overflow-hidden rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-100 relative group">
-        <!-- Reemplaza esta URL de Unsplash por tu archivo local si lo deseas (ej: src="/tu-foto.jpg") -->
         <img 
-          src="https://images.unsplash.com/photo-1611928482473-7b27d24eab80?auto=format&fit=crop&w=2000&q=80" 
-          alt="Cielo azul con nubes blancas" 
+          src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2000&q=80" 
+          alt="Nubes iluminadas sobre un cielo sereno" 
           class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 ease-out"
         />
       </div>
