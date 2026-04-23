@@ -42,11 +42,11 @@ async function copiarVersiculo() {
 <template>
   <main class="min-h-screen text-slate-600 font-sans relative">
 
-    <!-- YOUTUBE VIDEO BACKGROUND -->
-    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+    <!-- YOUTUBE VIDEO BACKGROUND FULLSCREEN -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-sky-200">
       <iframe
-        class="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2"
-        src="https://www.youtube.com/embed/J3E6ULw28d0?autoplay=1&mute=1&loop=1&playlist=J3E6ULw28d0&controls=0&showinfo=0&modestbranding=1"
+        class="youtube-bg"
+        src="https://www.youtube.com/embed/2xeQsAyT5-c?autoplay=1&mute=1&loop=1&playlist=2xeQsAyT5-c&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0"
         frameborder="0"
         allow="autoplay; fullscreen"
       ></iframe>
@@ -78,3 +78,17 @@ async function copiarVersiculo() {
     </div>
   </main>
 </template>
+
+<style scoped>
+.youtube-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 177.77vh;
+  height: 100vh;
+  min-width: 100vw;
+  min-height: 56.25vw;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+</style>
