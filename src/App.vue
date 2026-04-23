@@ -63,10 +63,9 @@ async function copiarVersiculo() {
       <div class="mx-auto flex max-w-4xl flex-col items-center px-6 py-24 text-center sm:py-32 relative z-10 pt-16 sm:pt-20">
 
         <h1
-          class="mt-10 font-display text-5xl font-black leading-[1.05] tracking-tight text-slate-800 drop-shadow-sm sm:text-6xl lg:text-7xl"
+          class="mt-10 font-display text-5xl font-black leading-[1.05] tracking-tight text-white drop-shadow-sm sm:text-6xl lg:text-7xl"
         >
-          Jesús es el
-          <span class="bg-gradient-to-r from-indigo-500 via-violet-500 to-pink-500 bg-clip-text text-transparent">camino</span>
+          Jesús es el camino
         </h1>
 
         <figure class="mt-10 max-w-2xl">
