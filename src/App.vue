@@ -16,12 +16,16 @@ async function copiarVersiculo() {
 
 <template>
   <main class="min-h-screen text-white font-sans relative overflow-hidden">
-    <!-- Fondo full screen -->
+    <!-- Fondo full screen con video -->
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-sky-300">
-      <div
-        class="absolute inset-0 bg-cover bg-center scale-110"
-        style="background-image: url('https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?auto=format&fit=crop&w=2000&q=80');"
-      ></div>
+      <iframe
+        class="youtube-bg"
+        src="https://www.youtube.com/embed/2xeQsAyT5-c?autoplay=1&mute=1&loop=1&playlist=2xeQsAyT5-c&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0"
+        title="Moving clouds background"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+        referrerpolicy="strict-origin-when-cross-origin"
+      ></iframe>
       <div class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(7,18,48,0.18),rgba(7,18,48,0.34),rgba(7,18,48,0.25))]"></div>
     </div>
 
@@ -115,3 +119,16 @@ async function copiarVersiculo() {
     </div>
   </main>
 </template>
+
+<style scoped>
+.youtube-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 177.77777778vh;
+  height: 100vh;
+  min-width: 100vw;
+  min-height: 56.25vw;
+  transform: translate(-50%, -50%);
+}
+</style>
