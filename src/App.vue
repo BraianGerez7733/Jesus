@@ -3,6 +3,65 @@ import { ref } from 'vue'
 
 const copiado = ref(false)
 const mostrarRespuesta = ref(false)
+const tareaActual = ref(0)
+
+const recursos = [
+  {
+    icono: '📖',
+    titulo: 'Versículo diario',
+    descripcion: 'Una palabra bíblica para leer, meditar y guardar durante el día.',
+  },
+  {
+    icono: '🙏',
+    titulo: 'Oración breve',
+    descripcion: 'Una oración sencilla para comenzar el día poniendo la mirada en Dios.',
+  },
+  {
+    icono: '✨',
+    titulo: 'Flashcards bíblicas',
+    descripcion: 'Preguntas y respuestas para aprender de Jesús de forma interactiva.',
+  },
+  {
+    icono: '🌿',
+    titulo: 'Reflexión familiar',
+    descripcion: 'Un pensamiento corto para conversar en casa y fortalecer la fe.',
+  },
+]
+
+const tareasDiarias = [
+  {
+    etiqueta: 'Tarea diaria 1',
+    titulo: 'Antiguo Testamento',
+    texto: 'Leer un versículo, pensar qué enseña sobre Dios y escribir una idea simple.',
+    imagen: '🌄',
+  },
+  {
+    etiqueta: 'Tarea diaria 2',
+    titulo: 'Nuevo Testamento',
+    texto: 'Mirar a Jesús en el Evangelio y reconocer una enseñanza para aplicar hoy.',
+    imagen: '✝️',
+  },
+  {
+    etiqueta: 'Tarea diaria 3',
+    titulo: 'Oración del día',
+    texto: 'Hablar con Dios con gratitud, pedir dirección y cerrar con una decisión concreta.',
+    imagen: '🕊️',
+  },
+  {
+    etiqueta: 'Tarea diaria 4',
+    titulo: 'Aprender en familia',
+    texto: 'Compartir una frase bíblica clara, amable y fácil de recordar.',
+    imagen: '👨‍👩‍👧‍👦',
+  },
+]
+
+function siguienteTarea() {
+  tareaActual.value = (tareaActual.value + 1) % tareasDiarias.length
+}
+
+function tareaAnterior() {
+  tareaActual.value = tareaActual.value === 0 ? tareasDiarias.length - 1 : tareaActual.value - 1
+}
 
 async function copiarVersiculo() {
   const texto =
@@ -144,6 +203,99 @@ async function copiarVersiculo() {
           </div>
         </div>
       </section>
+
+      <section class="mx-auto max-w-6xl pb-24">
+        <div class="rounded-[2rem] border border-white/15 bg-[#04113a]/90 p-6 shadow-[0_20px_70px_rgba(2,8,30,0.55)] backdrop-blur-md sm:p-8 lg:p-10">
+          <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p class="text-sm font-bold uppercase tracking-[0.35em] text-amber-200">Panel de recursos</p>
+              <h2 class="mt-4 text-4xl font-black leading-tight text-white sm:text-5xl">Dashboard bíblico</h2>
+              <p class="mt-5 max-w-2xl text-lg leading-relaxed text-white/80">
+                Un espacio preparado para seguir agregando recursos, actividades, reflexiones y contenido visual para las tareas diarias de la página.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3 text-center sm:min-w-[320px]">
+              <div class="rounded-3xl border border-white/10 bg-white/10 p-4">
+                <p class="text-3xl font-black text-white">4</p>
+                <p class="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-white/55">Recursos</p>
+              </div>
+              <div class="rounded-3xl border border-white/10 bg-white/10 p-4">
+                <p class="text-3xl font-black text-white">4</p>
+                <p class="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-white/55">Tareas</p>
+              </div>
+              <div class="rounded-3xl border border-white/10 bg-white/10 p-4">
+                <p class="text-3xl font-black text-white">1</p>
+                <p class="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-white/55">Carrusel</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <article
+              v-for="recurso in recursos"
+              :key="recurso.titulo"
+              class="rounded-[1.75rem] border border-white/12 bg-white/10 p-6 shadow-[0_12px_35px_rgba(0,0,0,0.2)] transition hover:-translate-y-1 hover:bg-white/15"
+            >
+              <div class="text-4xl">{{ recurso.icono }}</div>
+              <h3 class="mt-5 text-2xl font-extrabold text-white">{{ recurso.titulo }}</h3>
+              <p class="mt-3 text-base leading-relaxed text-white/75">{{ recurso.descripcion }}</p>
+            </article>
+          </div>
+
+          <div class="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div>
+              <p class="text-sm font-bold uppercase tracking-[0.35em] text-indigo-300">Carrusel visual</p>
+              <h3 class="mt-4 text-3xl font-black text-white sm:text-4xl">Tareas diarias</h3>
+              <p class="mt-5 text-lg leading-relaxed text-white/78">
+                Tarjetas visuales pensadas para acompañar el devocional diario: lectura, reflexión, oración y aprendizaje familiar.
+              </p>
+
+              <div class="mt-7 flex gap-3">
+                <button
+                  type="button"
+                  class="rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white/20"
+                  @click="tareaAnterior"
+                >
+                  Anterior
+                </button>
+                <button
+                  type="button"
+                  class="rounded-full bg-white px-5 py-3 text-sm font-extrabold uppercase tracking-[0.16em] text-[#071847] transition hover:scale-[1.02]"
+                  @click="siguienteTarea"
+                >
+                  Siguiente
+                </button>
+              </div>
+            </div>
+
+            <div class="overflow-hidden rounded-[2rem] border border-white/15 bg-white/10 p-5 shadow-[0_18px_55px_rgba(0,0,0,0.28)]">
+              <div class="daily-card min-h-[360px] rounded-[1.6rem] p-8 text-center">
+                <p class="text-sm font-black uppercase tracking-[0.3em] text-white/70">{{ tareasDiarias[tareaActual].etiqueta }}</p>
+                <div class="mt-10 text-8xl drop-shadow-[0_12px_30px_rgba(0,0,0,0.35)]">
+                  {{ tareasDiarias[tareaActual].imagen }}
+                </div>
+                <h4 class="mt-8 text-4xl font-black text-white">{{ tareasDiarias[tareaActual].titulo }}</h4>
+                <p class="mx-auto mt-5 max-w-xl text-xl leading-relaxed text-white/90">
+                  {{ tareasDiarias[tareaActual].texto }}
+                </p>
+              </div>
+
+              <div class="mt-5 flex justify-center gap-2">
+                <button
+                  v-for="(_, index) in tareasDiarias"
+                  :key="index"
+                  type="button"
+                  class="h-3 rounded-full transition-all"
+                  :class="index === tareaActual ? 'w-10 bg-white' : 'w-3 bg-white/35'"
+                  @click="tareaActual = index"
+                  :aria-label="`Ver tarea ${index + 1}`"
+                ></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
 </template>
@@ -158,5 +310,12 @@ async function copiarVersiculo() {
   min-width: 100vw;
   min-height: 56.25vw;
   transform: translate(-50%, -50%);
+}
+
+.daily-card {
+  background:
+    radial-gradient(circle at top left, rgba(251, 191, 36, 0.38), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(99, 102, 241, 0.45), transparent 36%),
+    linear-gradient(135deg, rgba(4, 17, 58, 0.95), rgba(7, 24, 71, 0.82));
 }
 </style>
