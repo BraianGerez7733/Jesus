@@ -117,274 +117,227 @@ async function copiarVersiculo() {
 </script>
 
 <template>
-  <main class="min-h-screen text-black font-sans relative overflow-hidden bg-[#f3f0df] brutal-page">
-    <!-- Fondo full screen con video -->
-    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
+  <main class="relative min-h-screen overflow-hidden bg-[#070806] text-[#f8f3e7] font-sans">
+    <div class="fixed inset-0 z-0 overflow-hidden bg-[#070806] pointer-events-none">
       <iframe
-        class="youtube-bg opacity-50 saturate-[1.35] contrast-[1.25]"
+        class="youtube-bg opacity-45 saturate-[0.85] contrast-[1.08] brightness-[0.62]"
         src="https://www.youtube.com/embed/G52dUQLxPzg?autoplay=1&mute=1&loop=1&playlist=G52dUQLxPzg&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0"
         title="Forest drone background"
         frameborder="0"
         allow="autoplay; fullscreen"
         referrerpolicy="strict-origin-when-cross-origin"
       ></iframe>
-      <div class="absolute inset-0 brutal-grid"></div>
-      <div class="absolute inset-0 bg-[#f3f0df]/58 mix-blend-screen"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(219,180,99,0.22),transparent_30%),linear-gradient(to_bottom,rgba(7,8,6,0.48),rgba(7,8,6,0.82),rgba(7,8,6,0.96))]"></div>
     </div>
 
-    <div class="relative z-10 min-h-screen px-4 sm:px-6 lg:px-10">
-      <section class="mx-auto flex max-w-7xl flex-col items-start pt-20 text-left sm:pt-24">
-        <div class="inline-flex border-[5px] border-black bg-[#ffea00] px-5 py-3 text-xl font-black uppercase tracking-[0.24em] shadow-[10px_10px_0_#000] rotate-[-1deg]">
-          Biblia · Fe · Verdad
-        </div>
+    <div class="relative z-10 min-h-screen px-5 sm:px-8 lg:px-12">
+      <header class="mx-auto flex max-w-7xl items-center justify-between py-8 text-xs uppercase tracking-[0.32em] text-[#d8b56d]/85">
+        <span>Jesús es el camino</span>
+        <span class="hidden sm:inline">Biblia · Oración · Meditación</span>
+      </header>
 
-        <h1 class="mt-10 max-w-7xl text-[4.5rem] font-black uppercase leading-[0.78] tracking-[-0.08em] text-black sm:text-[7rem] lg:text-[11rem] xl:text-[13rem]">
-          Jesús<br />es el<br />camino
-        </h1>
+      <section class="mx-auto grid max-w-7xl items-center gap-12 pt-12 pb-24 lg:min-h-[82vh] lg:grid-cols-[1.08fr_0.92fr] lg:pt-8">
+        <div>
+          <p class="mb-8 text-sm uppercase tracking-[0.42em] text-[#d8b56d]">Devocional interactivo</p>
+          <h1 class="font-serif text-6xl leading-[0.92] tracking-[-0.045em] text-[#fff7e7] sm:text-8xl lg:text-[8.5rem]">
+            Jesús es<br />el camino
+          </h1>
+          <p class="mt-8 max-w-2xl text-xl leading-relaxed text-[#f8f3e7]/78 sm:text-2xl">
+            Aprende una verdad bíblica de forma simple, visual e interactiva. Cada respuesta te ayuda a recordar quién es Jesús y por qué podemos confiar en Él.
+          </p>
 
-        <p class="mt-10 max-w-5xl border-[5px] border-black bg-white px-6 py-5 text-2xl font-black uppercase leading-tight shadow-[12px_12px_0_#000] sm:text-4xl">
-          Aprende una verdad bíblica de forma simple, visual e interactiva. Cada respuesta te ayuda a recordar quién es Jesús y por qué podemos confiar en Él.
-        </p>
-
-        <div class="mt-12 grid w-full max-w-6xl gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-          <div class="border-[6px] border-black bg-[#ff4d00] p-6 shadow-[14px_14px_0_#000] rotate-[0.6deg] sm:p-8">
-            <div class="flex items-center justify-between gap-4 border-b-[5px] border-black pb-5">
-              <p class="text-2xl font-black uppercase tracking-[-0.03em] sm:text-4xl">Flashcard bíblica</p>
-              <span class="text-5xl">✨</span>
-            </div>
-
-            <h2 class="mt-8 text-4xl font-black uppercase leading-[0.95] tracking-[-0.06em] text-black sm:text-6xl">
-              ¿Qué quiso decir Jesús cuando dijo: “Yo soy el camino”?
-            </h2>
-
-            <button
-              type="button"
-              class="mt-8 border-[5px] border-black bg-white px-7 py-4 text-xl font-black uppercase text-black shadow-[8px_8px_0_#000] transition hover:-translate-y-1 hover:shadow-[12px_12px_0_#000] active:translate-y-1 active:shadow-[4px_4px_0_#000]"
-              @click="mostrarRespuesta = !mostrarRespuesta"
-            >
-              {{ mostrarRespuesta ? 'Ocultar respuesta' : 'Ver respuesta' }}
-            </button>
-
-            <div v-if="mostrarRespuesta" class="mt-8 border-[5px] border-black bg-[#f3f0df] p-6 text-2xl font-black leading-tight text-black shadow-[8px_8px_0_#000]">
-              Jesús enseña que Él es quien nos acerca al Padre. No solo muestra una dirección: Él mismo es el camino seguro para conocer a Dios, recibir perdón y vivir con esperanza.
-            </div>
-          </div>
-
-          <div id="significado" class="border-[6px] border-black bg-[#00d084] p-6 shadow-[14px_14px_0_#000] rotate-[-0.5deg] sm:p-8">
-            <p class="text-xl font-black uppercase tracking-[0.25em]">¿Qué significa?</p>
-            <h2 class="mt-5 text-5xl font-black uppercase leading-[0.9] tracking-[-0.07em] sm:text-7xl">Una sola puerta.</h2>
-            <p class="mt-8 text-2xl font-black leading-tight text-black sm:text-3xl">
-              Jesús dijo: “Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí.” Con estas palabras nos muestra que Él es la única manera de tener una relación verdadera con Dios.
-            </p>
-            <a
-              href="#dashboard"
-              class="mt-8 inline-block border-[5px] border-black bg-black px-7 py-4 text-xl font-black uppercase text-white shadow-[8px_8px_0_#ffea00] transition hover:-translate-y-1"
-            >
-              Ver recursos
+          <div class="mt-10 flex flex-wrap gap-4">
+            <a href="#significado" class="rounded-full border border-[#d8b56d]/70 bg-[#d8b56d] px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#0b0c09] transition hover:bg-[#f0d38b]">
+              Ver significado
+            </a>
+            <a href="#dashboard" class="rounded-full border border-[#f8f3e7]/25 bg-white/8 px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#f8f3e7] backdrop-blur transition hover:bg-white/14">
+              Explorar recursos
             </a>
           </div>
         </div>
-      </section>
 
-      <section class="mx-auto mt-24 max-w-7xl pb-20 sm:mt-28 lg:mt-32">
-        <div class="border-[7px] border-black bg-[#111] text-white shadow-[16px_16px_0_#000]">
-          <div class="flex flex-col gap-5 border-b-[7px] border-black bg-[#ffea00] px-6 py-5 text-black sm:flex-row sm:items-center sm:justify-between sm:px-8">
-            <div class="flex items-center gap-4">
-              <div class="flex h-20 w-20 items-center justify-center border-[5px] border-black bg-white text-5xl shadow-[7px_7px_0_#000]">📖</div>
-              <div>
-                <p class="text-4xl font-black uppercase tracking-[-0.06em] sm:text-6xl">Biblia RVR1960</p>
-                <p class="mt-1 text-lg font-black uppercase tracking-[0.28em]">Meditación diaria</p>
-              </div>
+        <div class="rounded-[2rem] border border-white/15 bg-[#0d120d]/72 p-6 shadow-[0_28px_90px_rgba(0,0,0,0.55)] backdrop-blur-xl sm:p-8">
+          <div class="overflow-hidden rounded-[1.5rem] border border-white/10">
+            <img
+              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80"
+              alt="Bosque con luz dorada"
+              class="h-[280px] w-full object-cover sm:h-[360px]"
+            />
+          </div>
+          <div class="mt-7 flex items-start justify-between gap-6">
+            <div>
+              <p class="text-xs uppercase tracking-[0.35em] text-[#d8b56d]">Flashcard bíblica</p>
+              <h2 class="mt-3 max-w-xl font-serif text-3xl leading-tight text-[#fff7e7] sm:text-4xl">
+                ¿Qué quiso decir Jesús cuando dijo: “Yo soy el camino”?
+              </h2>
             </div>
-            <div class="text-5xl font-black">☀️ ↻</div>
+            <span class="text-4xl">✨</span>
           </div>
 
-          <div class="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
-            <div class="border-b-[7px] border-black bg-[#f3f0df] px-7 py-8 text-black lg:border-b-0 lg:border-r-[7px] lg:px-9 lg:py-10">
-              <p class="inline-block border-[4px] border-black bg-[#ff4d00] px-4 py-2 text-lg font-black uppercase tracking-[0.25em]">✣ Palabra viva</p>
-              <h3 class="mt-8 text-6xl font-black uppercase leading-[0.85] tracking-[-0.08em] sm:text-8xl">
-                Salmos<br />139:7-10
-              </h3>
+          <button
+            type="button"
+            class="mt-7 rounded-full bg-[#f8f3e7] px-7 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#10110d] transition hover:bg-[#d8b56d]"
+            @click="mostrarRespuesta = !mostrarRespuesta"
+          >
+            {{ mostrarRespuesta ? 'Ocultar respuesta' : 'Ver respuesta' }}
+          </button>
 
-              <p class="mt-8 text-3xl font-black leading-tight text-black">
+          <div v-if="mostrarRespuesta" class="mt-6 rounded-3xl border border-[#d8b56d]/25 bg-[#f8f3e7]/9 p-5 text-lg leading-relaxed text-[#f8f3e7]/86">
+            Jesús enseña que Él es quien nos acerca al Padre. No solo muestra una dirección: Él mismo es el camino seguro para conocer a Dios, recibir perdón y vivir con esperanza.
+          </div>
+        </div>
+      </section>
+
+      <section id="significado" class="mx-auto max-w-7xl pb-24">
+        <div class="grid overflow-hidden rounded-[2.25rem] border border-white/12 bg-[#0d120d]/76 shadow-[0_28px_90px_rgba(0,0,0,0.48)] backdrop-blur-xl lg:grid-cols-[0.95fr_1.05fr]">
+          <div class="relative min-h-[360px]">
+            <img
+              src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1400&q=80"
+              alt="Camino dentro de un bosque"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#070806]/70 to-transparent"></div>
+          </div>
+          <div class="p-8 sm:p-12 lg:p-16">
+            <p class="text-sm uppercase tracking-[0.42em] text-[#d8b56d]">¿Qué significa?</p>
+            <h2 class="mt-5 font-serif text-5xl leading-tight text-[#fff7e7] sm:text-6xl">Una vida orientada hacia Dios.</h2>
+            <p class="mt-7 text-xl leading-relaxed text-[#f8f3e7]/78 sm:text-2xl">
+              Jesús dijo: “Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí.” Con estas palabras nos muestra que Él es la única manera de tener una relación verdadera con Dios.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-7xl pb-24">
+        <div class="rounded-[2.25rem] border border-white/12 bg-[#0d120d]/78 shadow-[0_28px_90px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+          <div class="flex flex-col gap-6 border-b border-white/10 p-8 sm:p-10 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <p class="text-sm uppercase tracking-[0.42em] text-[#d8b56d]">Biblia RVR1960</p>
+              <h2 class="mt-3 font-serif text-4xl text-[#fff7e7] sm:text-5xl">Meditación diaria</h2>
+            </div>
+            <button
+              type="button"
+              class="w-fit rounded-full border border-[#d8b56d]/50 px-6 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#d8b56d] transition hover:bg-[#d8b56d] hover:text-[#10110d]"
+              @click="copiarVersiculo"
+            >
+              {{ copiado ? '¡Copiado!' : 'Copiar versículo' }}
+            </button>
+          </div>
+
+          <div class="grid lg:grid-cols-[1.08fr_0.92fr]">
+            <div class="p-8 sm:p-10 lg:p-14">
+              <p class="text-sm uppercase tracking-[0.36em] text-[#d8b56d]">Palabra viva</p>
+              <h3 class="mt-5 font-serif text-5xl leading-tight text-[#fff7e7] sm:text-7xl">Salmos 139:7-10</h3>
+              <p class="mt-8 text-xl leading-relaxed text-[#f8f3e7]/82 sm:text-2xl">
                 ¿A dónde me iré de tu Espíritu? ¿Y a dónde huiré de tu presencia? Si subiere a los cielos, allí estás tú; y si en el Seol hiciere mi cama, he aquí, allí tú estás. Si tomare las alas del alba, y habitare en el extremo del mar, aun allí me guiará tu mano, y me asirá tu diestra.
               </p>
-
-              <button
-                type="button"
-                class="mt-10 border-[5px] border-black bg-black px-8 py-4 text-xl font-black uppercase tracking-[0.12em] text-white shadow-[8px_8px_0_#ffea00] transition hover:-translate-y-1 active:translate-y-1"
-                @click="copiarVersiculo"
-              >
-                ✝ {{ copiado ? '¡Copiado!' : 'Presencia de Dios' }}
-              </button>
             </div>
-
-            <div class="bg-[#00d084] px-7 py-8 text-black lg:px-8 lg:py-10">
-              <div class="overflow-hidden border-[6px] border-black shadow-[10px_10px_0_#000]">
+            <div class="border-t border-white/10 p-8 sm:p-10 lg:border-l lg:border-t-0">
+              <div class="overflow-hidden rounded-[1.5rem] border border-white/10">
                 <img
                   src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
                   alt="Cielo luminoso sobre las nubes"
-                  class="h-[320px] w-full object-cover grayscale contrast-125 sm:h-[390px]"
+                  class="h-[330px] w-full object-cover"
                 />
               </div>
-
-              <div class="mt-8 border-[5px] border-black bg-white p-6 text-center shadow-[8px_8px_0_#000]">
-                <div class="text-6xl">❝</div>
-                <p class="mx-auto mt-4 max-w-md text-4xl font-black uppercase leading-[0.95] tracking-[-0.06em]">
-                  Él nunca te deja.
-                </p>
-                <p class="mt-5 text-2xl font-black leading-tight">Está contigo en todo lugar y en todo momento.</p>
-              </div>
+              <p class="mt-7 font-serif text-3xl leading-tight text-[#fff7e7]">Él nunca te deja.</p>
+              <p class="mt-3 text-lg leading-relaxed text-[#f8f3e7]/72">Está contigo en todo lugar y en todo momento.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="dashboard" class="mx-auto max-w-7xl pb-24">
-        <div class="border-[7px] border-black bg-[#f3f0df] p-5 text-black shadow-[16px_16px_0_#000] sm:p-8 lg:p-10">
-          <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <p class="inline-block border-[4px] border-black bg-[#ffea00] px-4 py-2 text-lg font-black uppercase tracking-[0.25em]">Panel de recursos</p>
-              <h2 class="mt-6 text-6xl font-black uppercase leading-[0.85] tracking-[-0.08em] sm:text-8xl lg:text-9xl">Dashboard bíblico</h2>
-              <p class="mt-6 max-w-4xl text-2xl font-black leading-tight">
-                Un espacio preparado para seguir agregando recursos, actividades, reflexiones y contenido visual para las tareas diarias de la página.
-              </p>
-            </div>
+      <section id="dashboard" class="mx-auto max-w-7xl pb-28">
+        <div class="mb-12 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p class="text-sm uppercase tracking-[0.42em] text-[#d8b56d]">Panel de recursos</p>
+            <h2 class="mt-4 font-serif text-5xl leading-tight text-[#fff7e7] sm:text-7xl">Dashboard bíblico</h2>
+          </div>
+          <p class="max-w-xl text-lg leading-relaxed text-[#f8f3e7]/70">
+            Un espacio preparado para seguir agregando recursos, actividades, reflexiones y contenido visual para las tareas diarias de la página.
+          </p>
+        </div>
 
-            <div class="grid grid-cols-3 gap-3 text-center sm:min-w-[360px]">
-              <div class="border-[5px] border-black bg-[#ff4d00] p-4 shadow-[7px_7px_0_#000]">
-                <p class="text-5xl font-black">4</p>
-                <p class="mt-1 text-sm font-black uppercase tracking-[0.16em]">Recursos</p>
-              </div>
-              <div class="border-[5px] border-black bg-[#00d084] p-4 shadow-[7px_7px_0_#000]">
-                <p class="text-5xl font-black">4</p>
-                <p class="mt-1 text-sm font-black uppercase tracking-[0.16em]">Tareas</p>
-              </div>
-              <div class="border-[5px] border-black bg-[#ffea00] p-4 shadow-[7px_7px_0_#000]">
-                <p class="text-5xl font-black">2</p>
-                <p class="mt-1 text-sm font-black uppercase tracking-[0.16em]">Carruseles</p>
-              </div>
+        <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <article
+            v-for="recurso in recursos"
+            :key="recurso.titulo"
+            class="rounded-[1.75rem] border border-white/12 bg-[#0d120d]/78 p-7 shadow-[0_18px_60px_rgba(0,0,0,0.32)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-[#d8b56d]/40"
+          >
+            <div class="text-4xl">{{ recurso.icono }}</div>
+            <h3 class="mt-6 font-serif text-3xl leading-tight text-[#fff7e7]">{{ recurso.titulo }}</h3>
+            <p class="mt-4 text-base leading-relaxed text-[#f8f3e7]/68">{{ recurso.descripcion }}</p>
+          </article>
+        </div>
+
+        <div class="mt-16 grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
+          <div class="rounded-[2rem] border border-white/12 bg-[#0d120d]/78 p-8 shadow-[0_18px_60px_rgba(0,0,0,0.32)] backdrop-blur-xl">
+            <p class="text-sm uppercase tracking-[0.42em] text-[#d8b56d]">Carrusel visual</p>
+            <h3 class="mt-4 font-serif text-5xl leading-tight text-[#fff7e7]">Tareas diarias</h3>
+            <p class="mt-5 text-lg leading-relaxed text-[#f8f3e7]/70">
+              Tarjetas visuales pensadas para acompañar el devocional diario: lectura, reflexión, oración y aprendizaje familiar.
+            </p>
+            <div class="mt-8 flex gap-3">
+              <button type="button" class="rounded-full border border-white/18 px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#f8f3e7] transition hover:bg-white/10" @click="tareaAnterior">Anterior</button>
+              <button type="button" class="rounded-full bg-[#d8b56d] px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#10110d] transition hover:bg-[#f0d38b]" @click="siguienteTarea">Siguiente</button>
             </div>
           </div>
 
-          <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            <article
-              v-for="recurso in recursos"
-              :key="recurso.titulo"
-              class="border-[5px] border-black bg-white p-6 shadow-[9px_9px_0_#000] transition hover:-translate-y-1 hover:shadow-[13px_13px_0_#000]"
-            >
-              <div class="text-6xl">{{ recurso.icono }}</div>
-              <h3 class="mt-5 text-4xl font-black uppercase leading-[0.9] tracking-[-0.06em]">{{ recurso.titulo }}</h3>
-              <p class="mt-4 text-xl font-black leading-tight">{{ recurso.descripcion }}</p>
-            </article>
-          </div>
-
-          <div class="mt-14 grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
-            <div class="border-[5px] border-black bg-black p-6 text-white shadow-[9px_9px_0_#000]">
-              <p class="text-lg font-black uppercase tracking-[0.3em] text-[#ffea00]">Carrusel visual</p>
-              <h3 class="mt-4 text-5xl font-black uppercase leading-[0.86] tracking-[-0.07em] sm:text-7xl">Tareas diarias</h3>
-              <p class="mt-5 text-2xl font-black leading-tight">
-                Tarjetas visuales pensadas para acompañar el devocional diario: lectura, reflexión, oración y aprendizaje familiar.
-              </p>
-
-              <div class="mt-8 flex flex-wrap gap-3">
-                <button
-                  type="button"
-                  class="border-[4px] border-white bg-black px-5 py-3 text-sm font-black uppercase tracking-[0.16em] text-white shadow-[6px_6px_0_#ffea00] transition hover:-translate-y-1"
-                  @click="tareaAnterior"
-                >
-                  Anterior
-                </button>
-                <button
-                  type="button"
-                  class="border-[4px] border-black bg-[#ffea00] px-5 py-3 text-sm font-black uppercase tracking-[0.16em] text-black shadow-[6px_6px_0_#fff] transition hover:-translate-y-1"
-                  @click="siguienteTarea"
-                >
-                  Siguiente
-                </button>
-              </div>
+          <div class="rounded-[2rem] border border-white/12 bg-[#11160f]/82 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.34)] backdrop-blur-xl">
+            <div class="daily-card min-h-[360px] rounded-[1.5rem] p-8 text-center">
+              <p class="text-xs uppercase tracking-[0.35em] text-[#d8b56d]">{{ tareasDiarias[tareaActual].etiqueta }}</p>
+              <div class="mt-8 text-7xl">{{ tareasDiarias[tareaActual].imagen }}</div>
+              <h4 class="mt-7 font-serif text-5xl leading-tight text-[#fff7e7]">{{ tareasDiarias[tareaActual].titulo }}</h4>
+              <p class="mx-auto mt-5 max-w-xl text-xl leading-relaxed text-[#f8f3e7]/78">{{ tareasDiarias[tareaActual].texto }}</p>
             </div>
-
-            <div class="border-[6px] border-black bg-[#ff4d00] p-5 shadow-[12px_12px_0_#000]">
-              <div class="daily-card brutal-card min-h-[390px] border-[5px] border-black p-8 text-center text-black">
-                <p class="text-lg font-black uppercase tracking-[0.28em]">{{ tareasDiarias[tareaActual].etiqueta }}</p>
-                <div class="mt-8 text-9xl">
-                  {{ tareasDiarias[tareaActual].imagen }}
-                </div>
-                <h4 class="mt-8 text-6xl font-black uppercase leading-[0.86] tracking-[-0.08em]">{{ tareasDiarias[tareaActual].titulo }}</h4>
-                <p class="mx-auto mt-6 max-w-2xl text-2xl font-black leading-tight">
-                  {{ tareasDiarias[tareaActual].texto }}
-                </p>
-              </div>
-
-              <div class="mt-6 flex justify-center gap-3">
-                <button
-                  v-for="(_, index) in tareasDiarias"
-                  :key="index"
-                  type="button"
-                  class="h-5 border-[3px] border-black transition-all"
-                  :class="index === tareaActual ? 'w-16 bg-black' : 'w-5 bg-white'"
-                  @click="tareaActual = index"
-                  :aria-label="`Ver tarea ${index + 1}`"
-                ></button>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-16 border-[6px] border-black bg-[#00d084] p-5 shadow-[12px_12px_0_#000] sm:p-8">
-            <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-              <div>
-                <p class="inline-block border-[4px] border-black bg-[#ffea00] px-4 py-2 text-lg font-black uppercase tracking-[0.25em]">Carrusel bíblico</p>
-                <h3 class="mt-5 text-5xl font-black uppercase leading-[0.86] tracking-[-0.07em] sm:text-8xl">Versículos para meditar</h3>
-                <p class="mt-5 max-w-3xl text-2xl font-black leading-tight">
-                  Cinco pasajes breves para leer, recordar y usar como base de oración durante el día.
-                </p>
-              </div>
-
-              <div class="flex flex-wrap gap-3">
-                <button
-                  type="button"
-                  class="border-[4px] border-black bg-white px-5 py-3 text-sm font-black uppercase tracking-[0.16em] text-black shadow-[6px_6px_0_#000] transition hover:-translate-y-1"
-                  @click="versiculoAnterior"
-                >
-                  Anterior
-                </button>
-                <button
-                  type="button"
-                  class="border-[4px] border-black bg-black px-5 py-3 text-sm font-black uppercase tracking-[0.16em] text-white shadow-[6px_6px_0_#ffea00] transition hover:-translate-y-1"
-                  @click="siguienteVersiculo"
-                >
-                  Siguiente
-                </button>
-              </div>
-            </div>
-
-            <div class="mt-9 border-[6px] border-black bg-white p-7 text-center shadow-[10px_10px_0_#000] sm:p-10">
-              <div class="text-8xl">
-                {{ versiculos[versiculoActual].icono }}
-              </div>
-              <p class="mt-7 text-xl font-black uppercase tracking-[0.28em] text-[#ff4d00]">
-                {{ versiculos[versiculoActual].tema }}
-              </p>
-              <blockquote class="mx-auto mt-7 max-w-5xl text-5xl font-black uppercase leading-[0.9] tracking-[-0.07em] text-black sm:text-7xl">
-                “{{ versiculos[versiculoActual].texto }}”
-              </blockquote>
-              <p class="mt-8 inline-block border-[4px] border-black bg-[#ffea00] px-5 py-3 text-2xl font-black uppercase text-black shadow-[6px_6px_0_#000]">
-                {{ versiculos[versiculoActual].referencia }} · RVR1960
-              </p>
-            </div>
-
-            <div class="mt-7 flex justify-center gap-3">
+            <div class="mt-5 flex justify-center gap-2">
               <button
-                v-for="(_, index) in versiculos"
+                v-for="(_, index) in tareasDiarias"
                 :key="index"
                 type="button"
-                class="h-5 border-[3px] border-black transition-all"
-                :class="index === versiculoActual ? 'w-16 bg-black' : 'w-5 bg-white'"
-                @click="versiculoActual = index"
-                :aria-label="`Ver versículo ${index + 1}`"
+                class="h-2 rounded-full transition-all"
+                :class="index === tareaActual ? 'w-10 bg-[#d8b56d]' : 'w-2 bg-white/30'"
+                @click="tareaActual = index"
+                :aria-label="`Ver tarea ${index + 1}`"
               ></button>
             </div>
+          </div>
+        </div>
+
+        <div class="mt-16 rounded-[2.25rem] border border-white/12 bg-[#0d120d]/78 p-7 shadow-[0_24px_80px_rgba(0,0,0,0.42)] backdrop-blur-xl sm:p-10">
+          <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p class="text-sm uppercase tracking-[0.42em] text-[#d8b56d]">Carrusel bíblico</p>
+              <h3 class="mt-4 font-serif text-5xl leading-tight text-[#fff7e7] sm:text-6xl">Versículos para meditar</h3>
+              <p class="mt-4 max-w-2xl text-lg leading-relaxed text-[#f8f3e7]/70">
+                Cinco pasajes breves para leer, recordar y usar como base de oración durante el día.
+              </p>
+            </div>
+            <div class="flex gap-3">
+              <button type="button" class="rounded-full border border-white/18 px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#f8f3e7] transition hover:bg-white/10" @click="versiculoAnterior">Anterior</button>
+              <button type="button" class="rounded-full bg-[#d8b56d] px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#10110d] transition hover:bg-[#f0d38b]" @click="siguienteVersiculo">Siguiente</button>
+            </div>
+          </div>
+
+          <div class="mt-10 rounded-[1.75rem] border border-[#d8b56d]/18 bg-[#f8f3e7]/6 p-8 text-center sm:p-12">
+            <div class="text-6xl">{{ versiculos[versiculoActual].icono }}</div>
+            <p class="mt-6 text-xs uppercase tracking-[0.36em] text-[#d8b56d]">{{ versiculos[versiculoActual].tema }}</p>
+            <blockquote class="mx-auto mt-7 max-w-5xl font-serif text-4xl leading-tight text-[#fff7e7] sm:text-6xl">
+              “{{ versiculos[versiculoActual].texto }}”
+            </blockquote>
+            <p class="mt-7 text-xl font-semibold text-[#d8b56d]">{{ versiculos[versiculoActual].referencia }} · RVR1960</p>
+          </div>
+
+          <div class="mt-6 flex justify-center gap-2">
+            <button
+              v-for="(_, index) in versiculos"
+              :key="index"
+              type="button"
+              class="h-2 rounded-full transition-all"
+              :class="index === versiculoActual ? 'w-10 bg-[#d8b56d]' : 'w-2 bg-white/30'"
+              @click="versiculoActual = index"
+              :aria-label="`Ver versículo ${index + 1}`"
+            ></button>
           </div>
         </div>
       </section>
@@ -404,25 +357,9 @@ async function copiarVersiculo() {
   transform: translate(-50%, -50%);
 }
 
-.brutal-page {
-  text-rendering: geometricPrecision;
-}
-
-.brutal-grid {
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.18) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.18) 2px, transparent 2px);
-  background-size: 46px 46px;
-}
-
 .daily-card {
   background:
-    radial-gradient(circle at top left, rgba(255, 234, 0, 0.95), transparent 36%),
-    radial-gradient(circle at bottom right, rgba(0, 208, 132, 0.9), transparent 38%),
-    linear-gradient(135deg, #f3f0df, #ffffff);
-}
-
-.brutal-card {
-  box-shadow: inset 0 0 0 8px rgba(0, 0, 0, 0.08);
+    radial-gradient(circle at top left, rgba(216, 181, 109, 0.16), transparent 34%),
+    linear-gradient(135deg, rgba(248, 243, 231, 0.08), rgba(216, 181, 109, 0.06));
 }
 </style>
