@@ -4,6 +4,7 @@ import { ref } from 'vue'
 const copiado = ref(false)
 const mostrarRespuesta = ref(false)
 const tareaActual = ref(0)
+const versiculoActual = ref(0)
 
 const recursos = [
   {
@@ -55,12 +56,53 @@ const tareasDiarias = [
   },
 ]
 
+const versiculos = [
+  {
+    referencia: 'Juan 14:6',
+    texto: 'Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí.',
+    tema: 'Jesús es el camino',
+    icono: '✝️',
+  },
+  {
+    referencia: 'Salmos 23:1',
+    texto: 'Jehová es mi pastor; nada me faltará.',
+    tema: 'Dios cuida de nosotros',
+    icono: '🌿',
+  },
+  {
+    referencia: 'Filipenses 4:13',
+    texto: 'Todo lo puedo en Cristo que me fortalece.',
+    tema: 'Fortaleza en Cristo',
+    icono: '🕊️',
+  },
+  {
+    referencia: 'Romanos 8:31',
+    texto: 'Si Dios es por nosotros, ¿quién contra nosotros?',
+    tema: 'Confianza y seguridad',
+    icono: '🛡️',
+  },
+  {
+    referencia: 'Jeremías 29:11',
+    texto: 'Porque yo sé los pensamientos que tengo acerca de vosotros, dice Jehová, pensamientos de paz, y no de mal.',
+    tema: 'Esperanza en Dios',
+    icono: '✨',
+  },
+]
+
 function siguienteTarea() {
   tareaActual.value = (tareaActual.value + 1) % tareasDiarias.length
 }
 
 function tareaAnterior() {
   tareaActual.value = tareaActual.value === 0 ? tareasDiarias.length - 1 : tareaActual.value - 1
+}
+
+function siguienteVersiculo() {
+  versiculoActual.value = (versiculoActual.value + 1) % versiculos.length
+}
+
+function versiculoAnterior() {
+  versiculoActual.value = versiculoActual.value === 0 ? versiculos.length - 1 : versiculoActual.value - 1
 }
 
 async function copiarVersiculo() {
@@ -225,8 +267,8 @@ async function copiarVersiculo() {
                 <p class="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-white/55">Tareas</p>
               </div>
               <div class="rounded-3xl border border-white/10 bg-white/10 p-4">
-                <p class="text-3xl font-black text-white">1</p>
-                <p class="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-white/55">Carrusel</p>
+                <p class="text-3xl font-black text-white">2</p>
+                <p class="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-white/55">Carruseles</p>
               </div>
             </div>
           </div>
@@ -292,6 +334,62 @@ async function copiarVersiculo() {
                   :aria-label="`Ver tarea ${index + 1}`"
                 ></button>
               </div>
+            </div>
+          </div>
+
+          <div class="mt-14 rounded-[2rem] border border-white/15 bg-white/10 p-5 shadow-[0_18px_55px_rgba(0,0,0,0.22)] sm:p-7 lg:p-8">
+            <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <p class="text-sm font-bold uppercase tracking-[0.35em] text-amber-200">Carrusel bíblico</p>
+                <h3 class="mt-4 text-3xl font-black text-white sm:text-4xl">Versículos para meditar</h3>
+                <p class="mt-4 max-w-2xl text-lg leading-relaxed text-white/75">
+                  Cinco pasajes breves para leer, recordar y usar como base de oración durante el día.
+                </p>
+              </div>
+
+              <div class="flex gap-3">
+                <button
+                  type="button"
+                  class="rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white/20"
+                  @click="versiculoAnterior"
+                >
+                  Anterior
+                </button>
+                <button
+                  type="button"
+                  class="rounded-full bg-white px-5 py-3 text-sm font-extrabold uppercase tracking-[0.16em] text-[#071847] transition hover:scale-[1.02]"
+                  @click="siguienteVersiculo"
+                >
+                  Siguiente
+                </button>
+              </div>
+            </div>
+
+            <div class="mt-8 overflow-hidden rounded-[1.75rem] border border-white/15 bg-[#071847]/80 p-7 text-center shadow-[0_14px_45px_rgba(0,0,0,0.3)] sm:p-10">
+              <div class="text-7xl drop-shadow-[0_10px_25px_rgba(0,0,0,0.35)]">
+                {{ versiculos[versiculoActual].icono }}
+              </div>
+              <p class="mt-6 text-sm font-black uppercase tracking-[0.35em] text-indigo-200">
+                {{ versiculos[versiculoActual].tema }}
+              </p>
+              <blockquote class="mx-auto mt-7 max-w-4xl font-serif text-3xl font-black leading-tight text-white sm:text-5xl">
+                “{{ versiculos[versiculoActual].texto }}”
+              </blockquote>
+              <p class="mt-7 text-2xl font-extrabold text-amber-200">
+                {{ versiculos[versiculoActual].referencia }} · RVR1960
+              </p>
+            </div>
+
+            <div class="mt-6 flex justify-center gap-2">
+              <button
+                v-for="(_, index) in versiculos"
+                :key="index"
+                type="button"
+                class="h-3 rounded-full transition-all"
+                :class="index === versiculoActual ? 'w-10 bg-amber-200' : 'w-3 bg-white/35'"
+                @click="versiculoActual = index"
+                :aria-label="`Ver versículo ${index + 1}`"
+              ></button>
             </div>
           </div>
         </div>
