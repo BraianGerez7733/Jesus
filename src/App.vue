@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 
 const copiado = ref(false)
+const mostrarRespuesta = ref(false)
 
 async function copiarVersiculo() {
   const texto =
@@ -34,6 +35,33 @@ async function copiarVersiculo() {
         <h1 class="text-5xl font-black leading-none tracking-tight text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.22)] sm:text-6xl lg:text-8xl">
           Jesús es el camino
         </h1>
+
+        <p class="mt-8 max-w-3xl text-xl leading-relaxed text-white/95 drop-shadow-[0_2px_12px_rgba(0,0,0,0.25)] sm:text-2xl">
+          Aprende una verdad bíblica de forma simple, visual e interactiva. Cada respuesta te ayuda a recordar quién es Jesús y por qué podemos confiar en Él.
+        </p>
+
+        <div class="mt-10 w-full max-w-2xl rounded-[2rem] border border-white/20 bg-white/12 p-6 text-left shadow-[0_18px_55px_rgba(2,8,30,0.35)] backdrop-blur-md sm:p-8">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">✨</span>
+            <p class="text-sm font-bold uppercase tracking-[0.3em] text-amber-200">Flashcard bíblica</p>
+          </div>
+
+          <h2 class="mt-5 text-2xl font-extrabold leading-snug text-white sm:text-3xl">
+            ¿Qué quiso decir Jesús cuando dijo: “Yo soy el camino”?
+          </h2>
+
+          <button
+            type="button"
+            class="mt-7 rounded-full bg-white px-7 py-3 text-base font-extrabold text-[#071847] shadow-[0_10px_28px_rgba(0,0,0,0.22)] transition hover:scale-[1.02]"
+            @click="mostrarRespuesta = !mostrarRespuesta"
+          >
+            {{ mostrarRespuesta ? 'Ocultar respuesta' : 'Ver respuesta' }}
+          </button>
+
+          <div v-if="mostrarRespuesta" class="mt-6 rounded-3xl border border-amber-200/35 bg-[#071847]/75 p-5 text-lg leading-relaxed text-white/95">
+            Jesús enseña que Él es quien nos acerca al Padre. No solo muestra una dirección: Él mismo es el camino seguro para conocer a Dios, recibir perdón y vivir con esperanza.
+          </div>
+        </div>
 
         <a
           href="#significado"
