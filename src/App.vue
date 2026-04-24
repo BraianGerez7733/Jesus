@@ -21,8 +21,8 @@ async function copiarVersiculo() {
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-sky-300">
       <iframe
         class="youtube-bg"
-        src="https://www.youtube.com/embed/2xeQsAyT5-c?autoplay=1&mute=1&loop=1&playlist=2xeQsAyT5-c&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0"
-        title="Moving clouds background"
+        src="https://www.youtube.com/embed/G52dUQLxPzg?autoplay=1&mute=1&loop=1&playlist=G52dUQLxPzg&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0"
+        title="Forest drone background"
         frameborder="0"
         allow="autoplay; fullscreen"
         referrerpolicy="strict-origin-when-cross-origin"
