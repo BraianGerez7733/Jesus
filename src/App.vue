@@ -129,7 +129,7 @@ async function copiarVersiculo() {
         allow="autoplay; fullscreen"
         referrerpolicy="strict-origin-when-cross-origin"
       ></iframe>
-      <div class="absolute inset-0 bg-[#070806]/30"></div>
+      <div class="absolute inset-0 bg-[#070806]/18"></div>
     </div>
 
     <div class="relative z-10 min-h-screen px-5 sm:px-8 lg:px-12">
@@ -158,7 +158,7 @@ async function copiarVersiculo() {
           </div>
         </div>
 
-        <div class="rounded-[2rem] border border-white/15 bg-[#0d120d]/72 p-6 shadow-[0_28px_90px_rgba(0,0,0,0.55)] backdrop-blur-xl sm:p-8">
+        <div class="rounded-[2rem] border border-white/20 bg-[#1f2a1f]/78 p-6 shadow-[0_28px_90px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-8">
           <div class="overflow-hidden rounded-[1.5rem] border border-white/10">
             <img
               src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80"
@@ -191,14 +191,14 @@ async function copiarVersiculo() {
       </section>
 
       <section id="significado" class="mx-auto max-w-7xl pb-24">
-        <div class="grid overflow-hidden rounded-[2.25rem] border border-white/12 bg-[#0d120d]/76 shadow-[0_28px_90px_rgba(0,0,0,0.48)] backdrop-blur-xl lg:grid-cols-[0.95fr_1.05fr]">
+        <div class="grid overflow-hidden rounded-[2.25rem] border border-white/12 bg-[#1f2a1f]/76 shadow-[0_28px_90px_rgba(0,0,0,0.42)] backdrop-blur-xl lg:grid-cols-[0.95fr_1.05fr]">
           <div class="relative min-h-[360px]">
             <img
               src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1400&q=80"
               alt="Camino dentro de un bosque"
               class="absolute inset-0 h-full w-full object-cover"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#070806]/70 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#070806]/50 to-transparent"></div>
           </div>
           <div class="p-8 sm:p-12 lg:p-16">
             <p class="text-sm uppercase tracking-[0.42em] text-[#d8b56d]">¿Qué significa?</p>
@@ -211,7 +211,7 @@ async function copiarVersiculo() {
       </section>
 
       <section class="mx-auto max-w-7xl pb-24">
-        <div class="rounded-[2.25rem] border border-white/12 bg-[#0d120d]/78 shadow-[0_28px_90px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+        <div class="rounded-[2.25rem] border border-white/12 bg-[#1f2a1f]/78 shadow-[0_28px_90px_rgba(0,0,0,0.42)] backdrop-blur-xl">
           <div class="flex flex-col gap-6 border-b border-white/10 p-8 sm:p-10 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <p class="text-sm uppercase tracking-[0.42em] text-[#d8b56d]">Biblia RVR1960</p>
@@ -264,7 +264,7 @@ async function copiarVersiculo() {
           <article
             v-for="recurso in recursos"
             :key="recurso.titulo"
-            class="rounded-[1.75rem] border border-white/12 bg-[#0d120d]/78 p-7 shadow-[0_18px_60px_rgba(0,0,0,0.32)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-[#d8b56d]/40"
+            class="rounded-[1.75rem] border border-white/12 bg-[#1f2a1f]/78 p-7 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-[#d8b56d]/40"
           >
             <div class="text-4xl">{{ recurso.icono }}</div>
             <h3 class="mt-6 font-serif text-3xl leading-tight text-[#fff7e7]">{{ recurso.titulo }}</h3>
@@ -273,7 +273,7 @@ async function copiarVersiculo() {
         </div>
 
         <div class="mt-16 grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
-          <div class="rounded-[2rem] border border-white/12 bg-[#0d120d]/78 p-8 shadow-[0_18px_60px_rgba(0,0,0,0.32)] backdrop-blur-xl">
+          <div class="rounded-[2rem] border border-white/12 bg-[#1f2a1f]/78 p-8 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur-xl">
             <p class="text-sm uppercase tracking-[0.42em] text-[#d8b56d]">Carrusel visual</p>
             <h3 class="mt-4 font-serif text-5xl leading-tight text-[#fff7e7]">Tareas diarias</h3>
             <p class="mt-5 text-lg leading-relaxed text-[#f8f3e7]/70">
@@ -285,7 +285,7 @@ async function copiarVersiculo() {
             </div>
           </div>
 
-          <div class="rounded-[2rem] border border-white/12 bg-[#11160f]/82 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.34)] backdrop-blur-xl">
+          <div class="rounded-[2rem] border border-white/12 bg-[#243224]/82 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.3)] backdrop-blur-xl">
             <div class="daily-card min-h-[360px] rounded-[1.5rem] p-8 text-center">
               <p class="text-xs uppercase tracking-[0.35em] text-[#d8b56d]">{{ tareasDiarias[tareaActual].etiqueta }}</p>
               <div class="mt-8 text-7xl">{{ tareasDiarias[tareaActual].imagen }}</div>
@@ -306,7 +306,7 @@ async function copiarVersiculo() {
           </div>
         </div>
 
-        <div class="mt-16 rounded-[2.25rem] border border-white/12 bg-[#0d120d]/78 p-7 shadow-[0_24px_80px_rgba(0,0,0,0.42)] backdrop-blur-xl sm:p-10">
+        <div class="mt-16 rounded-[2.25rem] border border-white/12 bg-[#1f2a1f]/78 p-7 shadow-[0_24px_80px_rgba(0,0,0,0.36)] backdrop-blur-xl sm:p-10">
           <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p class="text-sm uppercase tracking-[0.42em] text-[#d8b56d]">Carrusel bíblico</p>
@@ -345,35 +345,35 @@ async function copiarVersiculo() {
       </section>
     </div>
 
-    <div v-if="mostrarEstudio" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4" @click.self="mostrarEstudio = false">
-      <div class="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl border border-white/15 bg-[#0d120d] p-7 shadow-2xl sm:p-10">
+    <div v-if="mostrarEstudio" class="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-4" @click.self="mostrarEstudio = false">
+      <div class="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl border border-[#d8b56d]/30 bg-[#253025] p-7 shadow-2xl sm:p-10">
         <button type="button" class="absolute right-4 top-4 rounded-full bg-white/90 px-4 py-2 text-sm font-bold text-black" @click="mostrarEstudio = false">
           Cerrar
         </button>
         <p class="text-xs uppercase tracking-[0.35em] text-[#d8b56d]">Examen bíblico</p>
         <h2 class="mt-4 font-serif text-4xl leading-tight text-[#fff7e7] sm:text-5xl">Juan 14:6</h2>
-        <p class="mt-5 text-xl leading-relaxed text-[#f8f3e7]/85">
+        <p class="mt-5 text-xl leading-relaxed text-[#f8f3e7]/90">
           “Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí.”
         </p>
 
         <div class="mt-8 grid gap-5 md:grid-cols-3">
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <div class="rounded-2xl border border-white/15 bg-[#334033] p-5">
             <h3 class="font-serif text-2xl text-[#d8b56d]">Camino</h3>
-            <p class="mt-3 text-[#f8f3e7]/78">Jesús no solo enseña una dirección: Él es el acceso al Padre.</p>
+            <p class="mt-3 text-[#f8f3e7]/88">Jesús no solo enseña una dirección: Él es el acceso al Padre.</p>
           </div>
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <div class="rounded-2xl border border-white/15 bg-[#334033] p-5">
             <h3 class="font-serif text-2xl text-[#d8b56d]">Verdad</h3>
-            <p class="mt-3 text-[#f8f3e7]/78">En Jesús se revela con claridad quién es Dios y cuál es su voluntad.</p>
+            <p class="mt-3 text-[#f8f3e7]/88">En Jesús se revela con claridad quién es Dios y cuál es su voluntad.</p>
           </div>
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <div class="rounded-2xl border border-white/15 bg-[#334033] p-5">
             <h3 class="font-serif text-2xl text-[#d8b56d]">Vida</h3>
-            <p class="mt-3 text-[#f8f3e7]/78">La vida eterna y espiritual se recibe por medio de Él.</p>
+            <p class="mt-3 text-[#f8f3e7]/88">La vida eterna y espiritual se recibe por medio de Él.</p>
           </div>
         </div>
 
-        <div class="mt-8 rounded-2xl border border-[#d8b56d]/25 bg-[#f8f3e7]/7 p-6">
+        <div class="mt-8 rounded-2xl border border-[#d8b56d]/35 bg-[#2f3b2f] p-6">
           <h3 class="font-serif text-3xl text-[#fff7e7]">Concordancia con otros versículos</h3>
-          <ul class="mt-5 space-y-4 text-lg leading-relaxed text-[#f8f3e7]/82">
+          <ul class="mt-5 space-y-4 text-lg leading-relaxed text-[#f8f3e7]/90">
             <li><strong>Hechos 4:12:</strong> no hay otro nombre dado a los hombres en que podamos ser salvos.</li>
             <li><strong>1 Timoteo 2:5:</strong> hay un solo mediador entre Dios y los hombres: Jesucristo hombre.</li>
             <li><strong>Hebreos 10:19-20:</strong> tenemos entrada al Lugar Santísimo por el camino nuevo y vivo abierto por Cristo.</li>
@@ -381,9 +381,9 @@ async function copiarVersiculo() {
           </ul>
         </div>
 
-        <div class="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
+        <div class="mt-8 rounded-2xl border border-white/15 bg-[#334033] p-6">
           <h3 class="font-serif text-3xl text-[#fff7e7]">Conclusión</h3>
-          <p class="mt-4 text-lg leading-relaxed text-[#f8f3e7]/82">
+          <p class="mt-4 text-lg leading-relaxed text-[#f8f3e7]/90">
             Los estudiosos suelen leer este versículo como una declaración exclusiva de Jesús: Él es el único camino hacia el Padre, la revelación plena de la verdad de Dios y la fuente de la vida verdadera.
           </p>
         </div>
