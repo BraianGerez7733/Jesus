@@ -1,11 +1,11 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 
 const copiado = ref(false)
 const mostrarRespuesta = ref(false)
 const tareaActual = ref(0)
 const versiculoActual = ref(0)
-const videoBackground = ref(null)
+const mostrarVideo = ref(false)
 
 const recursos = [
   {
@@ -106,17 +106,6 @@ function versiculoAnterior() {
   versiculoActual.value = versiculoActual.value === 0 ? versiculos.length - 1 : versiculoActual.value - 1
 }
 
-function reiniciarVideoBackground() {
-  const iframe = videoBackground.value
-  if (!iframe) return
-  const baseUrl = 'https://www.youtube.com/embed/xH9E6LbXCnA?autoplay=1&mute=1&loop=1&playlist=xH9E6LbXCnA&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1'
-  iframe.src = `${baseUrl}&restart=${Date.now()}`
-}
-
-onMounted(() => {
-  setInterval(reiniciarVideoBackground, 57000)
-})
-
 async function copiarVersiculo() {
   const texto =
     '"Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí." — Juan 14:6 (RVR1960)'
@@ -131,15 +120,12 @@ async function copiarVersiculo() {
 <template>
   <main class="relative min-h-screen overflow-hidden bg-[#070806] text-[#f8f3e7] font-sans">
     <div class="fixed inset-0 z-0 overflow-hidden bg-[#070806] pointer-events-none">
-      <iframe
-        ref="videoBackground"
-        class="youtube-bg opacity-90 saturate-[1.05] contrast-[1.02] brightness-[1]"
-        src="https://www.youtube.com/embed/xH9E6LbXCnA?autoplay=1&mute=1&loop=1&playlist=xH9E6LbXCnA&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1"
-        title="Video background"
-        frameborder="0"
-        allow="autoplay; fullscreen"
-        referrerpolicy="strict-origin-when-cross-origin"
-      ></iframe>
+      <img
+        src="https://img.youtube.com/vi/xH9E6LbXCnA/maxresdefault.jpg"
+        alt="Video de fondo Jesús"
+        class="h-full w-full object-cover opacity-80 saturate-[1.05] contrast-[1.02] brightness-[0.85]"
+      />
+      <div class="absolute inset-0 bg-[#070806]/30"></div>
     </div>
 
     <div class="relative z-10 min-h-screen px-5 sm:px-8 lg:px-12">
@@ -162,9 +148,9 @@ async function copiarVersiculo() {
             <a href="#significado" class="rounded-full border border-[#d8b56d]/70 bg-[#d8b56d] px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#0b0c09] transition hover:bg-[#f0d38b]">
               Ver significado
             </a>
-            <a href="#dashboard" class="rounded-full border border-[#f8f3e7]/25 bg-white/8 px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#f8f3e7] backdrop-blur transition hover:bg-white/14">
-              Explorar recursos
-            </a>
+            <button type="button" class="rounded-full border border-[#f8f3e7]/25 bg-white/8 px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#f8f3e7] backdrop-blur transition hover:bg-white/14" @click="mostrarVideo = true">
+              Reproducir video
+            </button>
           </div>
         </div>
 
@@ -354,21 +340,30 @@ async function copiarVersiculo() {
         </div>
       </section>
     </div>
+
+    <div v-if="mostrarVideo" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4" @click.self="mostrarVideo = false">
+      <div class="relative w-full max-w-5xl overflow-hidden rounded-3xl border border-white/15 bg-black shadow-2xl">
+        <button type="button" class="absolute right-4 top-4 z-10 rounded-full bg-white/90 px-4 py-2 text-sm font-bold text-black" @click="mostrarVideo = false">
+          Cerrar
+        </button>
+        <div class="aspect-video w-full">
+          <iframe
+            class="h-full w-full"
+            src="https://www.youtube.com/embed/xH9E6LbXCnA?autoplay=1&rel=0&modestbranding=1&playsinline=1"
+            title="Video de Jesús"
+            frameborder="0"
+            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+          ></iframe>
+        </div>
+      </div>
+    </div>
   </main>
 </template>
 
 <style scoped>
-.youtube-bg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 177.77777778vh;
-  height: 100vh;
-  min-width: 100vw;
-  min-height: 56.25vw;
-  transform: translate(-50%, -50%);
-}
-
 .daily-card {
   background:
     radial-gradient(circle at top left, rgba(216, 181, 109, 0.16), transparent 34%),
