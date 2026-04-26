@@ -121,11 +121,14 @@ async function copiarVersiculo() {
 <template>
   <main class="relative min-h-screen overflow-hidden bg-[#070806] text-[#f8f3e7] font-sans">
     <div class="fixed inset-0 z-0 overflow-hidden bg-[#070806] pointer-events-none">
-      <img
-        src="https://img.youtube.com/vi/xH9E6LbXCnA/maxresdefault.jpg"
-        alt="Video de fondo Jesús"
-        class="h-full w-full object-cover opacity-80 saturate-[1.05] contrast-[1.02] brightness-[0.85]"
-      />
+      <iframe
+        class="youtube-bg opacity-90 saturate-[1.05] contrast-[1.02] brightness-[1]"
+        src="https://www.youtube.com/embed/xH9E6LbXCnA?autoplay=1&mute=1&loop=1&playlist=xH9E6LbXCnA&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0"
+        title="Video background"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+        referrerpolicy="strict-origin-when-cross-origin"
+      ></iframe>
       <div class="absolute inset-0 bg-[#070806]/30"></div>
     </div>
 
@@ -410,6 +413,17 @@ async function copiarVersiculo() {
 </template>
 
 <style scoped>
+.youtube-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 177.77777778vh;
+  height: 100vh;
+  min-width: 100vw;
+  min-height: 56.25vw;
+  transform: translate(-50%, -50%);
+}
+
 .daily-card {
   background:
     radial-gradient(circle at top left, rgba(216, 181, 109, 0.16), transparent 34%),
