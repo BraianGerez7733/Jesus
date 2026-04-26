@@ -1,10 +1,11 @@
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const copiado = ref(false)
 const mostrarRespuesta = ref(false)
 const tareaActual = ref(0)
 const versiculoActual = ref(0)
+const videoBackground = ref(null)
 
 const recursos = [
   {
@@ -105,6 +106,17 @@ function versiculoAnterior() {
   versiculoActual.value = versiculoActual.value === 0 ? versiculos.length - 1 : versiculoActual.value - 1
 }
 
+function reiniciarVideoBackground() {
+  const iframe = videoBackground.value
+  if (!iframe) return
+  const baseUrl = 'https://www.youtube.com/embed/xH9E6LbXCnA?autoplay=1&mute=1&loop=1&playlist=xH9E6LbXCnA&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1'
+  iframe.src = `${baseUrl}&restart=${Date.now()}`
+}
+
+onMounted(() => {
+  setInterval(reiniciarVideoBackground, 57000)
+})
+
 async function copiarVersiculo() {
   const texto =
     '"Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí." — Juan 14:6 (RVR1960)'
@@ -120,8 +132,9 @@ async function copiarVersiculo() {
   <main class="relative min-h-screen overflow-hidden bg-[#070806] text-[#f8f3e7] font-sans">
     <div class="fixed inset-0 z-0 overflow-hidden bg-[#070806] pointer-events-none">
       <iframe
+        ref="videoBackground"
         class="youtube-bg opacity-90 saturate-[1.05] contrast-[1.02] brightness-[1]"
-        src="https://www.youtube.com/embed/xH9E6LbXCnA?autoplay=1&mute=1&loop=1&playlist=xH9E6LbXCnA&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0"
+        src="https://www.youtube.com/embed/xH9E6LbXCnA?autoplay=1&mute=1&loop=1&playlist=xH9E6LbXCnA&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1"
         title="Video background"
         frameborder="0"
         allow="autoplay; fullscreen"
