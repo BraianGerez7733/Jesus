@@ -121,15 +121,12 @@ async function copiarVersiculo() {
 <template>
   <main class="relative min-h-screen overflow-hidden bg-[#070806] text-[#f8f3e7] font-sans">
     <div class="fixed inset-0 z-0 overflow-hidden bg-[#070806] pointer-events-none">
-      <iframe
-        class="youtube-bg opacity-90 saturate-[1.05] contrast-[1.02] brightness-[1]"
-        src="https://www.youtube.com/embed/xH9E6LbXCnA?start=6&end=38&autoplay=1&mute=1&loop=1&playlist=xH9E6LbXCnA&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1"
-        title="Video background"
-        frameborder="0"
-        allow="autoplay; fullscreen"
-        referrerpolicy="strict-origin-when-cross-origin"
-      ></iframe>
-      <div class="absolute inset-0 bg-[#070806]/18"></div>
+      <img
+        src="/src/assets/file_00000000c1f071f5a4f4d28bc73d3922.png"
+        alt="Bosque con luz del sol"
+        class="absolute inset-0 h-full w-full object-cover opacity-90 saturate-[1.05] contrast-[1.02] brightness-[0.85]"
+      />
+      <div class="absolute inset-0 bg-[#070806]/35"></div>
     </div>
 
     <div class="relative z-10 min-h-screen px-5 sm:px-8 lg:px-12">
@@ -161,7 +158,7 @@ async function copiarVersiculo() {
         <div class="rounded-[2rem] border border-white/20 bg-[#1f2a1f]/78 p-6 shadow-[0_28px_90px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-8">
           <div class="overflow-hidden rounded-[1.5rem] border border-white/10">
             <img
-              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80"
+              src="/src/assets/file_00000000c1f071f5a4f4d28bc73d3922.png"
               alt="Bosque con luz dorada"
               class="h-[280px] w-full object-cover sm:h-[360px]"
             />
@@ -194,7 +191,7 @@ async function copiarVersiculo() {
         <div class="grid overflow-hidden rounded-[2.25rem] border border-white/12 bg-[#1f2a1f]/76 shadow-[0_28px_90px_rgba(0,0,0,0.42)] backdrop-blur-xl lg:grid-cols-[0.95fr_1.05fr]">
           <div class="relative min-h-[360px]">
             <img
-              src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1400&q=80"
+              src="/src/assets/file_00000000c1f071f5a4f4d28bc73d3922.png"
               alt="Camino dentro de un bosque"
               class="absolute inset-0 h-full w-full object-cover"
             />
@@ -237,7 +234,7 @@ async function copiarVersiculo() {
             <div class="border-t border-white/10 p-8 sm:p-10 lg:border-l lg:border-t-0">
               <div class="overflow-hidden rounded-[1.5rem] border border-white/10">
                 <img
-                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
+                  src="/src/assets/file_00000000c1f071f5a4f4d28bc73d3922.png"
                   alt="Cielo luminoso sobre las nubes"
                   class="h-[330px] w-full object-cover"
                 />
