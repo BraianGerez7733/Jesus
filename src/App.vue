@@ -123,7 +123,7 @@ async function copiarVersiculo() {
     <div class="fixed inset-0 z-0 overflow-hidden bg-[#070806] pointer-events-none">
       <iframe
         class="youtube-bg opacity-90 saturate-[1.05] contrast-[1.02] brightness-[1]"
-        src="https://www.youtube.com/embed/xH9E6LbXCnA?autoplay=1&mute=1&loop=1&playlist=xH9E6LbXCnA&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0"
+        src="https://www.youtube.com/embed/xH9E6LbXCnA?start=6&end=38&autoplay=1&mute=1&loop=1&playlist=xH9E6LbXCnA&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1"
         title="Video background"
         frameborder="0"
         allow="autoplay; fullscreen"
@@ -149,12 +149,12 @@ async function copiarVersiculo() {
           </p>
 
           <div class="mt-10 flex flex-wrap gap-4">
-            <a href="#significado" class="rounded-full border border-[#d8b56d]/70 bg-[#d8b56d] px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#0b0c09] transition hover:bg-[#f0d38b]">
+            <button type="button" class="rounded-full border border-[#d8b56d]/70 bg-[#d8b56d] px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#0b0c09] transition hover:bg-[#f0d38b]" @click="mostrarEstudio = true">
               Ver significado
-            </a>
-            <button type="button" class="rounded-full border border-[#f8f3e7]/25 bg-white/8 px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#f8f3e7] backdrop-blur transition hover:bg-white/14" @click="mostrarEstudio = true">
-              Estudiar versículo
             </button>
+            <a href="#dashboard" class="rounded-full border border-[#f8f3e7]/25 bg-white/8 px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#f8f3e7] backdrop-blur transition hover:bg-white/14">
+              Recursos
+            </a>
           </div>
         </div>
 
