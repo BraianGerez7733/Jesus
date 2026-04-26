@@ -120,14 +120,13 @@ async function copiarVersiculo() {
   <main class="relative min-h-screen overflow-hidden bg-[#070806] text-[#f8f3e7] font-sans">
     <div class="fixed inset-0 z-0 overflow-hidden bg-[#070806] pointer-events-none">
       <iframe
-        class="youtube-bg opacity-45 saturate-[0.85] contrast-[1.08] brightness-[0.62]"
+        class="youtube-bg opacity-90 saturate-[1.05] contrast-[1.02] brightness-[1]"
         src="https://www.youtube.com/embed/xH9E6LbXCnA?autoplay=1&mute=1&loop=1&playlist=xH9E6LbXCnA&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0"
         title="Video background"
         frameborder="0"
         allow="autoplay; fullscreen"
         referrerpolicy="strict-origin-when-cross-origin"
       ></iframe>
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(219,180,99,0.22),transparent_30%),linear-gradient(to_bottom,rgba(7,8,6,0.48),rgba(7,8,6,0.82),rgba(7,8,6,0.96))]"></div>
     </div>
 
     <div class="relative z-10 min-h-screen px-5 sm:px-8 lg:px-12">
