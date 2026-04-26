@@ -3,6 +3,7 @@ import { ref } from 'vue'
 
 const copiado = ref(false)
 const mostrarRespuesta = ref(false)
+const mostrarEstudio = ref(false)
 const tareaActual = ref(0)
 const versiculoActual = ref(0)
 const mostrarVideo = ref(false)
@@ -148,8 +149,8 @@ async function copiarVersiculo() {
             <a href="#significado" class="rounded-full border border-[#d8b56d]/70 bg-[#d8b56d] px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#0b0c09] transition hover:bg-[#f0d38b]">
               Ver significado
             </a>
-            <button type="button" class="rounded-full border border-[#f8f3e7]/25 bg-white/8 px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#f8f3e7] backdrop-blur transition hover:bg-white/14" @click="mostrarVideo = true">
-              Reproducir video
+            <button type="button" class="rounded-full border border-[#f8f3e7]/25 bg-white/8 px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#f8f3e7] backdrop-blur transition hover:bg-white/14" @click="mostrarEstudio = true">
+              Estudiar versículo
             </button>
           </div>
         </div>
@@ -339,6 +340,51 @@ async function copiarVersiculo() {
           </div>
         </div>
       </section>
+    </div>
+
+    <div v-if="mostrarEstudio" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4" @click.self="mostrarEstudio = false">
+      <div class="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl border border-white/15 bg-[#0d120d] p-7 shadow-2xl sm:p-10">
+        <button type="button" class="absolute right-4 top-4 rounded-full bg-white/90 px-4 py-2 text-sm font-bold text-black" @click="mostrarEstudio = false">
+          Cerrar
+        </button>
+        <p class="text-xs uppercase tracking-[0.35em] text-[#d8b56d]">Examen bíblico</p>
+        <h2 class="mt-4 font-serif text-4xl leading-tight text-[#fff7e7] sm:text-5xl">Juan 14:6</h2>
+        <p class="mt-5 text-xl leading-relaxed text-[#f8f3e7]/85">
+          “Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí.”
+        </p>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-3">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <h3 class="font-serif text-2xl text-[#d8b56d]">Camino</h3>
+            <p class="mt-3 text-[#f8f3e7]/78">Jesús no solo enseña una dirección: Él es el acceso al Padre.</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <h3 class="font-serif text-2xl text-[#d8b56d]">Verdad</h3>
+            <p class="mt-3 text-[#f8f3e7]/78">En Jesús se revela con claridad quién es Dios y cuál es su voluntad.</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <h3 class="font-serif text-2xl text-[#d8b56d]">Vida</h3>
+            <p class="mt-3 text-[#f8f3e7]/78">La vida eterna y espiritual se recibe por medio de Él.</p>
+          </div>
+        </div>
+
+        <div class="mt-8 rounded-2xl border border-[#d8b56d]/25 bg-[#f8f3e7]/7 p-6">
+          <h3 class="font-serif text-3xl text-[#fff7e7]">Concordancia con otros versículos</h3>
+          <ul class="mt-5 space-y-4 text-lg leading-relaxed text-[#f8f3e7]/82">
+            <li><strong>Hechos 4:12:</strong> no hay otro nombre dado a los hombres en que podamos ser salvos.</li>
+            <li><strong>1 Timoteo 2:5:</strong> hay un solo mediador entre Dios y los hombres: Jesucristo hombre.</li>
+            <li><strong>Hebreos 10:19-20:</strong> tenemos entrada al Lugar Santísimo por el camino nuevo y vivo abierto por Cristo.</li>
+            <li><strong>Juan 10:9:</strong> Jesús dice: “Yo soy la puerta”; el que entra por Él será salvo.</li>
+          </ul>
+        </div>
+
+        <div class="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
+          <h3 class="font-serif text-3xl text-[#fff7e7]">Conclusión</h3>
+          <p class="mt-4 text-lg leading-relaxed text-[#f8f3e7]/82">
+            Los estudiosos suelen leer este versículo como una declaración exclusiva de Jesús: Él es el único camino hacia el Padre, la revelación plena de la verdad de Dios y la fuente de la vida verdadera.
+          </p>
+        </div>
+      </div>
     </div>
 
     <div v-if="mostrarVideo" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4" @click.self="mostrarVideo = false">
