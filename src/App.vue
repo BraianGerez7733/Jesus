@@ -129,7 +129,7 @@ async function copiarVersiculo() {
         allow="autoplay; fullscreen"
         referrerpolicy="strict-origin-when-cross-origin"
       ></iframe>
-      <div class="absolute inset-0 bg-[#070806]/18"></div>
+      <div class="absolute inset-0 bg-[#070806]/5"></div>
     </div>
 
     <div class="relative z-10 min-h-screen px-5 sm:px-8 lg:px-12">
@@ -160,7 +160,7 @@ async function copiarVersiculo() {
       </section>
     </div>
 
-    <div v-if="mostrarEstudio" class="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-4" @click.self="mostrarEstudio = false">
+    <div v-if="mostrarEstudio" class="fixed inset-0 z-50 flex items-center justify-center bg-black/10 p-4" @click.self="mostrarEstudio = false">
       <div class="modal-significado relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl border border-[#d8b56d]/30 p-7 shadow-2xl sm:p-10">
         <button type="button" class="absolute right-4 top-4 z-10 rounded-full bg-white/90 px-4 py-2 text-sm font-bold text-black" @click="mostrarEstudio = false">
           Cerrar
@@ -173,21 +173,21 @@ async function copiarVersiculo() {
           </p>
 
           <div class="mt-8 grid gap-5 md:grid-cols-3">
-            <div class="rounded-2xl border border-white/15 bg-[#111a11]/72 p-5 backdrop-blur-sm">
+            <div class="rounded-2xl border border-white/15 bg-[#111a11]/45 p-5 backdrop-blur-[1px]">
               <h3 class="font-serif text-2xl text-[#d8b56d]">Camino</h3>
               <p class="mt-3 text-[#f8f3e7]/88">Jesús no solo enseña una dirección: Él es el acceso al Padre.</p>
             </div>
-            <div class="rounded-2xl border border-white/15 bg-[#111a11]/72 p-5 backdrop-blur-sm">
+            <div class="rounded-2xl border border-white/15 bg-[#111a11]/45 p-5 backdrop-blur-[1px]">
               <h3 class="font-serif text-2xl text-[#d8b56d]">Verdad</h3>
               <p class="mt-3 text-[#f8f3e7]/88">En Jesús se revela con claridad quién es Dios y cuál es su voluntad.</p>
             </div>
-            <div class="rounded-2xl border border-white/15 bg-[#111a11]/72 p-5 backdrop-blur-sm">
+            <div class="rounded-2xl border border-white/15 bg-[#111a11]/45 p-5 backdrop-blur-[1px]">
               <h3 class="font-serif text-2xl text-[#d8b56d]">Vida</h3>
               <p class="mt-3 text-[#f8f3e7]/88">La vida eterna y espiritual se recibe por medio de Él.</p>
             </div>
           </div>
 
-          <div class="mt-8 rounded-2xl border border-[#d8b56d]/35 bg-[#111a11]/76 p-6 backdrop-blur-sm">
+          <div class="mt-8 rounded-2xl border border-[#d8b56d]/35 bg-[#111a11]/48 p-6 backdrop-blur-[1px]">
             <h3 class="font-serif text-3xl text-[#fff7e7]">Concordancia con otros versículos</h3>
             <ul class="mt-5 space-y-4 text-lg leading-relaxed text-[#f8f3e7]/90">
               <li><strong>Hechos 4:12:</strong> no hay otro nombre dado a los hombres en que podamos ser salvos.</li>
@@ -197,7 +197,7 @@ async function copiarVersiculo() {
             </ul>
           </div>
 
-          <div class="mt-8 rounded-2xl border border-white/15 bg-[#111a11]/76 p-6 backdrop-blur-sm">
+          <div class="mt-8 rounded-2xl border border-white/15 bg-[#111a11]/48 p-6 backdrop-blur-[1px]">
             <h3 class="font-serif text-3xl text-[#fff7e7]">Conclusión</h3>
             <p class="mt-4 text-lg leading-relaxed text-[#f8f3e7]/90">
               Los estudiosos suelen leer este versículo como una declaración exclusiva de Jesús: Él es el único camino hacia el Padre, la revelación plena de la verdad de Dios y la fuente de la vida verdadera.
@@ -223,7 +223,7 @@ async function copiarVersiculo() {
 
 .modal-significado {
   background:
-    linear-gradient(rgba(7, 8, 6, 0.62), rgba(7, 8, 6, 0.78)),
+    linear-gradient(rgba(7, 8, 6, 0.08), rgba(7, 8, 6, 0.14)),
     url('/src/src/assets/file_00000000c1f071f5a4f4d28bc73d3922.png') center / cover no-repeat;
 }
 </style>
