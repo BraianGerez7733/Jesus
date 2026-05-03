@@ -3,17 +3,1547 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0ea5e9" />
-    <title>Jesús es el camino · Juan 14:6</title>
+    <meta name="theme-color" content="#1d4ed8" />
+    <title>Historia de la Educación | Parcial interactivo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@500;700;800&display=swap"
       rel="stylesheet"
     />
+    <style>
+      :root {
+        --bg: #04111f;
+        --panel: rgba(10, 18, 36, 0.72);
+        --panel-strong: rgba(7, 12, 25, 0.88);
+        --line: rgba(255, 255, 255, 0.14);
+        --text: #eff6ff;
+        --muted: #dbeafe;
+        --accent: #60a5fa;
+        --accent-2: #f59e0b;
+        --accent-3: #34d399;
+        --accent-4: #f472b6;
+        --danger: #fb7185;
+        --shadow: 0 30px 80px rgba(2, 6, 23, 0.38);
+        --radius: 28px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "DM Sans", sans-serif;
+        background: radial-gradient(circle at top, #0f2551 0%, #020617 48%, #01040b 100%);
+        color: var(--text);
+      }
+
+      button,
+      a {
+        font: inherit;
+      }
+
+      .app-shell {
+        position: relative;
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .topbar {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 30;
+        display: grid;
+        gap: 16px;
+        padding: 16px 20px;
+        background: linear-gradient(180deg, rgba(1, 4, 11, 0.88), rgba(1, 4, 11, 0.18));
+        backdrop-filter: blur(14px);
+      }
+
+      .topbar-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        max-width: 1280px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .brand-badge {
+        width: 52px;
+        height: 52px;
+        display: grid;
+        place-items: center;
+        border-radius: 18px;
+        background: linear-gradient(135deg, var(--accent-2), var(--accent-4));
+        color: #111827;
+        font-family: "Outfit", sans-serif;
+        font-weight: 800;
+      }
+
+      .brand h1 {
+        margin: 0;
+        font-size: clamp(1rem, 1.8vw, 1.4rem);
+        font-family: "Outfit", sans-serif;
+      }
+
+      .brand p,
+      .hud-note {
+        margin: 2px 0 0;
+        color: rgba(239, 246, 255, 0.75);
+        font-size: 0.9rem;
+      }
+
+      .hud {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .hud-chip {
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        font-size: 0.95rem;
+      }
+
+      .progress-track {
+        width: min(100%, 1280px);
+        height: 10px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .progress-fill {
+        height: 100%;
+        width: 0;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--accent), var(--accent-3), var(--accent-2));
+        transition: width 0.4s ease;
+      }
+
+      .view-nav {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .nav-btn,
+      .action-btn,
+      .option-btn,
+      .mini-btn {
+        border: 0;
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+      }
+
+      .nav-btn {
+        padding: 11px 16px;
+        border-radius: 999px;
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .nav-btn:hover,
+      .action-btn:hover,
+      .option-btn:hover,
+      .mini-btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .nav-btn.active {
+        background: linear-gradient(135deg, rgba(96, 165, 250, 0.95), rgba(52, 211, 153, 0.88));
+        color: #03111f;
+        border-color: transparent;
+      }
+
+      .pages {
+        position: relative;
+      }
+
+      .page {
+        position: relative;
+        min-height: 100vh;
+        display: none;
+        padding: 170px 20px 60px;
+      }
+
+      .page.active {
+        display: block;
+        animation: pageFade 0.5s ease;
+      }
+
+      @keyframes pageFade {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .page video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .page-overlay {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(2, 6, 23, 0.62), rgba(2, 6, 23, 0.82)),
+          radial-gradient(circle at top right, rgba(96, 165, 250, 0.12), transparent 30%),
+          radial-gradient(circle at bottom left, rgba(244, 114, 182, 0.12), transparent 26%);
+      }
+
+      .page-inner {
+        position: relative;
+        z-index: 2;
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      .hero-card,
+      .panel,
+      .flashcard-shell,
+      .quiz-shell,
+      .game-shell {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+      }
+
+      .hero-card {
+        padding: clamp(24px, 4vw, 42px);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 18px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fde68a;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 0.75rem;
+      }
+
+      .hero-grid,
+      .two-col,
+      .three-col,
+      .grid-cards {
+        display: grid;
+        gap: 22px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: start;
+      }
+
+      .hero-title {
+        margin: 0;
+        font-family: "Outfit", sans-serif;
+        font-size: clamp(2.6rem, 6vw, 5rem);
+        line-height: 0.95;
+      }
+
+      .hero-copy,
+      .panel p,
+      .card-text,
+      .quiz-feedback,
+      .map-text,
+      .footer-note {
+        line-height: 1.7;
+        color: rgba(239, 246, 255, 0.88);
+      }
+
+      .hero-copy {
+        font-size: 1.08rem;
+        max-width: 60ch;
+      }
+
+      .cta-row,
+      .action-row,
+      .quiz-options,
+      .memory-controls,
+      .map-controls {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .action-btn {
+        padding: 12px 18px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.95), rgba(244, 114, 182, 0.88));
+        color: #111827;
+        font-weight: 700;
+      }
+
+      .action-btn.alt {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .mini-btn {
+        padding: 10px 14px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .mini-btn.active {
+        background: rgba(96, 165, 250, 0.2);
+        border-color: rgba(96, 165, 250, 0.7);
+      }
+
+      .panel {
+        padding: 24px;
+      }
+
+      .panel h2,
+      .panel h3,
+      .flashcard-face h2,
+      .quiz-title,
+      .game-title {
+        margin: 0 0 12px;
+        font-family: "Outfit", sans-serif;
+      }
+
+      .grid-cards {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .topic-card,
+      .machete-card,
+      .timeline-card,
+      .game-card,
+      .match-card {
+        padding: 20px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .topic-card h3,
+      .machete-card h3,
+      .timeline-card h3,
+      .game-card h3 {
+        margin: 0 0 10px;
+        font-family: "Outfit", sans-serif;
+      }
+
+      .topic-index {
+        display: inline-grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, rgba(96, 165, 250, 0.96), rgba(52, 211, 153, 0.82));
+        color: #03111f;
+        font-weight: 800;
+      }
+
+      .flash-layout,
+      .quiz-layout,
+      .game-layout {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 22px;
+        margin-top: 24px;
+      }
+
+      .flashcard-shell,
+      .quiz-shell,
+      .game-shell {
+        padding: 24px;
+      }
+
+      .flashcard-frame {
+        position: relative;
+        height: 430px;
+        perspective: 1400px;
+      }
+
+      .flashcard {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.7s ease;
+      }
+
+      .flashcard.flipped {
+        transform: rotateY(180deg);
+      }
+
+      .flashcard-face {
+        position: absolute;
+        inset: 0;
+        padding: 28px;
+        border-radius: 28px;
+        backface-visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background:
+          linear-gradient(180deg, rgba(10, 18, 36, 0.9), rgba(15, 23, 42, 0.88)),
+          radial-gradient(circle at top right, rgba(245, 158, 11, 0.14), transparent 28%);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .flashcard-face.back {
+        transform: rotateY(180deg);
+        background:
+          linear-gradient(180deg, rgba(5, 46, 22, 0.84), rgba(10, 18, 36, 0.92)),
+          radial-gradient(circle at top left, rgba(52, 211, 153, 0.22), transparent 28%);
+      }
+
+      .flashcard-tag {
+        display: inline-flex;
+        align-self: flex-start;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .flashcard-copy {
+        margin: 16px 0 0;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        line-height: 1.75;
+        white-space: pre-line;
+      }
+
+      .meter {
+        display: grid;
+        gap: 12px;
+      }
+
+      .meter-card {
+        padding: 16px 18px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .meter-card strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 1.2rem;
+        color: #fde68a;
+      }
+
+      .quiz-title {
+        font-size: clamp(1.5rem, 3vw, 2.4rem);
+      }
+
+      .quiz-counter,
+      .subtle {
+        color: rgba(239, 246, 255, 0.75);
+      }
+
+      .option-btn {
+        width: 100%;
+        text-align: left;
+        padding: 16px 18px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .option-btn.correct {
+        background: rgba(52, 211, 153, 0.2);
+        border-color: rgba(52, 211, 153, 0.78);
+      }
+
+      .option-btn.wrong {
+        background: rgba(251, 113, 133, 0.16);
+        border-color: rgba(251, 113, 133, 0.72);
+      }
+
+      .quiz-feedback {
+        min-height: 74px;
+        padding: 16px 18px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .quiz-feedback.good {
+        border-color: rgba(52, 211, 153, 0.78);
+      }
+
+      .quiz-feedback.bad {
+        border-color: rgba(251, 113, 133, 0.72);
+      }
+
+      .concept-grid,
+      .machete-grid,
+      .timeline-grid,
+      .match-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .concept-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .machete-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .timeline-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .timeline-card {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .timeline-card::after {
+        content: "";
+        position: absolute;
+        inset: auto 18px 0 18px;
+        height: 5px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-4));
+      }
+
+      .map-display {
+        min-height: 230px;
+        padding: 22px;
+        border-radius: 26px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .map-display h3 {
+        margin-top: 0;
+        font-family: "Outfit", sans-serif;
+        font-size: 1.5rem;
+      }
+
+      .map-text {
+        white-space: pre-line;
+      }
+
+      .match-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .match-card {
+        min-height: 140px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      .match-card.revealed,
+      .match-card.solved {
+        background: rgba(96, 165, 250, 0.2);
+        border-color: rgba(96, 165, 250, 0.7);
+      }
+
+      .match-card.solved {
+        background: rgba(52, 211, 153, 0.22);
+        border-color: rgba(52, 211, 153, 0.75);
+      }
+
+      .footer-note {
+        margin-top: 28px;
+        text-align: center;
+      }
+
+      @media (max-width: 1080px) {
+        .hero-grid,
+        .flash-layout,
+        .quiz-layout,
+        .game-layout,
+        .grid-cards,
+        .timeline-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .machete-grid,
+        .concept-grid,
+        .match-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 760px) {
+        .page {
+          padding-top: 220px;
+        }
+
+        .topbar {
+          padding: 12px;
+        }
+
+        .topbar-row {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .hud {
+          justify-content: flex-start;
+        }
+
+        .machete-grid,
+        .concept-grid,
+        .match-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .flashcard-frame {
+          height: 500px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="topbar-row">
+          <div class="brand">
+            <div class="brand-badge">HE</div>
+            <div>
+              <h1>Historia de la Educación</h1>
+              <p>Parcial interactivo en un solo HTML</p>
+            </div>
+          </div>
+          <div class="hud">
+            <div class="hud-chip">Puntaje: <strong id="scoreValue">0</strong></div>
+            <div class="hud-chip">Aciertos: <strong id="correctValue">0</strong></div>
+            <div class="hud-chip">Flashcards vistas: <strong id="flashValue">0</strong></div>
+            <div class="hud-chip">Vista actual: <strong id="currentViewLabel">Resumen visual</strong></div>
+          </div>
+        </div>
+        <div class="topbar-row">
+          <nav class="view-nav" aria-label="Navegación principal">
+            <button class="nav-btn active" data-view-target="resumen">Resumen visual</button>
+            <button class="nav-btn" data-view-target="flashcards">Flashcards</button>
+            <button class="nav-btn" data-view-target="evaluacion">Evaluación</button>
+            <button class="nav-btn" data-view-target="repaso">Repaso dinámico</button>
+          </nav>
+          <div class="hud-note">4 secciones, progreso y actividades interactivas distribuidas en toda la web.</div>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <div class="progress-fill" id="globalProgress"></div>
+        </div>
+      </header>
+
+      <main class="pages">
+        <section class="page active" id="resumen" data-view-name="Resumen visual">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            src="https://cdn.coverr.co/videos/coverr-library-shelves-1561276039099?download=1080p"
+          ></video>
+          <div class="page-overlay"></div>
+          <div class="page-inner">
+            <div class="hero-card">
+              <div class="eyebrow">Página 1 · Resumen visual del contenido</div>
+              <div class="hero-grid">
+                <div>
+                  <h2 class="hero-title">Guía completa para estudiar el parcial</h2>
+                  <p class="hero-copy">
+                    Historia de la Educación · Respuestas desarrolladas + machete de repaso
+                  </p>
+                  <p class="hero-copy">
+                    La historia como disciplina no debe entenderse como una simple acumulación de fechas, nombres o acontecimientos aislados, sino como una forma de conocimiento que busca comprender los procesos humanos en el tiempo. Según José Alonso Salas, la historia estudia al hombre en el tiempo, se basa en fuentes históricas y analiza procesos políticos, sociales, económicos, culturales, artísticos y de la vida cotidiana.
+                  </p>
+                  <div class="cta-row">
+                    <button class="action-btn" data-view-target="flashcards">Ir a flashcards</button>
+                    <button class="action-btn alt" data-scroll-target="#macheteVisual">Abrir machete visual</button>
+                    <button class="action-btn alt" data-scroll-target="#timelineVisual">Ver línea comparativa</button>
+                  </div>
+                </div>
+                <div class="panel">
+                  <h2>Historia como disciplina y categorías de análisis</h2>
+                  <p>
+                    Esto significa que la historia no solo pregunta “qué pasó”, sino también por qué pasó, cómo ocurrió, en qué contexto, qué cambió y qué permaneció. Por eso, Salas diferencia la historia como narración, como disciplina y como devenir histórico: como disciplina, la historia es un saber organizado que investiga el pasado humano para comprender procesos.
+                  </p>
+                  <p>
+                    Esta mirada se relaciona con lo que plantean Arata y Mariño, quienes sostienen que pensar históricamente implica comprender que el pasado no aparece de manera neutral, sino que se reconstruye desde preguntas realizadas en el presente.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-cards" style="margin-top: 22px">
+              <article class="topic-card">
+                <div class="topic-index">1</div>
+                <h3>Historia como disciplina</h3>
+                <p class="card-text">
+                  La historia estudia al ser humano en el tiempo. No es memorizar fechas, sino comprender procesos. Usa fuentes y categorías de análisis.
+                </p>
+              </article>
+              <article class="topic-card">
+                <div class="topic-index">2</div>
+                <h3>Historia de la Educación</h3>
+                <p class="card-text">
+                  Estudia cómo las sociedades transmitieron saberes, valores, costumbres y prácticas a las nuevas generaciones. No estudia solo la escuela.
+                </p>
+              </article>
+              <article class="topic-card">
+                <div class="topic-index">3</div>
+                <h3>Antigüedad vs Edad Media</h3>
+                <p class="card-text">
+                  Antigüedad griega: educación integral, paideia, cuerpo + mente + moral + ciudadanía. Edad Media: educación religiosa e intelectual.
+                </p>
+              </article>
+              <article class="topic-card">
+                <div class="topic-index">4</div>
+                <h3>Cuerpo en Grecia</h3>
+                <p class="card-text">
+                  El cuerpo era parte central de la educación. Se educaba mediante gimnasia, carrera, lucha, disco, jabalina, boxeo y pancracio.
+                </p>
+              </article>
+            </div>
+
+            <div class="two-col" style="grid-template-columns: 1.15fr 0.85fr; margin-top: 22px">
+              <section class="panel" id="macheteVisual">
+                <div class="eyebrow">Machete visual</div>
+                <div class="machete-grid">
+                  <article class="machete-card">
+                    <h3>1. Historia como disciplina</h3>
+                    <p class="card-text">
+                      Salas dice que analiza procesos políticos, sociales, culturales y de la vida cotidiana. Arata y Mariño agregan que el pasado se reconstruye desde preguntas del presente.
+                    </p>
+                  </article>
+                  <article class="machete-card">
+                    <h3>2. Historia de la Educación</h3>
+                    <p class="card-text">
+                      Luzuriaga muestra que en pueblos primitivos la educación era por imitación y convivencia. Arata y Mariño dicen que toda sociedad transmite una herencia cultural.
+                    </p>
+                  </article>
+                  <article class="machete-card">
+                    <h3>3. Antigüedad vs Edad Media</h3>
+                    <p class="card-text">
+                      Diferencia clave: Grecia forma ciudadanos; Edad Media forma cristianos y clérigos.
+                    </p>
+                  </article>
+                  <article class="machete-card">
+                    <h3>4. Cuerpo en Grecia</h3>
+                    <p class="card-text">
+                      Servía para formar fuerza, disciplina, valentía, armonía y ciudadanía.
+                    </p>
+                  </article>
+                </div>
+              </section>
+
+              <section class="panel">
+                <div class="eyebrow">Categorías de análisis</div>
+                <div class="meter">
+                  <div class="meter-card">
+                    <strong>Temporalidad</strong>
+                    <span>No es lo mismo estudiar la educación en la Antigüedad, en la Edad Media o en la Modernidad.</span>
+                  </div>
+                  <div class="meter-card">
+                    <strong>Espacialidad</strong>
+                    <span>La educación griega, por ejemplo, no fue igual a la educación medieval europea.</span>
+                  </div>
+                  <div class="meter-card">
+                    <strong>Periodización</strong>
+                    <span>Edad Antigua, Edad Media, Edad Moderna y Edad Contemporánea.</span>
+                  </div>
+                  <div class="meter-card">
+                    <strong>Cambio y permanencia</strong>
+                    <span>Cambia la forma de enseñar, pero permanece la necesidad de transmitir saberes.</span>
+                  </div>
+                  <div class="meter-card">
+                    <strong>Sincronía y diacronía</strong>
+                    <span>La sincronía compara hechos del mismo tiempo y la diacronía observa la sucesión a lo largo del tiempo.</span>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <section class="panel" id="timelineVisual" style="margin-top: 22px">
+              <div class="eyebrow">Comparación visual</div>
+              <div class="timeline-grid">
+                <article class="timeline-card">
+                  <h3>Objeto de estudio</h3>
+                  <p class="card-text">
+                    Analizar cómo las sociedades transmitieron saberes, valores, costumbres, prácticas corporales, normas, creencias y formas de vida a las nuevas generaciones.
+                  </p>
+                </article>
+                <article class="timeline-card">
+                  <h3>Pueblos primitivos</h3>
+                  <p class="card-text">
+                    La educación era natural, espontánea e inconsciente, adquirida por la convivencia entre adultos y menores.
+                  </p>
+                </article>
+                <article class="timeline-card">
+                  <h3>Antigüedad griega</h3>
+                  <p class="card-text">
+                    Paideia, formación integral del ciudadano, importancia del cuerpo, música, palabra, filosofía y vida pública.
+                  </p>
+                </article>
+                <article class="timeline-card">
+                  <h3>Edad Media</h3>
+                  <p class="card-text">
+                    Escuelas monásticas, catedralicias y universidades. Trivium y quadrivium dentro del marco de la Iglesia.
+                  </p>
+                </article>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="page" id="flashcards" data-view-name="Flashcards">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            src="https://cdn.coverr.co/videos/coverr-notebook-and-glasses-1565277417363?download=1080p"
+          ></video>
+          <div class="page-overlay"></div>
+          <div class="page-inner">
+            <div class="hero-card">
+              <div class="eyebrow">Página 2 · Flashcards interactivas</div>
+              <div class="flash-layout">
+                <section class="flashcard-shell">
+                  <div class="flashcard-frame">
+                    <div class="flashcard" id="flashcard">
+                      <article class="flashcard-face front">
+                        <div>
+                          <span class="flashcard-tag" id="flashTagFront">Tema</span>
+                          <h2 id="flashTitleFront">Historia como disciplina</h2>
+                        </div>
+                        <p class="flashcard-copy" id="flashFrontText"></p>
+                        <div class="subtle">Toca “Voltear” para leer el desarrollo textual.</div>
+                      </article>
+                      <article class="flashcard-face back">
+                        <div>
+                          <span class="flashcard-tag" id="flashTagBack">Desarrollo</span>
+                          <h2 id="flashTitleBack">Respuesta desarrollada</h2>
+                        </div>
+                        <p class="flashcard-copy" id="flashBackText"></p>
+                        <div class="subtle">Usa Anterior, Siguiente o Tema rápido para seguir repasando.</div>
+                      </article>
+                    </div>
+                  </div>
+                  <div class="action-row" style="margin-top: 18px">
+                    <button class="action-btn" id="flipCardBtn">Voltear</button>
+                    <button class="action-btn alt" id="prevCardBtn">Anterior</button>
+                    <button class="action-btn alt" id="nextCardBtn">Siguiente</button>
+                    <button class="action-btn alt" id="shuffleCardBtn">Aleatoria</button>
+                  </div>
+                </section>
+
+                <aside class="panel">
+                  <h2>Repaso guiado</h2>
+                  <p>
+                    La historia como disciplina no debe entenderse como una simple acumulación de fechas, nombres o acontecimientos aislados. La educación no se reduce a la escuela. En Grecia, el cuerpo era concebido como una dimensión fundamental del ser humano. En la Edad Media, la finalidad educativa no era formar al ciudadano de la polis, como en Grecia, sino formar al cristiano, conservar la doctrina y preparar para la salvación del alma.
+                  </p>
+                  <div class="meter">
+                    <div class="meter-card">
+                      <strong id="flashPosition">1 / 8</strong>
+                      <span>Tarjeta actual</span>
+                    </div>
+                    <div class="meter-card">
+                      <strong id="flashSeenLocal">0</strong>
+                      <span>Tarjetas abiertas con sistema de volteo</span>
+                    </div>
+                  </div>
+                  <div class="map-controls" style="margin-top: 18px">
+                    <button class="mini-btn active" data-flash-index="0">Tema 1</button>
+                    <button class="mini-btn" data-flash-index="1">Tema 2</button>
+                    <button class="mini-btn" data-flash-index="2">Tema 3</button>
+                    <button class="mini-btn" data-flash-index="3">Tema 4</button>
+                    <button class="mini-btn" data-flash-index="4">Tema 5</button>
+                    <button class="mini-btn" data-flash-index="5">Tema 6</button>
+                    <button class="mini-btn" data-flash-index="6">Tema 7</button>
+                    <button class="mini-btn" data-flash-index="7">Tema 8</button>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="evaluacion" data-view-name="Evaluación">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            src="https://cdn.coverr.co/videos/coverr-studying-hard-1564497328893?download=1080p"
+          ></video>
+          <div class="page-overlay"></div>
+          <div class="page-inner">
+            <div class="hero-card">
+              <div class="eyebrow">Página 3 · Multiple choice con feedback inmediato</div>
+              <div class="quiz-layout">
+                <section class="quiz-shell">
+                  <div class="quiz-counter" id="quizCounter">Pregunta 1 de 6</div>
+                  <h2 class="quiz-title" id="quizQuestion">Selecciona la opción que coincide con el contenido base sobre “Historia como disciplina”.</h2>
+                  <div class="quiz-options" id="quizOptions" style="flex-direction: column; margin-top: 18px"></div>
+                  <div class="quiz-feedback" id="quizFeedback" style="margin-top: 18px">
+                    Responde para recibir devolución inmediata usando el mismo contenido base.
+                  </div>
+                  <div class="action-row" style="margin-top: 18px">
+                    <button class="action-btn alt" id="prevQuizBtn">Anterior</button>
+                    <button class="action-btn" id="nextQuizBtn">Siguiente</button>
+                    <button class="action-btn alt" id="resetQuizBtn">Reiniciar evaluación</button>
+                  </div>
+                </section>
+
+                <aside class="panel">
+                  <h2>Marcadores de evaluación</h2>
+                  <div class="meter">
+                    <div class="meter-card">
+                      <strong id="quizScore">0</strong>
+                      <span>Puntaje obtenido</span>
+                    </div>
+                    <div class="meter-card">
+                      <strong id="quizHits">0</strong>
+                      <span>Respuestas correctas</span>
+                    </div>
+                    <div class="meter-card">
+                      <strong id="quizProgressLabel">0%</strong>
+                      <span>Avance de la evaluación</span>
+                    </div>
+                  </div>
+                  <p style="margin-top: 18px">
+                    Importancia docente: ayuda a entender que la escuela y la educación actual son construcciones históricas.
+                  </p>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="repaso" data-view-name="Repaso dinámico">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            src="https://cdn.coverr.co/videos/coverr-close-up-of-studying-9716/1080p.mp4"
+          ></video>
+          <div class="page-overlay"></div>
+          <div class="page-inner">
+            <div class="hero-card">
+              <div class="eyebrow">Página 4 · Repaso dinámico / mapa conceptual / juego</div>
+              <div class="game-layout">
+                <section class="game-shell">
+                  <h2 class="game-title">Mapa conceptual dinámico</h2>
+                  <div class="map-controls" style="margin-bottom: 16px">
+                    <button class="mini-btn active" data-map-key="disciplina">Historia como disciplina</button>
+                    <button class="mini-btn" data-map-key="objeto">Historia de la Educación</button>
+                    <button class="mini-btn" data-map-key="comparacion">Antigüedad vs Edad Media</button>
+                    <button class="mini-btn" data-map-key="cuerpo">Cuerpo en Grecia</button>
+                    <button class="mini-btn" id="cycleMapBtn">Cambiar foco</button>
+                  </div>
+                  <div class="map-display">
+                    <h3 id="mapTitle">Historia como disciplina</h3>
+                    <p class="map-text" id="mapText"></p>
+                  </div>
+
+                  <div class="panel" style="margin-top: 18px; padding: 20px">
+                    <h3>Juego de parejas temáticas</h3>
+                    <p class="card-text">
+                      Abre cartas y encuentra la pareja exacta entre concepto y desarrollo textual.
+                    </p>
+                    <div class="memory-controls" style="margin: 14px 0 16px">
+                      <button class="action-btn alt" id="resetMatchBtn">Reiniciar juego</button>
+                      <button class="action-btn" id="revealAllBtn">Mostrar todas</button>
+                    </div>
+                    <div class="match-grid" id="matchGrid"></div>
+                  </div>
+                </section>
+
+                <aside class="game-shell">
+                  <h2 class="game-title">Tarjetas de repaso rápido</h2>
+                  <div class="concept-grid">
+                    <article class="game-card">
+                      <h3>Salas</h3>
+                      <p class="card-text">
+                        La historia estudia al hombre en el tiempo, se basa en fuentes históricas y analiza procesos políticos, sociales, económicos, culturales, artísticos y de la vida cotidiana.
+                      </p>
+                    </article>
+                    <article class="game-card">
+                      <h3>Arata y Mariño</h3>
+                      <p class="card-text">
+                        Pensar históricamente implica comprender que el pasado no aparece de manera neutral, sino que se reconstruye desde preguntas realizadas en el presente.
+                      </p>
+                    </article>
+                    <article class="game-card">
+                      <h3>Luzuriaga</h3>
+                      <p class="card-text">
+                        En los pueblos primitivos la educación era natural, espontánea e inconsciente, adquirida por la convivencia entre adultos y menores.
+                      </p>
+                    </article>
+                    <article class="game-card">
+                      <h3>Marrou</h3>
+                      <p class="card-text">
+                        La educación física griega formaba parte esencial de la educación antigua.
+                      </p>
+                    </article>
+                  </div>
+
+                  <div class="panel" style="margin-top: 18px">
+                    <h3>Botones de navegación entre temas</h3>
+                    <div class="map-controls">
+                      <button class="mini-btn" data-view-target="resumen">Volver al resumen</button>
+                      <button class="mini-btn" data-view-target="flashcards">Abrir flashcards</button>
+                      <button class="mini-btn" data-view-target="evaluacion">Ir a evaluación</button>
+                      <button class="mini-btn" data-scroll-target="body">Ir al inicio</button>
+                    </div>
+                  </div>
+
+                  <p class="footer-note">
+                    Idea clave: el cuerpo no era algo inferior; era parte de la formación integral del ser humano.
+                  </p>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const state = {
+        currentView: "resumen",
+        visited: new Set(["resumen"]),
+        score: 0,
+        correct: 0,
+        flashSeen: new Set(),
+        currentFlash: 0,
+        flipped: false,
+        currentQuiz: 0,
+        answeredQuiz: {},
+        mapIndex: 0,
+        matchSelections: [],
+        solvedMatches: new Set(),
+      };
+
+      const viewLabels = {
+        resumen: "Resumen visual",
+        flashcards: "Flashcards",
+        evaluacion: "Evaluación",
+        repaso: "Repaso dinámico",
+      };
+
+      const flashcards = [
+        {
+          tag: "Tema 1",
+          title: "Historia como disciplina",
+          front:
+            "La historia estudia al ser humano en el tiempo. No es memorizar fechas, sino comprender procesos.",
+          back:
+            "La historia como disciplina no debe entenderse como una simple acumulación de fechas, nombres o acontecimientos aislados, sino como una forma de conocimiento que busca comprender los procesos humanos en el tiempo.",
+        },
+        {
+          tag: "Tema 1",
+          title: "Categorías de análisis",
+          front:
+            "Temporalidad, espacialidad, periodización, cambio y permanencia, sincronía y diacronía.",
+          back:
+            "Estas categorías son importantes porque evitan estudiar la historia como una lista de datos. Ayudan a comprender los procesos de manera más profunda, relacionando tiempo, espacio, sociedad, cultura y educación.",
+        },
+        {
+          tag: "Tema 2",
+          title: "Objeto de estudio",
+          front:
+            "Analizar cómo las sociedades transmitieron saberes, valores, costumbres, prácticas corporales, normas, creencias y formas de vida.",
+          back:
+            "La Historia de la Educación es analizar cómo las sociedades, a lo largo del tiempo, transmitieron saberes, valores, costumbres, prácticas corporales, normas, creencias y formas de vida a las nuevas generaciones.",
+        },
+        {
+          tag: "Tema 2",
+          title: "Pueblos primitivos",
+          front:
+            "La educación era natural, espontánea e inconsciente, adquirida por la convivencia entre adultos y menores.",
+          back:
+            "Los jóvenes aprendían por imitación y participación en las actividades necesarias para la vida: caza, pesca, agricultura, tareas domésticas, cantos, danzas, ritos, uso de armas y lenguaje.",
+        },
+        {
+          tag: "Tema 3",
+          title: "Antigüedad griega",
+          front:
+            "La idea de paideia puede entenderse como un ideal de formación humana completa.",
+          back:
+            "No se buscaba solamente transmitir conocimientos, sino formar al sujeto en lo físico, lo moral, lo intelectual, lo artístico y lo político.",
+        },
+        {
+          tag: "Tema 3",
+          title: "Edad Media",
+          front:
+            "La finalidad educativa no era formar al ciudadano de la polis, como en Grecia, sino formar al cristiano.",
+          back:
+            "El saber se organizó alrededor de las artes liberales: el trivium y el quadrivium. Este modelo muestra que la educación medieval valoraba especialmente el conocimiento intelectual, religioso y discursivo.",
+        },
+        {
+          tag: "Tema 4",
+          title: "Concepción del cuerpo",
+          front:
+            "En Grecia, el cuerpo era concebido como una dimensión fundamental del ser humano.",
+          back:
+            "No era visto solamente como algo biológico, sino como parte de la formación moral, social y política.",
+        },
+        {
+          tag: "Tema 4",
+          title: "Prácticas corporales",
+          front:
+            "Carrera, salto, lanzamiento de disco, jabalina, lucha, boxeo y pancracio.",
+          back:
+            "Estas prácticas desarrollaban fuerza, resistencia, coordinación, valentía y disciplina.",
+        },
+      ];
+
+      const quizQuestions = [
+        {
+          prompt: "Selecciona la opción que coincide con el contenido base sobre “Historia como disciplina”.",
+          options: [
+            "La historia estudia al ser humano en el tiempo. No es memorizar fechas, sino comprender procesos.",
+            "La historia se reduce a la escuela y a la instrucción.",
+            "La historia se limita a nombrar guerras y presidentes.",
+            "La historia no usa categorías de análisis.",
+          ],
+          correct: 0,
+          feedback:
+            "Correcto: “La historia estudia al ser humano en el tiempo. No es memorizar fechas, sino comprender procesos.”",
+        },
+        {
+          prompt: "Selecciona la opción que coincide con el contenido base sobre “Historia de la Educación”.",
+          options: [
+            "Estudia solo materias, programas y exámenes.",
+            "Estudia cómo las sociedades transmitieron saberes, valores, costumbres y prácticas a las nuevas generaciones.",
+            "Estudia únicamente universidades medievales.",
+            "Estudia exclusivamente la educación física.",
+          ],
+          correct: 1,
+          feedback:
+            "Correcto: “Estudia cómo las sociedades transmitieron saberes, valores, costumbres y prácticas a las nuevas generaciones.”",
+        },
+        {
+          prompt: "Selecciona la opción que coincide con el contenido base sobre “Pueblos primitivos”.",
+          options: [
+            "La educación era natural, espontánea e inconsciente, adquirida por la convivencia entre adultos y menores.",
+            "La educación dependía del currículo universitario.",
+            "La educación tenía como centro el quadrivium.",
+            "La educación estaba organizada por la polis y los Juegos Olímpicos.",
+          ],
+          correct: 0,
+          feedback:
+            "Correcto: “La educación era natural, espontánea e inconsciente, adquirida por la convivencia entre adultos y menores.”",
+        },
+        {
+          prompt: "Selecciona la opción que coincide con el contenido base sobre “Antigüedad griega”.",
+          options: [
+            "Educación religiosa e intelectual. Dominio de la Iglesia.",
+            "Paideia, cuerpo + mente + moral + ciudadanía.",
+            "Formación exclusiva del clero.",
+            "Preparación para la salvación del alma.",
+          ],
+          correct: 1,
+          feedback:
+            "Correcto: “Antigüedad griega: educación integral, paideia, cuerpo + mente + moral + ciudadanía.”",
+        },
+        {
+          prompt: "Selecciona la opción que coincide con el contenido base sobre “Edad Media”.",
+          options: [
+            "Educación deportiva, torneos y Juegos Olímpicos.",
+            "Gimnasia, caza, equitación y filosofía según la posición social.",
+            "Trivium: gramática, retórica y dialéctica. Quadrivium: aritmética, geometría, música y astronomía.",
+            "Formación del ciudadano de la polis.",
+          ],
+          correct: 2,
+          feedback:
+            "Correcto: “Trivium: gramática, retórica y dialéctica. Quadrivium: aritmética, geometría, música y astronomía.”",
+        },
+        {
+          prompt: "Selecciona la opción que coincide con el contenido base sobre “Cuerpo en Grecia”.",
+          options: [
+            "El cuerpo era algo inferior y debía ser ignorado.",
+            "El cuerpo era parte central de la educación.",
+            "El cuerpo solo se educaba para la agricultura.",
+            "El cuerpo no se relacionaba con ciudadanía.",
+          ],
+          correct: 1,
+          feedback:
+            "Correcto: “El cuerpo era parte central de la educación.”",
+        },
+      ];
+
+      const mapData = {
+        disciplina: {
+          title: "Historia como disciplina",
+          text:
+            "La historia estudia al ser humano en el tiempo.\nNo es memorizar fechas, sino comprender procesos.\nUsa fuentes y categorías de análisis.\nEl pasado se reconstruye desde preguntas del presente.",
+        },
+        objeto: {
+          title: "Historia de la Educación",
+          text:
+            "Analiza cómo las sociedades transmitieron saberes, valores, costumbres, prácticas corporales, normas, creencias y formas de vida.\nNo estudia solo la escuela.\nToda sociedad transmite una herencia cultural.",
+        },
+        comparacion: {
+          title: "Antigüedad vs Edad Media",
+          text:
+            "Antigüedad griega: educación integral, paideia, cuerpo + mente + moral + ciudadanía.\nEdad Media: educación religiosa e intelectual.\nGrecia forma ciudadanos; Edad Media forma cristianos y clérigos.",
+        },
+        cuerpo: {
+          title: "Cuerpo en Grecia",
+          text:
+            "El cuerpo era parte central de la educación.\nGimnasia, carrera, lucha, disco, jabalina, boxeo y pancracio.\nServía para formar fuerza, disciplina, valentía, armonía y ciudadanía.",
+        },
+      };
+
+      const matchBase = [
+        ["Paideia", "Educación integral, paideia, cuerpo + mente + moral + ciudadanía."],
+        ["Trivium", "Gramática, retórica y dialéctica."],
+        ["Quadrivium", "Aritmética, geometría, música y astronomía."],
+        ["Luzuriaga", "La educación era natural, espontánea e inconsciente, adquirida por la convivencia entre adultos y menores."],
+      ];
+
+      const navButtons = [...document.querySelectorAll("[data-view-target]")];
+      const pages = [...document.querySelectorAll(".page")];
+      const scoreValue = document.getElementById("scoreValue");
+      const correctValue = document.getElementById("correctValue");
+      const flashValue = document.getElementById("flashValue");
+      const currentViewLabel = document.getElementById("currentViewLabel");
+      const globalProgress = document.getElementById("globalProgress");
+
+      function showView(viewId) {
+        state.currentView = viewId;
+        state.visited.add(viewId);
+        pages.forEach((page) => page.classList.toggle("active", page.id === viewId));
+        navButtons.forEach((button) => {
+          button.classList.toggle("active", button.dataset.viewTarget === viewId);
+        });
+        currentViewLabel.textContent = viewLabels[viewId];
+        updateGlobalProgress();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function updateGlobalProgress() {
+        const visitRatio = state.visited.size / 4;
+        const quizRatio = Object.keys(state.answeredQuiz).length / quizQuestions.length;
+        const flashRatio = state.flashSeen.size / flashcards.length;
+        const matchRatio = state.solvedMatches.size / matchBase.length;
+        const total = ((visitRatio + quizRatio + flashRatio + matchRatio) / 4) * 100;
+        globalProgress.style.width = `${Math.min(total, 100)}%`;
+        scoreValue.textContent = state.score;
+        correctValue.textContent = state.correct;
+        flashValue.textContent = state.flashSeen.size;
+      }
+
+      navButtons.forEach((button) => {
+        button.addEventListener("click", () => showView(button.dataset.viewTarget));
+      });
+
+      document.querySelectorAll("[data-scroll-target]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const target = button.dataset.scrollTarget;
+          const element = target === "body" ? document.body : document.querySelector(target);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+
+      const flashcardEl = document.getElementById("flashcard");
+      const flashFrontText = document.getElementById("flashFrontText");
+      const flashBackText = document.getElementById("flashBackText");
+      const flashTitleFront = document.getElementById("flashTitleFront");
+      const flashTitleBack = document.getElementById("flashTitleBack");
+      const flashTagFront = document.getElementById("flashTagFront");
+      const flashTagBack = document.getElementById("flashTagBack");
+      const flashPosition = document.getElementById("flashPosition");
+      const flashSeenLocal = document.getElementById("flashSeenLocal");
+      const quickFlashButtons = [...document.querySelectorAll("[data-flash-index]")];
+
+      function renderFlashcard() {
+        const card = flashcards[state.currentFlash];
+        flashTitleFront.textContent = card.title;
+        flashTitleBack.textContent = card.title;
+        flashTagFront.textContent = card.tag;
+        flashTagBack.textContent = `${card.tag} · Desarrollo`;
+        flashFrontText.textContent = card.front;
+        flashBackText.textContent = card.back;
+        flashcardEl.classList.toggle("flipped", state.flipped);
+        flashPosition.textContent = `${state.currentFlash + 1} / ${flashcards.length}`;
+        flashSeenLocal.textContent = state.flashSeen.size;
+        quickFlashButtons.forEach((button) => {
+          button.classList.toggle("active", Number(button.dataset.flashIndex) === state.currentFlash);
+        });
+        updateGlobalProgress();
+      }
+
+      function openFlash(index) {
+        state.currentFlash = index;
+        state.flipped = false;
+        renderFlashcard();
+      }
+
+      document.getElementById("flipCardBtn").addEventListener("click", () => {
+        state.flipped = !state.flipped;
+        if (state.flipped) {
+          state.flashSeen.add(state.currentFlash);
+          state.score += 5;
+        }
+        renderFlashcard();
+      });
+
+      document.getElementById("prevCardBtn").addEventListener("click", () => {
+        state.currentFlash = (state.currentFlash - 1 + flashcards.length) % flashcards.length;
+        state.flipped = false;
+        renderFlashcard();
+      });
+
+      document.getElementById("nextCardBtn").addEventListener("click", () => {
+        state.currentFlash = (state.currentFlash + 1) % flashcards.length;
+        state.flipped = false;
+        renderFlashcard();
+      });
+
+      document.getElementById("shuffleCardBtn").addEventListener("click", () => {
+        state.currentFlash = Math.floor(Math.random() * flashcards.length);
+        state.flipped = false;
+        renderFlashcard();
+      });
+
+      quickFlashButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          openFlash(Number(button.dataset.flashIndex));
+        });
+      });
+
+      const quizQuestion = document.getElementById("quizQuestion");
+      const quizOptions = document.getElementById("quizOptions");
+      const quizFeedback = document.getElementById("quizFeedback");
+      const quizCounter = document.getElementById("quizCounter");
+      const quizScore = document.getElementById("quizScore");
+      const quizHits = document.getElementById("quizHits");
+      const quizProgressLabel = document.getElementById("quizProgressLabel");
+
+      function renderQuiz() {
+        const question = quizQuestions[state.currentQuiz];
+        quizQuestion.textContent = question.prompt;
+        quizCounter.textContent = `Pregunta ${state.currentQuiz + 1} de ${quizQuestions.length}`;
+        quizOptions.innerHTML = "";
+        question.options.forEach((option, index) => {
+          const button = document.createElement("button");
+          button.className = "option-btn";
+          button.textContent = option;
+          const answer = state.answeredQuiz[state.currentQuiz];
+          if (answer !== undefined) {
+            if (index === question.correct) button.classList.add("correct");
+            if (index === answer && index !== question.correct) button.classList.add("wrong");
+          }
+          button.addEventListener("click", () => handleQuizAnswer(index));
+          quizOptions.appendChild(button);
+        });
+
+        const answer = state.answeredQuiz[state.currentQuiz];
+        if (answer === undefined) {
+          quizFeedback.className = "quiz-feedback";
+          quizFeedback.textContent = "Responde para recibir devolución inmediata usando el mismo contenido base.";
+        } else if (answer === question.correct) {
+          quizFeedback.className = "quiz-feedback good";
+          quizFeedback.textContent = question.feedback;
+        } else {
+          quizFeedback.className = "quiz-feedback bad";
+          quizFeedback.textContent = `Incorrecto. ${question.feedback}`;
+        }
+
+        quizScore.textContent = state.score;
+        quizHits.textContent = state.correct;
+        quizProgressLabel.textContent = `${Math.round((Object.keys(state.answeredQuiz).length / quizQuestions.length) * 100)}%`;
+        updateGlobalProgress();
+      }
+
+      function handleQuizAnswer(index) {
+        const question = quizQuestions[state.currentQuiz];
+        if (state.answeredQuiz[state.currentQuiz] !== undefined) return;
+        state.answeredQuiz[state.currentQuiz] = index;
+        if (index === question.correct) {
+          state.score += 20;
+          state.correct += 1;
+        } else {
+          state.score += 4;
+        }
+        renderQuiz();
+      }
+
+      document.getElementById("prevQuizBtn").addEventListener("click", () => {
+        state.currentQuiz = (state.currentQuiz - 1 + quizQuestions.length) % quizQuestions.length;
+        renderQuiz();
+      });
+
+      document.getElementById("nextQuizBtn").addEventListener("click", () => {
+        state.currentQuiz = (state.currentQuiz + 1) % quizQuestions.length;
+        renderQuiz();
+      });
+
+      document.getElementById("resetQuizBtn").addEventListener("click", () => {
+        state.score -= state.correct * 20;
+        state.correct = 0;
+        state.answeredQuiz = {};
+        renderQuiz();
+        updateGlobalProgress();
+      });
+
+      const mapTitle = document.getElementById("mapTitle");
+      const mapText = document.getElementById("mapText");
+      const mapButtons = [...document.querySelectorAll("[data-map-key]")];
+      const mapKeys = ["disciplina", "objeto", "comparacion", "cuerpo"];
+
+      function renderMap(key) {
+        const item = mapData[key];
+        mapTitle.textContent = item.title;
+        mapText.textContent = item.text;
+        mapButtons.forEach((button) => {
+          button.classList.toggle("active", button.dataset.mapKey === key);
+        });
+      }
+
+      mapButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          state.mapIndex = mapKeys.indexOf(button.dataset.mapKey);
+          renderMap(button.dataset.mapKey);
+          state.score += 3;
+          updateGlobalProgress();
+        });
+      });
+
+      document.getElementById("cycleMapBtn").addEventListener("click", () => {
+        state.mapIndex = (state.mapIndex + 1) % mapKeys.length;
+        renderMap(mapKeys[state.mapIndex]);
+        state.score += 3;
+        updateGlobalProgress();
+      });
+
+      const matchGrid = document.getElementById("matchGrid");
+
+      function buildMatchDeck() {
+        const cards = [];
+        matchBase.forEach(([title, body], pairIndex) => {
+          cards.push({ pairIndex, kind: "title", text: title });
+          cards.push({ pairIndex, kind: "body", text: body });
+        });
+        for (let i = cards.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [cards[i], cards[j]] = [cards[j], cards[i]];
+        }
+        return cards;
+      }
+
+      let matchDeck = buildMatchDeck();
+
+      function renderMatch() {
+        matchGrid.innerHTML = "";
+        matchDeck.forEach((card, index) => {
+          const button = document.createElement("button");
+          const isSelected = state.matchSelections.includes(index);
+          const isSolved = state.solvedMatches.has(card.pairIndex);
+          button.className = "match-card";
+          if (isSelected) button.classList.add("revealed");
+          if (isSolved) button.classList.add("solved");
+          button.textContent = isSelected || isSolved ? card.text : "Abrir tarjeta";
+          button.addEventListener("click", () => handleMatchClick(index));
+          matchGrid.appendChild(button);
+        });
+        updateGlobalProgress();
+      }
+
+      function handleMatchClick(index) {
+        const card = matchDeck[index];
+        if (state.solvedMatches.has(card.pairIndex)) return;
+        if (state.matchSelections.includes(index)) return;
+        if (state.matchSelections.length === 2) return;
+
+        state.matchSelections.push(index);
+        renderMatch();
+
+        if (state.matchSelections.length === 2) {
+          const [firstIndex, secondIndex] = state.matchSelections;
+          const firstCard = matchDeck[firstIndex];
+          const secondCard = matchDeck[secondIndex];
+
+          if (firstCard.pairIndex === secondCard.pairIndex && firstCard.kind !== secondCard.kind) {
+            state.solvedMatches.add(firstCard.pairIndex);
+            state.score += 15;
+            setTimeout(() => {
+              state.matchSelections = [];
+              renderMatch();
+            }, 400);
+          } else {
+            setTimeout(() => {
+              state.matchSelections = [];
+              renderMatch();
+            }, 900);
+          }
+        }
+      }
+
+      document.getElementById("resetMatchBtn").addEventListener("click", () => {
+        state.matchSelections = [];
+        state.solvedMatches = new Set();
+        matchDeck = buildMatchDeck();
+        renderMatch();
+      });
+
+      document.getElementById("revealAllBtn").addEventListener("click", () => {
+        state.matchSelections = matchDeck.map((_, index) => index);
+        renderMatch();
+      });
+
+      renderFlashcard();
+      renderQuiz();
+      renderMap("disciplina");
+      renderMatch();
+      updateGlobalProgress();
+    </script>
   </body>
 </html>
